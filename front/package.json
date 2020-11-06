@@ -1,12 +1,12 @@
 {
   "name": "rules-engine-front",
   "version": "0.0.1",
-  "description": "The front-end to a rules engine",
-  "productName": "Experience App",
-  "cordovaId": "org.cordova.sourcedigital.experience",
+  "description": "A space to create world-changing, grassroots collaboration software!",
+  "productName": "Then We Win",
   "author": "Nick Steele <njsteele@gmail.com>",
   "private": true,
   "scripts": {
+    "dev": "quasar dev",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },
