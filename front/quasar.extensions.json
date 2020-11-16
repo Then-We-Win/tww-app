@@ -1,4 +1,4 @@
 {
-  "@quasar/qmediaplayer": {},
-  "@quasar/colorize": {}
+  "qhierarchy": {},
+  "@quasar/qcalendar": {}
 }

@@ -1,79 +1,41 @@
-
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/defaultLayout.vue'),
+    component: () => import('layouts/Simple.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') },
-      {
-        path: 'campaign/:id',
-        name: 'campaign',
-        props: true,
-        component: () => import('pages/Campaign.vue')
-      },
-      {
-        path: 'profile/:id',
-        name: 'profile',
-        props: true,
-        component: () => import('pages/Profile.vue')
-      },
-      {
-        path: 'post/:id',
-        name: 'post',
-        props: true,
-        component: () => import('pages/Post.vue')
-      }
+      {path: '', component: () => import('pages/Dashboard.vue')},
+      {path: '/home', component: () => import('pages/Dashboard2.vue')},
+      {path: '/account', component: () => import('pages/Account.vue')},
+      {path: '/conversations', component: () => import('pages/Charts.vue')},
+      {path: '/updates', component: () => import('pages/Cards.vue')},
+      {path: '/Tables', component: () => import('pages/Tables.vue')},
+      {path: '/people', component: () => import('pages/Contact.vue')},
+      {path: '/resources', component: () => import('pages/Checkout.vue')},
+      {path: '/learn', component: () => import('pages/Pagination.vue')},
+      {path: '/tasks', component: () => import('pages/TaskBoard.vue')},
+      // {path: '/resources', component: () => import('pages/Calendar.vue')},
+      // {path: '/resources', component: () => import('pages/Map.vue')},
+      // {path: '/resources', component: () => import('pages/MapMarker.vue')},
+      // {path: '/resources', component: () => import('pages/TreeTable.vue')},
     ]
   },
   {
     path: '/login',
-    component: () => import('layouts/splitLayout.vue'),
-    meta: { requiresAuth: false },
-    children: [
-      {
-        path: '/login',
-        name: 'login',
-        component: () => import('pages/login/Login.vue')
-      },
-      {
-        path: '/sign-in',
-        name: 'signin',
-        component: () => import('pages/login/SignIn.vue')
-      },
-      {
-        path: '/forgot-password',
-        name: 'forgotpassword',
-        component: () => import('pages/login/ForgotPassword.vue')
-      },
-      {
-        path: '/email-sent',
-        name: 'emailsent',
-        component: () => import('pages/login/EmailSent.vue')
-      },
-      {
-        path: '/sign-up',
-        name: 'signup',
-        component: () => import('pages/login/Signup.vue')
-      },
-      {
-        path: '/passcode',
-        name: 'passcode',
-        component: () => import('pages/login/Passcode.vue')
-      },
-      {
-        path: '/two-fa',
-        name: 'twofa',
-        component: () => import('pages/login/TwoFA.vue')
-      }
-    ]
+    component: () => import('pages/Login.vue')
+  },
+  {
+    path: '/lock',
+    component: () => import('pages/LockScreen.vue')
   }
 ]
 
-// Always leave this as last one
 if (process.env.MODE !== 'ssr') {
   routes.push({
     path: '*',
-    component: () => import('pages/Error404.vue')
+    component: () => import('layouts/Simple.vue'),
+    children: [
+      {path: '', component: () => import('pages/NotFound.vue')}
+    ]
   })
 }
 
