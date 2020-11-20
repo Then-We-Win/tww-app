@@ -1,7 +1,8 @@
 <template>
   <q-page class="q-pa-sm">
     <div v-if="user.loggedIn">
-      <dashboard-stats />
+      <dashboard-stats :stats="stats" />
+      <dashboard-breakdown />
       <dashboard-breakdown />
       <dashboard-top-members />
 
@@ -198,6 +199,18 @@ import DashboardBreakdown from 'components/dashboard/breakdown.vue'
 import DashboardTopMembers from 'src/components/dashboard/topMembers.vue'
 import DashboardPublic from 'src/components/dashboard/public.vue'
 
+/**
+ Generator for the contacts (https://next.json-generator.com/41x1UHAKY)
+[
+  {
+    'repeat(5, 10)': {
+      name: '{{firstName()}}',
+      position: '{{company()}}',
+      avatar: 'http://placehold.it/32x32'
+    }
+  }
+]
+ */
 export default {
   name: "Dashboard",
   components: {
@@ -208,6 +221,32 @@ export default {
   },
   data() {
     return {
+      stats: [
+        {
+          value: '$20k',
+          text: 'Monthly Donations',
+          color: '#f88c2b',
+          icon: 'fas fa-dollar-sign'
+        },
+        {
+          value: '20',
+          text: 'Weekly Tasks',
+          color: '#3a9688',
+          icon: 'fas fa-chart-bar'
+        },
+        {
+          value: '321',
+          text: 'New Members',
+          color: '#7cb342',
+          icon: 'fas fa-chart-line'
+        },
+        {
+          value: '82',
+          text: 'Active Members',
+          color: '#f88c2b',
+          icon: 'person'
+        },
+      ],
       settings: this.$store.state.app.settings,
       user: this.$store.state.user,
       // TODO: Break out the remaining template above into components, using the src/components/dashboard components as a guide.
@@ -217,7 +256,7 @@ export default {
       messages: [
         {
           id: 5,
-          name: 'Pratik Patel',
+          name: 'Something else',
           msg: ' -- I\'ll be in your neighborhood doing errands this\n' +
               '            weekend. Do you want to grab brunch?',
           avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
@@ -253,32 +292,32 @@ export default {
         }
       ],
     contacts: [
-      {
-          name: 'Pratik Patel',
-          position: 'Developer',
-          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4'
-      },
-      {
-          name: 'Razvan Stoenescu',
-          position: 'Developer',
-          avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg'
-      },
-      {
-          name: 'Jeff Galbraith',
-          position: 'Developer',
-          avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg'
-      },
-      {
-          name: 'Brunhilde Panswick',
-          position: 'Administrator',
-          avatar: 'https://cdn.quasar.dev/img/avatar2.jpg'
-      },
-      {
-          name: 'Winfield Stapforth',
-          position: 'Administrator',
-          avatar: 'https://cdn.quasar.dev/img/avatar6.jpg'
-      },
-    ],
+  {
+    "name": "Lakisha",
+    "position": "Zaggles",
+    "avatar": "http://placehold.it/32x32"
+  },
+  {
+    "name": "Barnett",
+    "position": "Pyrami",
+    "avatar": "http://placehold.it/32x32"
+  },
+  {
+    "name": "Riggs",
+    "position": "Geeknet",
+    "avatar": "http://placehold.it/32x32"
+  },
+  {
+    "name": "Suzette",
+    "position": "Kiosk",
+    "avatar": "http://placehold.it/32x32"
+  },
+  {
+    "name": "Stefanie",
+    "position": "Digigene",
+    "avatar": "http://placehold.it/32x32"
+  }
+]
     }
   }
 }
