@@ -2,8 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import ee from 'experience-engine'
 
-// import example from './module-example'
-
 Vue.use(Vuex)
 
 /*
