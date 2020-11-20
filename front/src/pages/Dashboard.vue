@@ -1,8 +1,7 @@
 <template>
   <q-page class="q-pa-sm">
     <div v-if="user.loggedIn">
-      <dashboard-stats :stats="stats" />
-      <dashboard-breakdown />
+      <dashboard-stats :stats="stats"/>
       <dashboard-breakdown />
       <dashboard-top-members />
 
