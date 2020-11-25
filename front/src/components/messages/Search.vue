@@ -26,8 +26,9 @@
         let user = this.username;
         if (user != null && user.trim().length > 0) {
           this.history.push(user);
-          this.$emit('doSearch', user);
         }
+        // allow empty string to signal clearing the search results
+        this.$emit('doSearch', user);
       },
       showHistory () {
         console.log("Is this button to show the Search History? " + this.history);
