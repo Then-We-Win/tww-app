@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md q-pl-xl">
+  <div>
     <q-toolbar>
       <q-breadcrumbs class="1-pd-sm" style="font-size: 12px">
         <a class="cursor-pointer" @click="$router.go(-1)">
