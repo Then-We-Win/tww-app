@@ -74,6 +74,8 @@ export default {
             {icon: 'flag', text: 'Updates', color: 'text-orange', action: 'route', payload: 'updates'},
             {icon: 'forum', text: 'Tasks', color: 'text-teal', action: 'route', payload: 'tasks'},
             {type: 'separator'},
+            {icon: 'person_add', text: 'Invite', color: 'text-blue', action: 'route', payload: 'invite'},
+            {type: 'separator'},
             {icon: 'label', text: 'Resoruces', color: 'text-indigo-8', action: 'route', payload: 'resources'},
             {icon: 'book', text: 'Learn', color: 'text-brown-8', action: 'route', payload: 'learn'},
             {icon: 'logout', text: 'Logout', color: 'text-red', action: 'logout'}
