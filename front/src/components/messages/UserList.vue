@@ -1,5 +1,5 @@
 <template>
-              <q-list name="message" class="q-pa-sm">
+              <q-list>
                 <q-item v-for="msg in messages" :key="msg.id" v-on:click="selectUser(msg.id)" clickable v-ripple>
                   <q-item-section avatar>
                     <q-avatar>
@@ -20,13 +20,12 @@
 </template>
 
 <script>
-
   export default {
     name: "MessagesUserList",
     props: ['messages'],
     methods: {
       selectUser: function(userId) {
-        console.log("Key is " + userId);
+        //console.log("Key is " + userId);
         this.$emit('selectUser', userId);
       }
     }

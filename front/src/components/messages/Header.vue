@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="msgHeader">
     <q-toolbar>
       <q-breadcrumbs class="1-pd-sm" style="font-size: 12px">
         <a class="cursor-pointer" @click="$router.go(-1)">
@@ -22,7 +22,7 @@
 </script>
 
 <style scoped>
-.q-toolbar {
+#msgHeader .q-toolbar {
     min-height: 0;
 }
 </style>
