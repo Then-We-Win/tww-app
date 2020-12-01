@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-xs rounded-borders">
+  <div class="rounded-borders">
       <q-input filled type="search" label="Search Users" standout bottom-slots
           v-model="username" v-on:change="doSearch">
         <template v-slot:prepend>
@@ -36,6 +36,3 @@
     }
   }
 </script>
-
-<style scoped>
-</style>
