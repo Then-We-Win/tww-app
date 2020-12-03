@@ -20,6 +20,8 @@
   // We're using sample data here. TODO: Model will provide the data from the DB
   import * as myData from '../../model/messages.js';
 
+  import TimeSince from "../../mixins/TimeSince";
+
   export default {
     name: "MessagesConversation",
     components: {
@@ -28,6 +30,7 @@
           MessagesInput
     },
     props: ['selUser'],
+    mixins: [TimeSince],
     data() {
       return {
         isActive: true,
@@ -69,6 +72,12 @@
             msgThread.push(item);
           }
         }
+        // B. format the message createDate to display the time since, e.g. "5 mins ago"
+        for (let item of msgThread) {
+          // NOTE: date strings should be in this format: '02 Dec 2020 16:16:27 GMT-0800';
+          let dateObj = new Date(item.createDate);
+          item.when = this.getTimeSince(dateObj);
+        }
         return msgThread;
       },
 
@@ -82,7 +91,6 @@
           toId: this.selUser.id,
           message: msgText,
           createDate: new Date(),
-          when: '0 mins ago',                 // this will be a calculated field
           metaData: 'Some meta data here'
         }
         this.conversations.push(conv);

@@ -22,6 +22,8 @@
   // We're using sample data here. TODO: Model will provide the data from the DB
   import * as myData from '../model/messages.js';
 
+  import TimeSince from "../mixins/TimeSince";
+
   export default {
     name: "Messages",
     components: {
@@ -30,30 +32,42 @@
       MessagesUserList,
       MessagesConversation
     },
+    mixins: [TimeSince],
     data() {
       return {
         userList: myData.sampleData.messages,
-        subUserList: myData.sampleData.messages,
+        subUserList: this.formatData(myData.sampleData.messages),
         selectedUser: myData.sampleData.messages[0]
       }
     },
+    
     methods: {
+      formatData: function(users) {
+        for (let item of users) {
+          let dateObj = new Date(item.lastMsgDate);
+          item.time = this.getTimeShort(dateObj);
+        }
+        return users;
+      },
+
       search4user: function (userName) {
         //TODO: Controller to search DB for user to message, with userName like " + userName
         this.selectedUser = "";
         if (userName.trim().length == 0) {
-          this.subUserList = this.userList;
+          this.subUserList = this.formatData(this.userList);
         } else {
-          this.subUserList = [];
+          let subList = [];
           for (let item of this.userList) {
             let dataName = item.name.toLowerCase();
             let searchName = userName.toLowerCase();
             if (dataName.indexOf(searchName) >= 0) {
-              this.subUserList.push(item);
+              this.subList.push(item);
             }
           }
+          this.subUserList = this.formatData(subList);
         }
       },
+
       openMsgThread: function (userId) {
         //TODO: Controller to read from DB and get the message thread for userId = " + userId
         for (let item of this.userList) {

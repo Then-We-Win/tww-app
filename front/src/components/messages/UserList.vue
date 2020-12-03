@@ -9,10 +9,10 @@
 
                   <q-item-section>
                     <q-item-label>{{ msg.name }}</q-item-label>
-                    <q-item-label caption lines="1">{{ msg.msg }}</q-item-label>
+                    <q-item-label caption lines="1">{{ msg.lastMsg }}</q-item-label>
                   </q-item-section>
 
-                  <q-item-section side>
+                  <q-item-section side style="font-size:12px">
                     {{msg.time}}
                   </q-item-section>
                 </q-item>
@@ -31,3 +31,7 @@
     }
   }
 </script>
+
+<style scoped>
+
+</style>
