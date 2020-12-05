@@ -10,6 +10,12 @@
             <campaign-users-invite-button/>
           </div>
         </div>
+        <div class="row justify-center">
+          <div class="col-4">
+            <campaign-users-group-list/>
+          </div>
+        </div>
+        
       </q-page>
     </q-page-container>
   </q-layout>
@@ -19,12 +25,14 @@
 
   import CampaignUsersHeader from 'components/campaign_users/Header.vue'
   import CampaignUsersInviteButton from 'components/campaign_users/InviteButton.vue'
+  import CampaignUsersGroupList from 'components/campaign_users/GroupList.vue'
 
   export default {
     name: "CampaignUsers",
     components: {
       CampaignUsersHeader,
       CampaignUsersInviteButton,
+      CampaignUsersGroupList
     },
     data() {
       return {
