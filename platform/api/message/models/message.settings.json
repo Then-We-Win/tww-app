@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "messages",
+  "info": {
+    "name": "Message",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "message": {
+      "type": "text"
+    },
+    "metaData": {
+      "type": "text"
+    },
+    "from_user": {
+      "model": "user-detail"
+    },
+    "to_user": {
+      "model": "user-detail"
+    }
+  }
+}
