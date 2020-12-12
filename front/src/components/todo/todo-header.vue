@@ -10,7 +10,7 @@
         <img :src="settings.logo.wide" @click="$bus.emit('route', '')" />
       </q-toolbar-title>
 
-       
+
       <q-input
         dense
         standout="bg-primary"
@@ -34,11 +34,11 @@
       <q-space />
       <div class="q-gutter-sm row items-center no-wrap">
         <q-btn round dense flat color="grey-8" icon="textsms">
-          
+
           <q-tooltip>Notifications</q-tooltip>
         </q-btn>
         <q-btn round dense flat color="grey-8" icon="notifications">
-          
+
           <q-tooltip>Notifications</q-tooltip>
         </q-btn>
         <q-btn round flat>
@@ -50,7 +50,7 @@
       </div>
     </q-toolbar>
   </q-header>
-  
+
 </template>
 <script>
 export default {
