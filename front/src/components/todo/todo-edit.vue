@@ -2,7 +2,7 @@
   <div class=" full-width" :class="$q.screen.lt.sm ? 'q-ma-sm' : 'q-ma-xl q-px-xl'">
     <div class="" :class="$q.screen.lt.sm ? 'q-ma-sm q-px-sm' : 'q-ma-xl q-px-xl'">
       <p @click="goBack()" class="text-grey-8 text-h6 cursor-pointer"> <q-icon  name='navigate_before'/>Back</p>
-      <p class="text-h3 text-weight-light">Add To Do</p>
+      <p class="text-h3 text-weight-light">Edit To Do</p>
       <div class="q-mt-xl">
         <q-form ref="add_form" class="row q-col-gutter-x-md q-col-gutter-y-lg">
           <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
