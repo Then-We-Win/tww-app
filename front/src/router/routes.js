@@ -13,16 +13,17 @@ const routes = [
       {path: '/resources', component: () => import('pages/Checkout.vue')},
       {path: '/learn', component: () => import('pages/Pagination.vue')},
       {path: '/tasks', component: () => import('pages/TaskBoard.vue')},
-<<<<<<< HEAD
       {path: '/invite', component: () => import('pages/Invite.vue')},
-=======
       {path: '/messages', component: () => import('pages/Messages.vue')},
->>>>>>> ea4e2e99400cb65ac60dfa5c98eaf687d4173d8e
       // {path: '/resources', component: () => import('pages/Calendar.vue')},
       // {path: '/resources', component: () => import('pages/Map.vue')},
       // {path: '/resources', component: () => import('pages/MapMarker.vue')},
       // {path: '/resources', component: () => import('pages/TreeTable.vue')},
     ]
+  },
+  {
+    path:'/todo',
+    component: () => import('layouts/Todo.vue'),
   },
   {
     path: '/login',
