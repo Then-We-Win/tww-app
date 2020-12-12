@@ -29,31 +29,31 @@ export default {
       todos: [
           {
               completed: false,
-              title: 'Task Item 1',
+              title: 'Create a Todo List',
               date: '4:12pm, 12th December to 12:00pm, 14th Decemeber',
               task: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.'
           },
           {
               completed: false,
-              title: 'Task Item 2',
+              title: 'Visit TV Anchor',
               date: '4:12pm, 12th December to 12:00pm, 14th Decemeber',
               task: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.'
           },
           {
               completed: false,
-              title: 'Task Item 3',
+              title: 'Share campaigns to social media',
               date: '4:12pm, 12th December to 12:00pm, 14th Decemeber',
               task: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.'
           },
           {
               completed: false,
-              title: 'Task Item 4',
+              title: 'Create a Todo List',
               date: '4:12pm, 12th December to 12:00pm, 14th Decemeber',
               task: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.'
           },
           {
               completed: false,
-              title: 'Task Item 5',
+              title: 'Create a Todo List',
               date: '4:12pm, 12th December to 12:00pm, 14th Decemeber',
               task: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.'
           },
