@@ -57,13 +57,13 @@
       </div>
     </div>
     <div class="offset-lg-2 offset-md-2  col-lg-6 col-md-6 col-sm-12 col-xs-12 flex column items-end q-gutter-y-lg" :class="$q.screen.lt.md ? 'q-px-md' : 'q-pr-xl '">
-      <todo-create-button></todo-create-button>
+      <todo-create-button :createTodo='createTodo'></todo-create-button>
       <div class="flex full-width items-center justify-between">
         <p class="text-h5 text-weight-thin q-pl-xs q-mb-none">To Do List</p>
         <todo-search></todo-search>
       </div>
       <q-list padding>
-        <todo-task :todo="todo" :index=index v-for="(todo, index) in todos" :key="index"></todo-task>
+        <todo-task :editTodo='editTodo' :todo="todo" :index=index v-for="(todo, index) in todos" :key="index"></todo-task>
       </q-list>
     </div>
 
@@ -74,7 +74,7 @@ import TodoCreateButton from './todo-create-button.vue'
 import TodoSearch from './todo-search.vue'
 import TodoTask from './todo-task.vue'
 export default {
-  props: ['todos'],
+  props: ['todos', 'createTodo', 'editTodo'],
   data(){
     return {
 

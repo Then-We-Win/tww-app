@@ -3,9 +3,10 @@
 </template>
 <script>
 export default {
+  props: ['createTodo'],
   methods: {
     create(){
-      this.$root.$emit('CREATE NEW')
+      this.createTodo()
     }
   },
 }

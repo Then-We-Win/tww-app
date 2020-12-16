@@ -2,9 +2,9 @@
 <q-layout view="hHh Lpr fFf" class="">
   <todo-header></todo-header>
   <div class="q-mt-xl q-pt-xl">
-    <todo-list :todos='todos' v-if="!edit_todo && !new_todo" class="full-width"></todo-list>
-    <todo-new v-if="new_todo"></todo-new>
-    <todo-edit :todo='to_edit_todo' v-if="edit_todo"></todo-edit>
+    <todo-list :editTodo='editTodo' :createTodo='createTodo' :todos='todos' v-if="!edit_todo && !new_todo" class="full-width"></todo-list>
+    <todo-new :saveTodo='saveTodo' :showTodoLandingPage='showTodoLandingPage' v-if="new_todo"></todo-new>
+    <todo-edit :saveEdit='saveEdit' :showTodoLandingPage='showTodoLandingPage' :todo='to_edit_todo' v-if="edit_todo"></todo-edit>
   </div>
 </q-layout>
 </template>
@@ -60,28 +60,28 @@ export default {
       ]
     }
   },
-  created(){
-    this.$root.$on('CREATE NEW', ()=>{
+  methods: {
+    createTodo(){
       this.new_todo = true
-    })
-    this.$root.$on('LANDING PAGE', ()=>{
+    },
+    showTodoLandingPage(){
       this.new_todo = false
       this.edit_todo = false
-    })
-    this.$root.$on('ADD TODO', (todo)=>{
+    },
+    saveTodo(todo){
       this.todos.unshift(todo)
       this.new_todo = false
-    })
-    this.$root.$on('EDIT TODO', (index)=>{
+    },
+    editTodo(index){
       this.edit_index = index
       this.to_edit_todo = this.todos[index]
       this.edit_todo = true
-    })
-    this.$root.$on('SAVE EDIT', (todo)=>{
+    },
+    saveEdit(todo){
       this.todos[this.edit_index] = todo
       this.edit_todo = false
-    })
-  }
+    }
+  },
 }
 </script>
 

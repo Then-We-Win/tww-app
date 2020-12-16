@@ -67,6 +67,7 @@
 </template>
 <script>
 export default {
+  props: ['showTodoLandingPage', 'saveTodo'],
   data(){
     return{
       todo: {
@@ -85,12 +86,12 @@ export default {
   },
   methods: {
     goBack(){
-      this.$root.$emit('LANDING PAGE')
+      this.showTodoLandingPage()
     },
     save(){
       this.$refs.add_form.validate().then((success) => {
         if(success){
-          this.$root.$emit('ADD TODO', this.todo)
+          this.saveTodo(this.todo)
         }
       })
 

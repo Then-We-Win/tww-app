@@ -33,7 +33,7 @@
 </template>
 <script>
 export default {
-  props: ['todo', 'index'],
+  props: ['todo', 'index', 'editTodo'],
   data() {
     return {
 
@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     edit(){
-      this.$root.$emit('EDIT TODO', this.index)
+      this.editTodo(this.index)
     }
   },
 }
