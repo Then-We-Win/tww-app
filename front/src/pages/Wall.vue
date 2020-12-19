@@ -8,8 +8,8 @@
           <post-create class="my-4" />
           <post-list />
         </div>
-        <div class="col-4">
-          
+        <div class="col-4 q-pa-md q-ml-md">
+          <wall-side-bar />
         </div>
       </div>
       
@@ -21,6 +21,7 @@
 import PostHeader from '../components/wall/Header';
 import PostCreate from '../components/wall/PostCreate';
 import PostList from '../components/wall/PostList';
+import WallSideBar from '../components/wall/SideBar';
 
 
     export default {
@@ -28,7 +29,8 @@ import PostList from '../components/wall/PostList';
         components: {
           PostHeader,
           PostCreate,
-          PostList
+          PostList,
+          WallSideBar
                 
         }
     }
