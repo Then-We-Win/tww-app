@@ -15,6 +15,7 @@ const routes = [
       {path: '/tasks', component: () => import('pages/TaskBoard.vue')},
       {path: '/invite', component: () => import('pages/Invite.vue')},
       {path: '/messages', component: () => import('pages/Messages.vue')},
+      {path: '/campaign', component: () => import('pages/Campaign.vue')},
       // {path: '/resources', component: () => import('pages/Calendar.vue')},
       // {path: '/resources', component: () => import('pages/Map.vue')},
       // {path: '/resources', component: () => import('pages/MapMarker.vue')},
