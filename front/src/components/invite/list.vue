@@ -1,18 +1,34 @@
 <template>
-  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-      <q-list>
-          <invite-list-item
-            v-for="(item, index) in list"
-            :key="item.inviteID"
-            :invitee="item"
-            :index="index"
-            :curLength="list.length"
-            @removeRow="removeRow"
-          />
-      </q-list>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <q-dialog v-model="alert">
+      <q-card>
+        <q-card-section align="center">
+          <q-icon name="warning" class="text-red" style="font-size: 2rem;"/>
+        </q-card-section>
 
-    <div class="row justify-between">
-      <div class="q-py-md q-px-xl">
+        <q-card-section class="q-pt-none">
+          One or more invites are incorrectly formatted. Please ensure usernames are correct and roles are selected for each invitee.
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Dismiss" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
+    <q-list class="">
+        <invite-list-item
+          v-for="(item, index) in list"
+          :key="item.inviteID"
+          :invitee="item"
+          :index="index"
+          :curLength="list.length"
+          @removeRow="removeRow"
+        />
+    </q-list>
+
+    <div class="row justify-center q-py-md">
+      <div class="col-5">
           <q-btn
             v-if="list.length < maxInvites"
             @click="addRow()"
@@ -43,7 +59,7 @@
 <script>
 /*
 
-    Version 1.0
+    Version 1.1
 
 	Invite List component
 
@@ -75,7 +91,8 @@ export default {
             user: '',
             role: ''
           }
-        ]
+        ],
+        alert: false,
       }
    },
    methods: {
@@ -100,9 +117,9 @@ export default {
         if(inviteBool === true){
           this.$emit('inviteWatch', true)
         }
-        //If invites failed, do something
+        //If invites failed, open alert dialog
         else{
-          window.alert("Something went wrong in sending the invitations.");
+          this.alert = true;
         }
       }
   }

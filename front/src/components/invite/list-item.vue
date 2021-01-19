@@ -25,17 +25,18 @@
             label="Role"
         />
         
-        <div v-if="curLength > 1 ">
+        <div class="row col-1">
+            <q-space />
             <q-btn
+                v-if="curLength > 1 "
                 @click="removeRow()"
                 elevated
                 round
                 color="grey-6"
                 icon="clear"
             />
-        </div>
-        <div v-else>
            <q-btn
+                v-else
                 elevated
                 round
                 color="grey-3"
@@ -48,7 +49,7 @@
 <script>
 /*
 
-    Version 1.0
+    Version 1.1
 	
 	Invite List Item component
 

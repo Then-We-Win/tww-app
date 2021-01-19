@@ -1,5 +1,5 @@
 <template>
-  <div class="row q-col-gutter-md q-py-md q-px-xl">
+  <div class="row col-6 justify-end q-col-gutter-md">
     <div class="">
       <q-btn
         @click="$router.go(-1)"
@@ -24,7 +24,7 @@
 <script>
 /*
 
-    Version 0.1
+    Version 0.3
 
     Invite List Item Action component.
 
@@ -32,6 +32,9 @@
     Once invitations have been processed, report to parent success or failure of processing.
 
 */
+import axios from 'axios';
+import InviteServices from 'components/invite/services.js';
+
 export default {
   name: "InviteListItemAction",
   props: ['list'],
@@ -39,20 +42,31 @@ export default {
     //Invite Users button action
     handleAdd() {
       /*
-
           TODO :
         1. Verify the inputs are correct.
-        2. Handle invites in 'list' via strapi.
 
         invite schema: id, campaign, userId, rights, group, role, dateCreated, dateModified, modifiedBy
 
       */
+     //ensure each invite has an assigned role
+      for(var i = 0; i < this.list.length; i++){
+        if(this.list[i].user && !this.list[i].role){
+          this.$emit('inviteSuccess', false);
+          return;
+        }
+      }
 
+      //pull campaign data to insert into email
+      var campaign = {
+        campaign: "my campaign",
+      }
+
+      for(var i = 0; i < this.list.length; i++){
+        InviteServices.emailSupport(this.list[i], campaign);
+      }
       //Report to parent invites were successfully sent
-      this.$emit('inviteSuccess', true);
-
-      //If something went wrong in sending invitations, use this.$emit('inviteSuccess', false);
-    }
+      //this.$emit('inviteSuccess', true);
+    },
   }
 }
 </script>
