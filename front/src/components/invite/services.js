@@ -1,4 +1,4 @@
-function sendTemplatedEmail(emailOptions = {}, emailTemplate = {}, data = {}){
+function templateEmail(emailOptions = {}, emailTemplate = {}, data = {}){
     const _ = require('lodash');
     const attributes = ['subject', 'text', 'html'];
 
@@ -16,17 +16,19 @@ function sendTemplatedEmail(emailOptions = {}, emailTemplate = {}, data = {}){
 }
 
 async function emailSupport(invitee, campaign){
-    if(invitee.user && invitee.role){        
+    if(invitee.user && invitee.role){
+        //generic email template   
         var template = {
             subject: 'Welcome to campaign as the role <%= item.role%>',
             text: `Welcome to Then We Win!
-            Your account is now linked with: <%= item.user %>.`,
+            Your account can be linked with: <%= item.user %>.`,
             html: `<h1>Welcome to Then We Win!</h1>
-            <p>Your account is now linked with: <%= item.user %>.<p>
+            <p>Your account can be linked with: <%= item.user %>.<p>
             <p>check: <%= obj.campaign %></p>`,
         };
 
-        var emailTemplate = sendTemplatedEmail(
+        //call to email templating function to substitute invite data into message
+        var emailTemplate = templateEmail(
         {
             to: invitee.user,
             // from: is not specified, so it's the defaultFrom that will be used instead
@@ -37,7 +39,7 @@ async function emailSupport(invitee, campaign){
             obj: campaign,
         }
         );
-        //print the compiled template to the console
+        //FOR TESTING PURPOSES - print the compiled template to the console
         console.log(emailTemplate);
         /*
         THIS CODE SENDS EMAIL WHEN BACK END SERVER IS UP AND SMTP ACTIVE
@@ -48,6 +50,5 @@ async function emailSupport(invitee, campaign){
 }
 
 export default {
-    sendTempaltedEmail: sendTemplatedEmail,
     emailSupport: emailSupport,
 };
