@@ -27,6 +27,8 @@
   "devDependencies": {
     "@quasar/app": "^1.0.0",
     "@quasar/quasar-app-extension-qcalendar": "^1.5.6",
+    "eslint": "^7.18.0",
+    "eslint-plugin-vue": "^7.4.1",
     "quasar-app-extension-qhierarchy": "0.0.1"
   },
   "engines": {
@@ -34,6 +36,10 @@
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
   },
+  "eslint.validate": [
+    "javascript",
+    "vue"
+  ],
   "browserslist": [
     "last 1 version, not dead, ie >= 11"
   ]
