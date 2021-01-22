@@ -66,7 +66,7 @@ export default {
       this.debug('Couldn\'t login via JWT:', e)
     })
     .finally(() => {
-      this.$auth.hydrate(settings.sourcesync.slug)
+      this.$auth.hydrate('sourcesync-admin')
         .then(result => {
           // If the user has some settings related to this app, apply them...
           if (this.$store.state.user.role) {
