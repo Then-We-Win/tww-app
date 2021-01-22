@@ -4,11 +4,8 @@
       <div class="col-3" />
       <q-card class="col-6 q-pa-md">
         <q-card-section>
-          <div class="text-h6">Contact us</div>
-          <q-input v-model="text" label="Name" />
-          <q-input v-model="text" label="eMail" />
-          <q-input v-model="text" label="Company" />
-          <q-input v-model="text" type="textarea" label="Message" />
+          <div class="text-h6">Our terms</div>
+          Text goes here
         </q-card-section>
       </q-card>
       <div class="col-3" />

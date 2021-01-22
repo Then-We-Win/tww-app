@@ -27,8 +27,8 @@
         <q-btn flat color="white" label="Home" />
         <q-btn flat color="white" label="Datasets" />
         <q-btn flat color="white" label="Analyses" />
-        <q-btn flat color="white" label="Terms & privacy" />
-        <q-btn flat color="white" label="Contact us" />
+        <q-btn flat color="white" label="Terms & privacy" @click="$bus.emit('route', 'terms')" />
+        <q-btn flat color="white" label="Contact us" @click="$bus.emit('route', 'contact')" />
 
         <q-space />
 
