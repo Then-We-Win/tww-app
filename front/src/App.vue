@@ -94,11 +94,11 @@ export default {
          menu: {
           links: [
             {icon: 'add', text: 'Add', type: 'button', action: 'route', payload: 'new' },
-            {icon: 'move_to_inbox', text: 'Campaign Home', color: 'text-red', action: 'route', payload: 'home'},
-            {icon: 'group', text: 'People', color: 'text-green', action: 'route', payload: 'people'},
-            {icon: 'message', text: 'Conversations', color: 'text-indigo-8', action: 'route', payload: 'conversations'},
-            {icon: 'flag', text: 'Updates', color: 'text-orange', action: 'route', payload: 'updates'},
-            {icon: 'forum', text: 'Tasks', color: 'text-teal', action: 'route', payload: 'tasks'},
+            {icon: 'bar_chart', text: 'Datasets', color: 'text-red', action: 'route', payload: 'datasets'},
+            {icon: 'group', text: 'Patients', color: 'text-green', action: 'route', payload: 'people'},
+            {icon: 'search', text: 'Analyses', color: 'text-indigo-8', action: 'route', payload: 'analyses'},
+            {icon: 'find_in_page', text: 'Tests', color: 'text-orange', action: 'route', payload: 'updates'},
+            {icon: 'pie_chart', text: 'Test Results', color: 'text-teal', action: 'route', payload: 'tasks'},
             {type: 'separator'},
             {icon: 'person_add', text: 'Invite', color: 'text-blue', action: 'route', payload: 'invite'},
             {type: 'separator'},
