@@ -21,12 +21,12 @@
           :register-form-password.sync="registerFormPassword"
         />
         <q-form class="q-gutter-md">
-              <q-input filled v-model="credentials.user" label="Username" lazy-rules />
-              <q-input type="password" filled v-model="credentials.pass" label="Password" lazy-rules />
-              <div>
-                <q-btn label="Login" @click="$bus.emit('login', credentials)" type="button" color="primary"/>
-              </div>
-            </q-form>
+          <q-input filled v-model="credentials.user" label="Username" lazy-rules />
+          <q-input type="password" filled v-model="credentials.pass" label="Password" lazy-rules />
+          <div>
+            <q-btn label="Login2" @click="$bus.emit('login', credentials)" type="button" color="primary"/>
+          </div>
+        </q-form>
       </q-page>
     </q-page-container>
   </q-layout>
