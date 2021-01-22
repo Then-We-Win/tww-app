@@ -8,6 +8,7 @@ module.exports = function (ctx) {
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
     boot: [
       'i18n',
+      'auth',
       'axios',
       'apex',
       'events',
@@ -51,7 +52,7 @@ module.exports = function (ctx) {
       directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: ['Notify']
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie

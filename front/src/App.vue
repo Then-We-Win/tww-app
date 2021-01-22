@@ -57,6 +57,32 @@ export default {
     }
   },
   mounted () {
+    this.$auth.loginUsingJWT()
+    .then(result => {
+      this.$store.commit('replaceUser', result)
+      this.debug('Logged in via JWT', result)
+    })
+    .catch(e => {
+      this.debug('Couldn\'t login via JWT:', e)
+    })
+    .finally(() => {
+      this.$auth.hydrate('sourcesync-admin')
+        .then(result => {
+          // If the user has some settings related to this app, apply them...
+          if (this.$store.state.user.role) {
+            const userAppSettings = JSON.parse(JSON.stringify(
+              this.$store.state.user.settings.apps.settings[settings.sourcesync.slug]
+            ))
+            this.debug(`user settings for this app (${settings.sourcesync.slug})`, userAppSettings)
+            // Merge respective user app settings into the application state...
+            result = this.$ee.util.merge(result, { settings: userAppSettings })
+          }
+          this.$store.commit('replaceApp', result)
+          this.debug('Application state loaded', result)
+          this.$store.commit('loaded', true)
+          this.$router.push({ name: 'home' })
+        })
+    })
     console.log('app')
       this.$store.commit('replaceApp', {
         loaded: true,
