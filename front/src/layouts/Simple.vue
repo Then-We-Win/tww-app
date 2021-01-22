@@ -1,43 +1,30 @@
 <template>
   <q-layout view="hHh LpR fFf" class="bg-grey-1">
     <!-- The header -->
-    <q-header class="bg-white text-grey-8">
-      <q-toolbar class="GNL__toolbar">
+    <q-header class="bg-white text-white">
+      <q-toolbar class="GNL__toolbar bg-primary">
         <!-- Menu button -->
         <q-btn v-if="user.loggedIn" flat dense round @click="miniState = !miniState" aria-label="Menu" icon="menu" class="q-mr-sm" />
 
         <!-- Logo -->
-        <q-toolbar-title v-if="$q.screen.gt.xs" shrink class="row items-center no-wrap">
-          <img :src="settings.logo.wide" @click="$bus.emit('route', '')">
+        <q-toolbar-title v-if="$q.screen.gt.xs" shrink class="row items-center content-center no-wrap">
+          <img class="q-ma-md" style="width: 100px" :src="settings.logo.wide" @click="$bus.emit('route', '')">
+          <div class="text-h4 text-weight-light">|</div>
+          <div class="text-caption q-pl-md" style="line-height: 15px;">Health Outcomes and <br/> Policy Evaluation Platform</div>
         </q-toolbar-title>
 
-        <q-space/>
-
-        <!-- Search box -->
-        <q-input class="GNL__toolbar-input" rounded outlined dense v-model="search" color="bg-grey-7"
-          placeholder="Search TWW">
-          <template v-slot:prepend>
-            <q-icon v-if="search === ''" name="search"/>
-            <q-icon v-else name="clear" class="cursor-pointer" @click="search = ''"/>
-          </template>
-          <template v-slot:append>
-            <q-btn flat dense round aria-label="Menu" icon="arrow_drop_down">
-            </q-btn>
-          </template>
-        </q-input>
-
-        <q-space/>
-
         <!-- Right buttons -->
+        <q-btn flat color="white" label="Home" @click="$bus.emit('route', '')" />
         <div v-if="user.loggedIn" class="q-gutter-sm row items-center no-wrap">
-          <q-btn v-if="user.conversations" round dense flat color="grey-8" icon="message" @click="$bus.emit('route', 'conversations')">
-            <q-badge color="red" text-color="white" floating>{{user.conversations.length}}</q-badge>
-            <q-tooltip>Conversations</q-tooltip>
-          </q-btn>
-          <q-btn v-if="user.updates" round dense flat color="grey-8" icon="flag" @click="$bus.emit('route', 'updates')">
-            <q-badge color="red" text-color="white" floating>{{user.updates.length}}</q-badge>
-            <q-tooltip>Updates</q-tooltip>
-          </q-btn>
+          <q-btn flat color="white" label="Datasets" />
+          <q-btn flat color="white" label="Analyses" />
+        </div>
+        <q-btn flat color="white" label="Terms & privacy" @click="$bus.emit('route', 'terms')" />
+        <q-btn flat color="white" label="Contact us" @click="$bus.emit('route', 'contact')" />
+
+        <q-space />
+
+        <div v-if="user.loggedIn"> 
           <q-btn round flat @click="$bus.emit('route', 'account')">
             <q-avatar size="26px">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png">
@@ -46,9 +33,8 @@
           </q-btn>
         </div>
         <div v-else>
-          <q-btn round dense flat color="grey-8" icon="login" @click="$bus.emit('route', 'login')">
-            <q-tooltip>Login</q-tooltip>
-          </q-btn>
+          <q-btn flat color="white" label="Login" @click="$bus.emit('route', 'login')" />
+          <q-btn flat color="white" label="Create an account" @click="$bus.emit('route', 'login')" />
         </div>
       </q-toolbar>
     </q-header>
