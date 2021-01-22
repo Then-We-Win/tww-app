@@ -14,11 +14,11 @@
         </q-toolbar-title>
 
         <!-- Right buttons -->
+        <q-btn flat color="white" label="Home" @click="$bus.emit('route', '')" />
         <div v-if="user.loggedIn" class="q-gutter-sm row items-center no-wrap">
           <q-btn flat color="white" label="Datasets" />
           <q-btn flat color="white" label="Analyses" />
         </div>
-        <q-btn flat color="white" label="Home" @click="$bus.emit('route', '')" />
         <q-btn flat color="white" label="Terms & privacy" @click="$bus.emit('route', 'terms')" />
         <q-btn flat color="white" label="Contact us" @click="$bus.emit('route', 'contact')" />
 
