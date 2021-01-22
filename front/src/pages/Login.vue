@@ -20,6 +20,13 @@
           :register-form-email.sync="registerFormEmail"
           :register-form-password.sync="registerFormPassword"
         />
+        <q-form class="q-gutter-md">
+              <q-input filled v-model="credentials.user" label="Username" lazy-rules />
+              <q-input type="password" filled v-model="credentials.pass" label="Password" lazy-rules />
+              <div>
+                <q-btn label="Login" @click="$bus.emit('login', credentials)" type="button" color="primary"/>
+              </div>
+            </q-form>
       </q-page>
     </q-page-container>
   </q-layout>
@@ -27,12 +34,27 @@
 
 <script>
 import QAuthorization from '../components/authorization/QAuthorization'
+
 export default {
+  events: {
+    loggedIn () {
+      this.$bus.emit('route', '')
+    },
+    loginFailed (errorMsg) {
+      this.errorMsg = errorMsg
+    }
+  },  
   components: {
     QAuthorization
   },
   data () {
     return {
+      settings: this.$store.state.app.settings,
+      errorMsg: '',
+      credentials: {
+        user: 'demo',
+        pass: '123'
+      },
       companyInfo: {
         logo: 'statics/logo.png',
         name: 'Hope'
