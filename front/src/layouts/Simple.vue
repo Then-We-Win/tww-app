@@ -14,26 +14,28 @@
         </q-toolbar-title>
 
         <!-- Right buttons -->
-        <!-- <div v-if="user.loggedIn" class="q-gutter-sm row items-center no-wrap">
+        <div v-if="user.loggedIn" class="q-gutter-sm row items-center no-wrap">
           <q-btn flat color="white" label="Datasets" />
           <q-btn flat color="white" label="Analyses" />
+        </div>
+        <q-btn flat color="white" label="Home" @click="$bus.emit('route', '')" />
+        <q-btn flat color="white" label="Terms & privacy" @click="$bus.emit('route', 'terms')" />
+        <q-btn flat color="white" label="Contact us" @click="$bus.emit('route', 'contact')" />
+
+        <q-space />
+
+        <div v-if="user.loggedIn"> 
           <q-btn round flat @click="$bus.emit('route', 'account')">
             <q-avatar size="26px">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png">
             </q-avatar>
             <q-tooltip>Account</q-tooltip>
           </q-btn>
-        </div> -->
-        <q-btn flat color="white" label="Home" />
-        <q-btn flat color="white" label="Datasets" />
-        <q-btn flat color="white" label="Analyses" />
-        <q-btn flat color="white" label="Terms & privacy" @click="$bus.emit('route', 'terms')" />
-        <q-btn flat color="white" label="Contact us" @click="$bus.emit('route', 'contact')" />
-
-        <q-space />
-
-        <q-btn flat color="white" label="Login" @click="$bus.emit('route', 'login')" />
-        <q-btn flat color="white" label="Create an account" @click="$bus.emit('route', 'login')" />
+        </div>
+        <div v-else>
+          <q-btn flat color="white" label="Login" @click="$bus.emit('route', 'login')" />
+          <q-btn flat color="white" label="Create an account" @click="$bus.emit('route', 'login')" />
+        </div>
       </q-toolbar>
     </q-header>
 
