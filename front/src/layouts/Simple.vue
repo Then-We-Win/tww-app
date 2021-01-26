@@ -14,19 +14,7 @@
         <q-space/>
 
         <!-- Search box -->
-        <q-input class="GNL__toolbar-input" v-on:click="openSearch()" rounded outlined dense v-model="search" color="bg-grey-7"
-          placeholder="Search TWW">
-          <template v-slot:prepend>
-            <q-icon v-if="search === ''" name="search"/>
-            <q-icon v-else name="clear" class="cursor-pointer" @click="search = ''"/>
-          </template>
-          <template v-slot:append>
-            <q-btn flat dense round aria-label="Menu" icon="arrow_drop_down">
-            </q-btn>
-          </template>
-        </q-input>
-
-        <q-space/>
+        <search-bar/>
 
         <!-- Right buttons -->
         <div v-if="user.loggedIn" class="q-gutter-sm row items-center no-wrap">
@@ -92,9 +80,12 @@
 
 <script>
 import {fasGlobeAmericas, fasFlask} from '@quasar/extras/fontawesome-v5'
-
+import searchBar from '../components/searchBar'
 export default {
   name: 'LayoutSimple',
+  components: {
+    searchBar
+  },
   mounted () {
     console.log('layout')
   },
@@ -126,15 +117,7 @@ export default {
   .GNL__toolbar-input {
     width: 55%;
   }
-  .GNL__toolbar-input.opened{
-    width: 100%;
-    height: 40px;
-    margin: 0 auto;
-    position: relative;
-    transition-property: width, height, transform;
-    transition-duration: 0.5s;
-    transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-  }
+
   .GNL__drawer-item {
     line-height: 24px;
     border-radius: 0 24px 24px 0;
