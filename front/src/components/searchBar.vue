@@ -1,7 +1,7 @@
 <template>
   <div
     class="search-bar"
-    :class="{ 'open': search }"
+    :class="{ 'open': test1 }"
   >
     <div
       class="search-bar-form"
@@ -12,23 +12,29 @@
         rounded
         outlined
         dense
-        v-model="searchInput"
+        v-model="newAsk"
         color="bg-grey-7"
-        :placeholder="$t('search.bar.text')"
+        @keyup.enter="getAsk()"
       >
         <template v-slot:prepend>
           <q-icon
-            v-if="searchInput === ''"
+            v-if="newAsk === ''"
             name="search"
           />
           <q-icon
             v-else
             name="clear"
             class="cursor-pointer"
-            @click="searchInput = ''"
+            @click="newAsk = ''"
           />
         </template>
       </q-input>
+      <div class="result-wrap" v-show="askChecked">
+         <div class="result" v-for="result in askRes" :key="result.id" transition="expand">
+           <h4><a :href="result.frontend_pdf_url" target="_blank">{{ result.name_abbreviation }}</a></h4>
+           <p>{{ result.decision_date }}</p>
+         </div>
+       </div>
     </div>
 
     <span
@@ -39,27 +45,61 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data () {
     return {
-      search: '',
-      searchInput: ''
+        test1: '',
+        askRes: null,
+        newAsk: '',
+        newUrl: '',
+        ask: null,
+        askChecked: false
     }
   },
+  ready: function () {
+      // this.getLink()
+  },
   methods: {
-    getOpen: function () {
-      this.search = 'open'
-    },
-    closeForm: function () {
-      this.search = ''
-      this.searchInput = ''
-    }
+      getOpen: function () {
+        this.test1 = 'open'
+      },
+      closeForm: function () {
+        this.test1 = ''
+        this.newAsk = ''
+        this.askRes = ''
+        this.newUrl = ''
+        this.askChecked = false
+      },
+  getUrl: function() {
+    var apiUrl = "https://api.case.law/v1/cases/?page_size=10&search="+this.newAsk.replace(' ','+')+"&ordering=-decision_date";
+    this.newUrl = apiUrl
+  },
+  getAsk: function () {
+        this.getUrl()
+        axios.get(this.newUrl).then((response) => {
+          this.askRes = response.data.results
+          console.log("askRes = " + this.askRes)
+          this.askChecked = true
+        }, (response) => {
+          // if api not working
+          console.log(response.data)
+        })
+     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
 .search-bar {
+  font-family: 'Poiret One', 'Roboto', 'Helvetica';
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
   width: 35px;
   min-height: 35px;
   position: absolute;
@@ -86,6 +126,7 @@ export default {
     min-height: 100vh;
     top: 0px;
     right: 0px;
+    overflow-y: scroll;
 
     .search-bar-form {
       width: 80%;
@@ -121,6 +162,8 @@ export default {
     background: rgb(240, 240, 240);
   }
 }
+
+
 
 .search-bar-close {
   width: 27px;
