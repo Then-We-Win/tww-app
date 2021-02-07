@@ -14,19 +14,7 @@
         <q-space/>
 
         <!-- Search box -->
-        <q-input class="GNL__toolbar-input" rounded outlined dense v-model="search" color="bg-grey-7"
-          placeholder="Search TWW">
-          <template v-slot:prepend>
-            <q-icon v-if="search === ''" name="search"/>
-            <q-icon v-else name="clear" class="cursor-pointer" @click="search = ''"/>
-          </template>
-          <template v-slot:append>
-            <q-btn flat dense round aria-label="Menu" icon="arrow_drop_down">
-            </q-btn>
-          </template>
-        </q-input>
-
-        <q-space/>
+        <search-bar/>
 
         <!-- Right buttons -->
         <div v-if="user.loggedIn" class="q-gutter-sm row items-center no-wrap">
@@ -92,12 +80,16 @@
 
 <script>
 import {fasGlobeAmericas, fasFlask} from '@quasar/extras/fontawesome-v5'
-
+import searchBar from '../components/searchBar'
 export default {
   name: 'LayoutSimple',
+  components: {
+    searchBar
+  },
   mounted () {
     console.log('layout')
   },
+
   data() {
     return {
       settings: this.$store.state.app.settings,
@@ -105,6 +97,13 @@ export default {
         leftDrawerOpen: false,
         miniState: false,
         search: ''
+    }
+  },
+
+  methods: {
+    openSearch(){
+      var searchBar = document.getElementsByClassName("GNL__toolbar-input");
+      searchBar[0].classList.add("opened");
     }
   }
 }
