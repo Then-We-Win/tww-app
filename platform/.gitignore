@@ -1,4 +1,9 @@
 ############################
+# Docs and other auto-generated stuff
+############################
+extensions/documentation/documentation/*
+
+############################
 # OS X
 ############################
 
