@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md q-px-xl">
-    <messages-header></messages-header>
-    <div class="row q-mt-md">
+    <messages-header class="debug-red"></messages-header>
+    <div class="row q-mt-md debug-green">
       <div class="q-pa-sm" style="width:300px">
         <messages-search v-on:doSearch="search4user"></messages-search>
         <messages-user-list v-bind:messages="subUserList" v-on:selectUser="openMsgThread"></messages-user-list>

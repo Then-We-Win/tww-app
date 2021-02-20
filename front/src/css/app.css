@@ -1,1 +1,13 @@
 /* app global css */
+
+.debug-red {
+    border: 1px solid red
+}
+
+.debug-blue {
+    border: 1px solid blue
+}
+
+.debug-green {
+    border: 1px solid green
+}
