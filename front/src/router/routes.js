@@ -13,12 +13,19 @@ const routes = [
       {path: '/resources', component: () => import('pages/Checkout.vue')},
       {path: '/learn', component: () => import('pages/Pagination.vue')},
       {path: '/tasks', component: () => import('pages/TaskBoard.vue')},
+      {path: '/invite', component: () => import('pages/Invite.vue')},
       {path: '/messages', component: () => import('pages/Messages.vue')},
+      {path: '/wall', component: () => import('pages/Wall.vue')},
+      {path: '/campaign', component: () => import('pages/Campaign.vue')},
       // {path: '/resources', component: () => import('pages/Calendar.vue')},
       // {path: '/resources', component: () => import('pages/Map.vue')},
       // {path: '/resources', component: () => import('pages/MapMarker.vue')},
       // {path: '/resources', component: () => import('pages/TreeTable.vue')},
     ]
+  },
+  {
+    path:'/todo',
+    component: () => import('layouts/Todo.vue'),
   },
   {
     path: '/login',
