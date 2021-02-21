@@ -2,11 +2,14 @@
     <div id="msgMsgs" class="row justify-center">
       <div style="width: 100%" v-for="msg in thread.msgs" :key="msg.id">
         <q-chat-message 
-          :avatar="msg.fromId==99 ? thread.myAvatar: thread.theirAvatar"
+          :avatar="msg.fromId==myId ? thread.myAvatar: thread.theirAvatar"
           :text="[msg.message]"
-          :sent="msg.fromId==99?true:false"
+          :sent="msg.fromId==myId?true:false"
           :stamp="msg.when"
         />
+      </div>
+      <div v-bind:class="{hidden: (thread.msgs.length>0) }" class="center" style="width: 600px; height: 100px;">
+          <h6>No messages</h6>
       </div>
     </div>
 </template>
@@ -14,7 +17,7 @@
 <script>
 export default {
   name: 'MessagesMessage',
-  props: ['thread']
+  props: ['myId','thread']
 }
 </script>
 

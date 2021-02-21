@@ -1,4 +1,16 @@
 /* app global css */
+
+.debug-red {
+    border: 1px solid red
+}
+
+.debug-blue {
+    border: 1px solid blue
+}
+
+.debug-green {
+    border: 1px solid green
+}
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
