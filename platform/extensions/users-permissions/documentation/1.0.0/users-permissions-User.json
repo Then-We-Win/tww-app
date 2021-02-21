@@ -1250,6 +1250,83 @@
                 "type": "string"
               }
             }
+          },
+          "campaigns": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "contents": {
+                  "type": "string"
+                },
+                "settings": {
+                  "type": "object"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "locations": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "users": {
+                  "type": "string"
+                },
+                "owner": {
+                  "type": "string"
+                },
+                "tasks": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "task_comment": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "details": {
+                "type": "string"
+              },
+              "task": {
+                "type": "string"
+              },
+              "creator": {
+                "type": "string"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -1290,6 +1367,15 @@
             "default": false
           },
           "role": {
+            "type": "string"
+          },
+          "campaigns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "task_comment": {
             "type": "string"
           },
           "created_by": {

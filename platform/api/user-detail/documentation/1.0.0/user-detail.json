@@ -581,6 +581,15 @@
               "role": {
                 "type": "string"
               },
+              "campaigns": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "task_comment": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },

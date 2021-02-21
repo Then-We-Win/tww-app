@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "messages",
+  "collectionName": "posts",
   "info": {
-    "name": "Message",
-    "description": ""
+    "name": "post"
   },
   "options": {
     "increments": true,
@@ -11,20 +10,18 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "subject": {
+    "owner": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "name": {
       "type": "string"
-    },
-    "from": {
-      "model": "user-detail"
-    },
-    "to": {
-      "model": "user-detail"
     },
     "details": {
       "type": "richtext"
     },
-    "read": {
-      "type": "datetime"
+    "campaign": {
+      "model": "campaign"
     }
   }
 }

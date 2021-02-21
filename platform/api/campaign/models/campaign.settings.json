@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "campaigns",
+  "info": {
+    "name": "campaign",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "contents": {
+      "type": "richtext"
+    },
+    "settings": {
+      "type": "json"
+    },
+    "name": {
+      "type": "string"
+    },
+    "locations": {
+      "collection": "locations"
+    },
+    "categories": {
+      "collection": "category"
+    },
+    "users": {
+      "plugin": "users-permissions",
+      "collection": "user"
+    },
+    "owner": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "campaigns"
+    },
+    "tasks": {
+      "via": "campaign",
+      "collection": "task"
+    }
+  }
+}
