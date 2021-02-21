@@ -1,104 +1,6 @@
 {
   "paths": {
-    "/messages/thread/{user}/{with}/{_limit}/{_before}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Message"
-        ],
-        "parameters": [
-          {
-            "name": "user",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "with",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "_limit",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "_before",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/messages": {
+    "/tasks": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -110,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Message"
+                    "$ref": "#/components/schemas/Task"
                   }
                 }
               }
@@ -149,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Task"
         ],
         "parameters": [
           {
@@ -299,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Message"
+                  "$ref": "#/components/schemas/Task"
                 }
               }
             }
@@ -337,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Task"
         ],
         "requestBody": {
           "description": "",
@@ -345,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewMessage"
+                "$ref": "#/components/schemas/NewTask"
               }
             }
           }
         }
       }
     },
-    "/messages/count": {
+    "/tasks/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -404,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Task"
         ],
         "parameters": []
       }
     },
-    "/messages/{id}": {
+    "/tasks/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -419,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Message"
+                  "$ref": "#/components/schemas/Task"
                 }
               }
             }
@@ -457,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Task"
         ],
         "parameters": [
           {
@@ -481,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Message"
+                  "$ref": "#/components/schemas/Task"
                 }
               }
             }
@@ -519,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Task"
         ],
         "requestBody": {
           "description": "",
@@ -527,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewMessage"
+                "$ref": "#/components/schemas/NewTask"
               }
             }
           }
@@ -593,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Task"
         ],
         "parameters": [
           {
@@ -612,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Message": {
+      "Task": {
         "required": [
           "id"
         ],
@@ -620,83 +522,146 @@
           "id": {
             "type": "string"
           },
-          "subject": {
+          "name": {
             "type": "string"
-          },
-          "from": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "avatar": {
-                "type": "string"
-              },
-              "user_permission_id": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "to": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "avatar": {
-                "type": "string"
-              },
-              "user_permission_id": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
           },
           "details": {
             "type": "string"
           },
-          "read": {
+          "due": {
             "type": "string",
             "format": "date-time"
+          },
+          "campaign": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "contents": {
+                "type": "string"
+              },
+              "settings": {
+                "type": "object"
+              },
+              "name": {
+                "type": "string"
+              },
+              "locations": {
+                "type": "string"
+              },
+              "categories": {
+                "type": "string"
+              },
+              "users": {
+                "type": "string"
+              },
+              "owner": {
+                "type": "string"
+              },
+              "tasks": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "users": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "campaigns": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "task_comment": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "task_comments": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "details": {
+                  "type": "string"
+                },
+                "task": {
+                  "type": "string"
+                },
+                "creator": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -704,23 +669,29 @@
           }
         }
       },
-      "NewMessage": {
+      "NewTask": {
         "properties": {
-          "subject": {
-            "type": "string"
-          },
-          "from": {
-            "type": "string"
-          },
-          "to": {
+          "name": {
             "type": "string"
           },
           "details": {
             "type": "string"
           },
-          "read": {
+          "due": {
             "type": "string",
             "format": "date-time"
+          },
+          "campaign": {
+            "type": "string"
+          },
+          "users": {
+            "type": "string"
+          },
+          "task_comments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "published_at": {
             "type": "string",
@@ -738,7 +709,7 @@
   },
   "tags": [
     {
-      "name": "Message"
+      "name": "Task"
     }
   ]
 }

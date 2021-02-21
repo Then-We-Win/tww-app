@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/messages/thread/{user}/{with}/{_limit}/{_before}": {
+    "/task-comments": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -52,104 +52,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
-        ],
-        "parameters": [
-          {
-            "name": "user",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "with",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "_limit",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "_before",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/messages": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Message"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Message"
+          "Task-comment"
         ],
         "parameters": [
           {
@@ -299,72 +202,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Message"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Message"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewMessage"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/messages/count": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
                   "properties": {
-                    "count": {
-                      "type": "integer"
+                    "foo": {
+                      "type": "string"
                     }
                   }
                 }
@@ -404,12 +244,22 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Task-comment"
         ],
-        "parameters": []
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewTask-comment"
+              }
+            }
+          }
+        }
       }
     },
-    "/messages/{id}": {
+    "/task-comments/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -419,7 +269,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Message"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -457,7 +311,64 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Task-comment"
+        ],
+        "parameters": []
+      }
+    },
+    "/task-comments/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Task-comment"
         ],
         "parameters": [
           {
@@ -481,7 +392,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Message"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -519,7 +434,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Task-comment"
         ],
         "requestBody": {
           "description": "",
@@ -527,7 +442,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewMessage"
+                "$ref": "#/components/schemas/NewTask-comment"
               }
             }
           }
@@ -593,7 +508,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Task-comment"
         ],
         "parameters": [
           {
@@ -612,7 +527,7 @@
   },
   "components": {
     "schemas": {
-      "Message": {
+      "Task-comment": {
         "required": [
           "id"
         ],
@@ -620,83 +535,102 @@
           "id": {
             "type": "string"
           },
-          "subject": {
-            "type": "string"
-          },
-          "from": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "avatar": {
-                "type": "string"
-              },
-              "user_permission_id": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "to": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "avatar": {
-                "type": "string"
-              },
-              "user_permission_id": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "details": {
             "type": "string"
           },
-          "read": {
-            "type": "string",
-            "format": "date-time"
+          "task": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "details": {
+                "type": "string"
+              },
+              "due": {
+                "type": "string"
+              },
+              "campaign": {
+                "type": "string"
+              },
+              "users": {
+                "type": "string"
+              },
+              "task_comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "creator": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "campaigns": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "task_comment": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -704,23 +638,16 @@
           }
         }
       },
-      "NewMessage": {
+      "NewTask-comment": {
         "properties": {
-          "subject": {
-            "type": "string"
-          },
-          "from": {
-            "type": "string"
-          },
-          "to": {
-            "type": "string"
-          },
           "details": {
             "type": "string"
           },
-          "read": {
-            "type": "string",
-            "format": "date-time"
+          "task": {
+            "type": "string"
+          },
+          "creator": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -736,9 +663,5 @@
       }
     }
   },
-  "tags": [
-    {
-      "name": "Message"
-    }
-  ]
+  "tags": []
 }

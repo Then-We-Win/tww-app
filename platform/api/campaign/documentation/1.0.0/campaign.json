@@ -1,104 +1,6 @@
 {
   "paths": {
-    "/messages/thread/{user}/{with}/{_limit}/{_before}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Message"
-        ],
-        "parameters": [
-          {
-            "name": "user",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "with",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "_limit",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "_before",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/messages": {
+    "/campaigns": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -110,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Message"
+                    "$ref": "#/components/schemas/Campaign"
                   }
                 }
               }
@@ -149,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Campaign"
         ],
         "parameters": [
           {
@@ -299,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Message"
+                  "$ref": "#/components/schemas/Campaign"
                 }
               }
             }
@@ -337,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Campaign"
         ],
         "requestBody": {
           "description": "",
@@ -345,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewMessage"
+                "$ref": "#/components/schemas/NewCampaign"
               }
             }
           }
         }
       }
     },
-    "/messages/count": {
+    "/campaigns/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -404,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Campaign"
         ],
         "parameters": []
       }
     },
-    "/messages/{id}": {
+    "/campaigns/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -419,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Message"
+                  "$ref": "#/components/schemas/Campaign"
                 }
               }
             }
@@ -457,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Campaign"
         ],
         "parameters": [
           {
@@ -481,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Message"
+                  "$ref": "#/components/schemas/Campaign"
                 }
               }
             }
@@ -519,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Campaign"
         ],
         "requestBody": {
           "description": "",
@@ -527,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewMessage"
+                "$ref": "#/components/schemas/NewCampaign"
               }
             }
           }
@@ -593,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Campaign"
         ],
         "parameters": [
           {
@@ -612,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Message": {
+      "Campaign": {
         "required": [
           "id"
         ],
@@ -620,10 +522,16 @@
           "id": {
             "type": "string"
           },
-          "subject": {
+          "contents": {
             "type": "string"
           },
-          "from": {
+          "settings": {
+            "type": "object"
+          },
+          "name": {
+            "type": "string"
+          },
+          "locations": {
             "required": [
               "id"
             ],
@@ -631,19 +539,7 @@
               "id": {
                 "type": "string"
               },
-              "title": {
-                "type": "string"
-              },
               "name": {
-                "type": "string"
-              },
-              "avatar": {
-                "type": "string"
-              },
-              "user_permission_id": {
-                "type": "string"
-              },
-              "status": {
                 "type": "string"
               },
               "published_at": {
@@ -657,7 +553,7 @@
               }
             }
           },
-          "to": {
+          "categories": {
             "required": [
               "id"
             ],
@@ -665,19 +561,7 @@
               "id": {
                 "type": "string"
               },
-              "title": {
-                "type": "string"
-              },
               "name": {
-                "type": "string"
-              },
-              "avatar": {
-                "type": "string"
-              },
-              "user_permission_id": {
-                "type": "string"
-              },
-              "status": {
                 "type": "string"
               },
               "published_at": {
@@ -691,12 +575,156 @@
               }
             }
           },
-          "details": {
-            "type": "string"
+          "users": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "campaigns": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "task_comment": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           },
-          "read": {
-            "type": "string",
-            "format": "date-time"
+          "owner": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "campaigns": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "task_comment": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "details": {
+                  "type": "string"
+                },
+                "due": {
+                  "type": "string"
+                },
+                "campaign": {
+                  "type": "string"
+                },
+                "users": {
+                  "type": "string"
+                },
+                "task_comments": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -704,23 +732,34 @@
           }
         }
       },
-      "NewMessage": {
+      "NewCampaign": {
         "properties": {
-          "subject": {
+          "contents": {
             "type": "string"
           },
-          "from": {
+          "settings": {
+            "type": "object"
+          },
+          "name": {
             "type": "string"
           },
-          "to": {
+          "locations": {
             "type": "string"
           },
-          "details": {
+          "categories": {
             "type": "string"
           },
-          "read": {
-            "type": "string",
-            "format": "date-time"
+          "users": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "published_at": {
             "type": "string",
@@ -738,7 +777,7 @@
   },
   "tags": [
     {
-      "name": "Message"
+      "name": "Campaign"
     }
   ]
 }

@@ -1,104 +1,6 @@
 {
   "paths": {
-    "/messages/thread/{user}/{with}/{_limit}/{_before}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Message"
-        ],
-        "parameters": [
-          {
-            "name": "user",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "with",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "_limit",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "_before",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/messages": {
+    "/categories": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -110,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Message"
+                    "$ref": "#/components/schemas/Category"
                   }
                 }
               }
@@ -149,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Category"
         ],
         "parameters": [
           {
@@ -299,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Message"
+                  "$ref": "#/components/schemas/Category"
                 }
               }
             }
@@ -337,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Category"
         ],
         "requestBody": {
           "description": "",
@@ -345,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewMessage"
+                "$ref": "#/components/schemas/NewCategory"
               }
             }
           }
         }
       }
     },
-    "/messages/count": {
+    "/categories/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -404,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Category"
         ],
         "parameters": []
       }
     },
-    "/messages/{id}": {
+    "/categories/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -419,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Message"
+                  "$ref": "#/components/schemas/Category"
                 }
               }
             }
@@ -457,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Category"
         ],
         "parameters": [
           {
@@ -481,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Message"
+                  "$ref": "#/components/schemas/Category"
                 }
               }
             }
@@ -519,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Category"
         ],
         "requestBody": {
           "description": "",
@@ -527,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewMessage"
+                "$ref": "#/components/schemas/NewCategory"
               }
             }
           }
@@ -593,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Message"
+          "Category"
         ],
         "parameters": [
           {
@@ -612,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Message": {
+      "Category": {
         "required": [
           "id"
         ],
@@ -620,83 +522,8 @@
           "id": {
             "type": "string"
           },
-          "subject": {
+          "name": {
             "type": "string"
-          },
-          "from": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "avatar": {
-                "type": "string"
-              },
-              "user_permission_id": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "to": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "avatar": {
-                "type": "string"
-              },
-              "user_permission_id": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "details": {
-            "type": "string"
-          },
-          "read": {
-            "type": "string",
-            "format": "date-time"
           },
           "published_at": {
             "type": "string",
@@ -704,23 +531,10 @@
           }
         }
       },
-      "NewMessage": {
+      "NewCategory": {
         "properties": {
-          "subject": {
+          "name": {
             "type": "string"
-          },
-          "from": {
-            "type": "string"
-          },
-          "to": {
-            "type": "string"
-          },
-          "details": {
-            "type": "string"
-          },
-          "read": {
-            "type": "string",
-            "format": "date-time"
           },
           "published_at": {
             "type": "string",
@@ -738,7 +552,7 @@
   },
   "tags": [
     {
-      "name": "Message"
+      "name": "Category"
     }
   ]
 }

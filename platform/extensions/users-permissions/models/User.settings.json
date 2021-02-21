@@ -58,6 +58,14 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
+    },
+    "campaigns": {
+      "via": "owner",
+      "collection": "campaign"
+    },
+    "task_comment": {
+      "via": "creator",
+      "model": "task-comment"
     }
   }
 }

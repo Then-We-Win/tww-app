@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "task_comments",
+  "info": {
+    "name": "task-comment"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "details": {
+      "type": "richtext"
+    },
+    "task": {
+      "model": "task",
+      "via": "task_comments"
+    },
+    "creator": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "task_comment"
+    }
+  }
+}
