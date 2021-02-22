@@ -20,7 +20,7 @@
         <div v-if="user.loggedIn" class="q-gutter-sm row items-center no-wrap">
           <q-btn v-if="user.conversations" round dense flat color="grey-8" icon="message" @click="$bus.emit('route', 'conversations')">
             <q-badge color="red" text-color="white" floating>{{user.conversations.length}}</q-badge>
-            <q-tooltip>Conversations</q-tooltip>
+            <q-tooltip>Messages</q-tooltip>
           </q-btn>
           <q-btn v-if="user.updates" round dense flat color="grey-8" icon="flag" @click="$bus.emit('route', 'updates')">
             <q-badge color="red" text-color="white" floating>{{user.updates.length}}</q-badge>

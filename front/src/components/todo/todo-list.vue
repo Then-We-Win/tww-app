@@ -1,34 +1,6 @@
 <template>
   <div class="row">
-    <div class="offset-lg-1 offset-md-1 col-lg-2 col-md-2 col-sm-12 col-xs-12 flex column items-center">
-      <p class="text-grey-8 q-mt-xl q-mb-none cursor-pointer"> <q-icon  name='navigate_before'/>Back</p>
-      <p class="text-h4 text-weight-thin ">TO DO</p>
-      <q-list v-if="$q.screen.gt.sm" class="text-grey-8"  dense>
-        <q-item active clickable v-ripple>
-          <q-item-section class="text-weight-bold">
-            Current
-          </q-item-section>
-          <q-item-section side>
-            1
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-ripple>
-          <q-item-section>
-            Done
-          </q-item-section>
-          <q-item-section side>
-            12
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-ripple>
-          <q-item-section>
-            Archive
-          </q-item-section>
-          <q-item-section side>
-            24
-          </q-item-section>
-        </q-item>
-      </q-list>
+    <div class="flex column items-center">
       <div v-if="!$q.screen.gt.sm" class="flex">
          <q-item active clickable v-ripple>
           <q-item-section class="text-weight-bold">

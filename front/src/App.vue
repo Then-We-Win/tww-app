@@ -67,18 +67,14 @@ export default {
           },
          menu: {
           links: [
-            {icon: 'add', text: 'Add', type: 'button', action: 'route', payload: 'new' },
-            {icon: 'move_to_inbox', text: 'Campaign Home', color: 'text-red', action: 'route', payload: 'home'},
-            {icon: 'group', text: 'People', color: 'text-green', action: 'route', payload: 'people'},
-            {icon: 'message', text: 'Conversations', color: 'text-indigo-8', action: 'route', payload: 'conversations'},
-            {icon: 'flag', text: 'Updates', color: 'text-orange', action: 'route', payload: 'updates'},
-            {icon: 'forum', text: 'Tasks', color: 'text-teal', action: 'route', payload: 'tasks'},
+            {icon: 'home', text: 'Home', color: 'text-grey-8', action: 'route', payload: 'home'},
+            {icon: 'message', text: 'Messages', color: 'text-grey-8', action: 'route', payload: 'conversations'},
+            {icon: 'library_add_check', text: 'Tasks', color: 'text-grey-8', action: 'route', payload: 'todo'},
             {type: 'separator'},
-            {icon: 'person_add', text: 'Invite', color: 'text-blue', action: 'route', payload: 'invite'},
+            {icon: 'live_help', text: 'Help', color: 'text-grey-8', action: 'route', payload: 'invite'},
+            {icon: 'book', text: 'Learn', color: 'text-grey-8', action: 'route', payload: 'learn'},
             {type: 'separator'},
-            {icon: 'label', text: 'Resoruces', color: 'text-indigo-8', action: 'route', payload: 'resources'},
-            {icon: 'book', text: 'Learn', color: 'text-brown-8', action: 'route', payload: 'learn'},
-            {icon: 'logout', text: 'Logout', color: 'text-red', action: 'logout'}
+            {icon: 'logout', text: 'Logout', color: 'text-grey-8', action: 'logout'}
           ]
          }
         }
