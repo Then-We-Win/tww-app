@@ -4,11 +4,11 @@
     <q-header class="bg-white text-grey-8">
       <q-toolbar class="GNL__toolbar">
         <!-- Menu button -->
-        <q-btn v-if="user.loggedIn" flat dense round @click="miniState = !miniState" aria-label="Menu" icon="menu" class="q-mr-sm" />
+        <q-btn v-if="user" flat dense round @click="miniState = !miniState" aria-label="Menu" icon="menu" class="q-mr-sm" />
 
         <!-- Logo -->
         <q-toolbar-title v-if="$q.screen.gt.xs" shrink class="row items-center no-wrap">
-          <img :src="settings.logo.wide" @click="$bus.emit('route', '')">
+          <img :src="settings.logo.wide" @click="processAction('app.route', '')">
         </q-toolbar-title>
 
         <q-space/>
@@ -17,24 +17,25 @@
         <search-bar/>
 
         <!-- Right buttons -->
-        <div v-if="user.loggedIn" class="q-gutter-sm row items-center no-wrap">
-          <q-btn v-if="user.conversations" round dense flat color="grey-8" icon="message" @click="$bus.emit('route', 'conversations')">
+        <div v-if="user" class="q-gutter-sm row items-center no-wrap">
+          <q-btn v-if="user.conversations" round dense flat color="grey-8" icon="message" @click="processAction('app.route', 'conversations')">
             <q-badge color="red" text-color="white" floating>{{user.conversations.length}}</q-badge>
             <q-tooltip>Messages</q-tooltip>
           </q-btn>
-          <q-btn v-if="user.updates" round dense flat color="grey-8" icon="flag" @click="$bus.emit('route', 'updates')">
+          <q-btn v-if="user.updates" round dense flat color="grey-8" icon="flag" @click="processAction('app.route', 'updates')">
             <q-badge color="red" text-color="white" floating>{{user.updates.length}}</q-badge>
             <q-tooltip>Updates</q-tooltip>
           </q-btn>
-          <q-btn round flat @click="$bus.emit('route', 'account')">
+          <q-btn round flat @click="processAction('app.route', 'account')">
             <q-avatar size="26px">
-              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+              <img v-if="get(user, 'photo.formats')" :src="user.photo.formats.thumbnail.url">
+              <q-icon v-else name="person" class="bg-grey-5" size="26px"/>
             </q-avatar>
             <q-tooltip>Account</q-tooltip>
           </q-btn>
         </div>
         <div v-else>
-          <q-btn round dense flat color="grey-8" icon="login" @click="$bus.emit('route', 'login')">
+          <q-btn round dense flat color="grey-8" icon="login" @click="processAction('app.route', 'login')">
             <q-tooltip>Login</q-tooltip>
           </q-btn>
         </div>
@@ -42,7 +43,7 @@
     </q-header>
 
     <!-- Menu -->
-    <q-drawer v-if="user.loggedIn" v-model="leftDrawerOpen" show-if-above bordered :mini="miniState" content-class="bg-white" :width="280">
+    <q-drawer v-if="user" v-model="leftDrawerOpen" show-if-above bordered :mini="miniState" content-class="bg-white" :width="280">
       <q-scroll-area class="fit">
         <q-list padding class="text-grey-8">
           <!-- Menu items -->
@@ -52,7 +53,7 @@
               <q-btn :rounded="!miniState" :round="miniState" :icon="link.icon" color="link.color" class="text-grey-8" :label="miniState?'':link.text">
               </q-btn>
             </q-item>
-            <q-item v-else class="GNL__drawer-item" v-ripple clickable @click="$bus.emit(link.action, link.payload)">
+            <q-item v-else class="GNL__drawer-item" v-ripple clickable @click="processAction(link.action, link.payload)">
               <q-item-section avatar>
                 <q-icon :name="link.icon" :class="link.color"/>
               </q-item-section>
@@ -81,6 +82,7 @@
 <script>
 import {fasGlobeAmericas, fasFlask} from '@quasar/extras/fontawesome-v5'
 import searchBar from '../components/searchBar'
+import { get } from 'lodash'
 export default {
   name: 'LayoutSimple',
   components: {
@@ -94,9 +96,10 @@ export default {
     return {
       settings: this.$store.state.app.settings,
       user: this.$store.state.user,
-        leftDrawerOpen: false,
-        miniState: false,
-        search: ''
+      leftDrawerOpen: false,
+      miniState: false,
+      search: '',
+      get: get
     }
   },
 
@@ -104,6 +107,10 @@ export default {
     openSearch(){
       var searchBar = document.getElementsByClassName("GNL__toolbar-input");
       searchBar[0].classList.add("opened");
+    },
+    processAction (action, payload) {
+      console.log(`Processing action ${action} (${payload})`)
+      this.$bus.emit(action, payload)
     }
   }
 }
