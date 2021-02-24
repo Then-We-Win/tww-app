@@ -18,6 +18,7 @@
     "echarts": "^4.6.0",
     "eventemitter2": "^6.4.3",
     "experience-engine": "^0.1.9",
+    "moment": "^2.29.1",
     "quasar": "^1.0.0",
     "vue-apexcharts": "^1.5.2",
     "vue-echarts-v3": "^2.0.1",
