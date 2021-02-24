@@ -1,54 +1,45 @@
 <template>
   <div id="q-app">
-    <div v-if="loading">Loading, please wait...</div>
-    <router-view v-else />
+    <template v-if="$store.state.system.loaded">
+      <router-view />
+    </template>
+    <template v-else>
+      <inner-loading :showing="true" />
+    </template>
   </div>
 </template>
 
 <script>
+import innerLoading from 'components/InnerLoading.vue'
 export default {
   name: 'App',
+  components: { innerLoading },
   events: {
     // Handles all login attempts..
-    login (credentials) {
-      // TODO: get this user record from the database...
-      const user = {
-        loggedIn: true,
-        user: 'demo',
-        pass: '123',
-        name: {
-          first: 'Charlie',
-          last: 'Vounteer'
-        },
-        conversations: [
-          { from: { id: 8723, name: { first: 'Another', last: 'Volunteer' }}, message: 'Hello!' },
-          { from: { id: 8723, name: { first: 'Another', last: 'Volunteer' }}, message: 'Hello!' }
-        ],
-        updates: [
-          { type: 'system', payload: { text: 'Then We Win Website released', image: '', contents: '' }}
-        ],
-        campaigns: [
-          { id: 1, slug: 'truth-in-broadcasting' }
-        ]
-      }
-      // TODO: This is a fake/demo login process... replace it.
-      if (user.user === credentials.user && user.pass === credentials.pass) {
-        this.$store.commit('replaceUser', user)
-        this.$bus.emit('loggedIn')
-      } else {
-        this.$bus.emit('loginFailed', 'Invalid Username/Password')
-      }
+    'app.login' (credentials) {
+      this.$auth.login(credentials.identifier, credentials.password)
+        .then(result => {
+          this.$store.commit('replaceUser', result)
+          console.log('Login success', result)
+          this.$q.notify({ type: 'positive', message: 'Login successful' })
+          const nextPage = (localStorage.getItem('pathToLoadAfterLogin') && localStorage.getItem('pathToLoadAfterLogin') !== 'login') ? localStorage.getItem('pathToLoadAfterLogin') : 'home'
+          localStorage.removeItem('pathToLoadAfterLogin')
+          this.$router.push({ name: nextPage })
+        })
+        .catch(result => {
+          console.log('Login error', JSON.parse(JSON.stringify(result)))
+          this.$q.notify({ type: 'negative', message: 'Cannot log in' })
+        })
       
     },
     // Handles all logout attempts...
-    logout () {
-      this.$store.commit('replaceUser', { loggedIn: false })
-      window.location.reload()
+    'app.logout' () {
+      this.$auth.logout()
     },
     // Handles all routing...
-    route (e) {
-      console.log(`Routing to "${e}"`)
-      this.$router.push({ path: '/' + e })
+    'app.route' (name) {
+      console.log(`Routing to "${name}"`)
+      if (this.$route.name !== name) this.$router.push({ name })
     }
   },
   data () {
@@ -57,31 +48,43 @@ export default {
     }
   },
   mounted () {
-    console.log('app')
-      this.$store.commit('replaceApp', {
-        loaded: true,
-        settings: {
-          logo: {
-            wide: '../statics/logo40.png',
-            square: ''
-          },
-         menu: {
-          links: [
-            {icon: 'home', text: 'Home', color: 'text-grey-8', action: 'route', payload: 'home'},
-            {icon: 'message', text: 'Messages', color: 'text-grey-8', action: 'route', payload: 'conversations'},
-            {icon: 'library_add_check', text: 'Tasks', color: 'text-grey-8', action: 'route', payload: 'todo'},
-            {type: 'separator'},
-            {icon: 'live_help', text: 'Help', color: 'text-grey-8', action: 'route', payload: 'invite'},
-            {icon: 'book', text: 'Learn', color: 'text-grey-8', action: 'route', payload: 'learn'},
-            {type: 'separator'},
-            {icon: 'logout', text: 'Logout', color: 'text-grey-8', action: 'logout'}
-          ]
-         }
-        }
+    console.log('hydrate')
+     this.$auth.loginUsingJWT()
+      .then(result => {
+        this.$store.commit('replaceUser', result)
+        console.log('Logged in via JWT', result)
       })
-      console.log('LOADED', this.$app, this.$user, this.$ee, this.$store.state)
-      this.loading = false
-      console.log('test?', this.$store.state.app.settings.logo, this.$app)
+      .catch(e => {
+        console.log('Couldn\'t login via JWT:', e)
+      })
+      .finally(() => {
+        this.$store.commit('replaceApp', {
+          loaded: true,
+          settings: {
+            logo: {
+              wide: '../statics/logo40.png',
+              square: ''
+            },
+          menu: {
+            links: [
+              {icon: 'home', text: 'Home', color: 'text-grey-8', action: 'app.route', payload: 'home'},
+              {icon: 'message', text: 'Messages', color: 'text-grey-8', action: 'app.route', payload: 'conversations'},
+              {icon: 'library_add_check', text: 'Tasks', color: 'text-grey-8', action: 'app.route', payload: 'todo'},
+              {type: 'separator'},
+              {icon: 'live_help', text: 'Help', color: 'text-grey-8', action: 'app.route', payload: 'invite'},
+              {icon: 'book', text: 'Learn', color: 'text-grey-8', action: 'app.route', payload: 'learn'},
+              {type: 'separator'},
+              {icon: 'logout', text: 'Logout', color: 'text-grey-8', action: 'app.logout'}
+            ]
+          }
+          }
+        })
+        this.$store.commit('loaded', true)
+        this.$router.push({ name: 'home' })
+        console.log('LOADED', this.$app, this.$user, this.$ee, this.$store.state)
+        this.loading = false
+        console.log('test?', this.$store.state.app.settings.logo, this.$app)
+      })
   }
 }
 </script>
