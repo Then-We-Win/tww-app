@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import ee from 'experience-engine'
+import eeor from './experience-engine-override'
 
 // import example from './module-example'
 
@@ -16,6 +17,9 @@ Vue.use(Vuex)
  */
 
 export default function (/* { ssrContext } */) {
-  const Store = new Vuex.Store(ee.state)
+  const Store = new Vuex.Store(ee.state, eeor)
+  Store.commit('systemChangeAPI', {
+    base: 'https://api-dev.sourcesync.io'
+  })
   return Store
 }
