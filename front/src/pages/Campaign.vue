@@ -1,6 +1,5 @@
 <template>
   <q-page class="">
-    <Campaign_Header></Campaign_Header>
     <Campaign_Subheader></Campaign_Subheader>
     <div class="content-container">
       <Campaign_Question></Campaign_Question>
@@ -134,7 +133,6 @@ import Campaign_Managers from 'components/campaign/Campaign_Managers.vue'
 import Campaign_Organizers from 'components/campaign/Campaign_Organizers.vue'
 import Campaign_Comment from 'components/campaign/Campaign_Comment.vue'
 import Campaign_Comment_Item from 'components/campaign/Campaign_Comment_Item.vue'
-import Campaign_Header from 'components/campaign/Campaign_Header.vue'
 import Campaign_Subheader from 'components/campaign/Campaign_Subheader.vue'
 
 export default {
@@ -148,7 +146,6 @@ export default {
     Campaign_Organizers,
     Campaign_Comment,
     Campaign_Comment_Item,
-    Campaign_Header,
     Campaign_Subheader
     },
   data () {

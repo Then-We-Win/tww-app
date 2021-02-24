@@ -2,7 +2,7 @@
   <div id="msgHeader">
     <q-toolbar class="text-primary">
       <q-toolbar-title>
-        Messages
+        {{text}}
       </q-toolbar-title>
     </q-toolbar>
   </div>
@@ -10,7 +10,8 @@
 
 <script>
   export default {
-    name: "MessagesHeader"
+    name: "pageHeader",
+    props: ['text'],
   }
 </script>
 

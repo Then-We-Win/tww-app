@@ -1,21 +1,21 @@
 <template>
-  <div class="q-pa-md q-px-xl">
-    <messages-header class="debug-red"></messages-header>
-    <div class="row q-mt-md debug-green">
+  <q-page class="q-pa-md">
+    <page-header text="Messages"></page-header>
+    <div class="row q-mt-md">
       <div class="q-pa-sm" style="width:300px">
-        <messages-search v-on:doSearch="search4user"></messages-search>
+        <search-page v-on:doSearch="search4user"></search-page>
         <messages-user-list v-bind:messages="subUserList" v-on:selectUser="openMsgThread"></messages-user-list>
       </div>
       <div class="q-pa-sm" style="max-width:700px">
         <messages-conversation v-bind:selUser="selectedUser"></messages-conversation>
       </div>
     </div>
-  </div>
+  </q-page>
 </template>
 
 <script>
-  import MessagesHeader from '../components/messages/Header';
-  import MessagesSearch from '../components/messages/Search';
+  import pageHeader from '../components/pageHeader';
+  import searchPage from '../components/searchPage';
   import MessagesUserList from '../components/messages/UserList';
   import MessagesConversation from '../components/messages/Conversation';
 
@@ -27,8 +27,8 @@
   export default {
     name: "Messages",
     components: {
-      MessagesHeader,
-      MessagesSearch,
+      pageHeader,
+      searchPage,
       MessagesUserList,
       MessagesConversation
     },

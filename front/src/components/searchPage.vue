@@ -1,6 +1,6 @@
 <template>
   <div>
-      <q-input type="search" label="Search" style="border-radius: 0" standout bottom-slots
+      <q-input filled type="search" label="Search" class="no-round" standout bottom-slots
           v-model="username" v-on:change="doSearch">
         <template v-slot:prepend>
           <q-icon name="search"/>
@@ -14,7 +14,7 @@
 
 <script>
   export default {
-    name: "MessagesSearch",
+    name: "searchPage",
     data() {
       return {
         username: "",
@@ -36,3 +36,10 @@
     }
   }
 </script>
+
+<style lang="stylus"  scoped>
+
+/deep/ .no-round 
+  border-radius: 0px 0px 0 0 !important;
+
+</style>

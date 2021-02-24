@@ -1,6 +1,7 @@
 <template>
-  <q-page class="q-pa-md bg-white">
-    <todo-list :editTodo='editTodo' :createTodo='createTodo' :todos='todos' v-if="!edit_todo && !new_todo" class="full-width"></todo-list>
+  <q-page class="q-pa-md">
+    <page-header text="My assigned tasks"></page-header>
+    <todo-list :editTodo='editTodo' :createTodo='createTodo' :todos='todos' v-if="!edit_todo && !new_todo" class="q-pa-sm q-mt-sm full-width"></todo-list>
     <todo-new :saveTodo='saveTodo' :showTodoLandingPage='showTodoLandingPage' v-if="new_todo"></todo-new>
     <todo-edit :saveEdit='saveEdit' :showTodoLandingPage='showTodoLandingPage' :todo='to_edit_todo' v-if="edit_todo"></todo-edit>
   </q-page>
@@ -8,14 +9,14 @@
 
 <script>
 import Todo from '../components/Todo.vue';
-import TodoHeader from '../components/todo/todo-header.vue';
 import TodoCreateButton from '../components/todo/todo-create-button.vue'
 import TodoList from '../components/todo/todo-list.vue'
 import TodoNew from '../components/todo/todo-new.vue'
 import TodoEdit from '../components/todo/todo-edit.vue'
+import pageHeader from '../components/pageHeader.vue'
 
 export default {
-  components: { Todo, TodoHeader, TodoCreateButton, TodoList, TodoNew, TodoEdit },
+  components: { Todo, TodoCreateButton, TodoList, TodoNew, TodoEdit, pageHeader },
   name: "TreeTable",
   data(){
     return {
@@ -83,7 +84,4 @@ export default {
 </script>
 
 <style scoped>
-.bg {
-  background-color: #ffffff;
-}
 </style>

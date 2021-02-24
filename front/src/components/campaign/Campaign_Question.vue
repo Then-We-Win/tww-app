@@ -8,6 +8,7 @@
           color="grey"
           icon="keyboard_arrow_left"
           label="Back"
+          @click="$router.go(-1)"
         />
       </div>
       <div class="col-9 col-md-4">

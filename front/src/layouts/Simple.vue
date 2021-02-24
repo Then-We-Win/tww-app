@@ -1,8 +1,8 @@
 <template>
   <q-layout view="hHh LpR fFf" class="bg-grey-1">
     <!-- The header -->
-    <q-header class="bg-white text-grey-8">
-      <q-toolbar class="GNL__toolbar">
+    <q-header bordered class="bg-white text-grey-8">
+      <q-toolbar class="GNL__toolbar ">
         <!-- Menu button -->
         <q-btn v-if="user" flat dense round @click="miniState = !miniState" aria-label="Menu" icon="menu" class="q-mr-sm" />
 
