@@ -12,9 +12,13 @@
         </q-toolbar-title>
 
         <q-space/>
-
-        <!-- Search box -->
-        <search-bar/>
+        <q-btn
+          icon="search"
+          flat
+          round
+          v-morph:btn:search:500.resize="morphSearch"
+          @click="morphSearch = 'big'"
+        />
 
         <!-- Right buttons -->
         <div v-if="user" class="q-gutter-sm row items-center no-wrap">
@@ -65,7 +69,11 @@
         </q-list>
       </q-scroll-area>
     </q-drawer>
-
+    <!-- Search box -->
+    <search-box
+      v-morph:big:search:500.tween="morphSearch"
+      @revert="morphSearch = 'btn'"
+    />
     <!-- Route -->
     <q-page-container>
       <router-view/>
@@ -81,12 +89,13 @@
 
 <script>
 import {fasGlobeAmericas, fasFlask} from '@quasar/extras/fontawesome-v5'
+import searchBox from '../components/searchBox'
 import searchBar from '../components/searchBar'
 import { get } from 'lodash'
 export default {
   name: 'LayoutSimple',
   components: {
-    searchBar
+    searchBox
   },
   mounted () {
     console.log('layout')
@@ -96,10 +105,11 @@ export default {
     return {
       settings: this.$store.state.app.settings,
       user: this.$store.state.user,
-      leftDrawerOpen: false,
-      miniState: false,
-      search: '',
-      get: get
+        leftDrawerOpen: false,
+        miniState: false,
+        search: '',
+        morphSearch: 'btn',
+        get: get
     }
   },
 
