@@ -1,7 +1,5 @@
 <template>
-  <div
-    style="background-color: rgba(236, 240, 241, 1);"
-  >
+  <div>
     <div class="col-xs-11 col-sm-6 col-md-4 col-lg-3 q-ma-sm transparent">
       <q-card
         class="content-list__card hide-scrollbar q-pa-sm advertiser-card"

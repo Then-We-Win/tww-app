@@ -72,7 +72,7 @@
           v-slot:item="props"
           v-if="card"
         >
-        <div class='q-pa-xs col-xs-12 col-sm-6 col-md-4'>
+        <div class='q-pa-xs col-xs-12 col-sm-6 col-md-4' style="background-color: rgba(236, 240, 241, 1);">
           <resourceListCard class='' :props="props" />
         </div>
         </template>
