@@ -6,6 +6,8 @@ on:
       - master
     paths:
       - 'docs/**'
+  workflow_dispatch:
+
 
 jobs:
 
