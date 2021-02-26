@@ -16,7 +16,7 @@ jobs:
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
       env:
-        url: app.thenwewin.org
+        url: docs.thenwewin.org
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
