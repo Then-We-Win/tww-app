@@ -12,11 +12,12 @@ jobs:
   deploy-over-ssh:
     name: SSH and deploy
     runs-on: ubuntu-latest
+    environment:
+      name: link
+      url: https://api-app.thenwewin.org
     steps:
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
-      env:
-        url: api-app.thenwewin.org
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
