@@ -6,7 +6,7 @@ on:
       - master
     paths:
       - 'platform/**'
-
+  workflow_dispatch:
 jobs:
 
   deploy-over-ssh:
