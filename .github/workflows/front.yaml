@@ -22,8 +22,8 @@ jobs:
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          cd /home/{{ secrets.PATH }}/tww-app/
+          cd /home/ajay/tww-app/
           git pull origin master
           cd front/
           yarn install
-          service {{ secrets.FRONT_SERVICE_NAME }} restart 
+          service front restart 
