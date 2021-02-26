@@ -28,4 +28,4 @@ jobs:
           git pull origin master
           cd platform/
           yarn install
-          service platform restart 
+          sudo service platform restart 
