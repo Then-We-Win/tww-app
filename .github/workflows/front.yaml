@@ -27,4 +27,4 @@ jobs:
           git pull origin master
           cd front/
           yarn install
-          service front restart 
+          sudo service front restart 
