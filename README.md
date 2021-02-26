@@ -1,3 +1,5 @@
+[![backend-thenwewin-app](https://github.com/Then-We-Win/tww-app/actions/workflows/platform.yaml/badge.svg)](https://github.com/Then-We-Win/tww-app/actions/workflows/platform.yaml)    [![frontend-thenwewin-app](https://github.com/Then-We-Win/tww-app/actions/workflows/front.yaml/badge.svg)](https://github.com/Then-We-Win/tww-app/actions/workflows/front.yaml)
+
 # Then We Win (Monorepo)
 An OpenSource, enterprise-grade Vue.js, Quasar, Strapi and Kubernetes based platform for social change.
 
