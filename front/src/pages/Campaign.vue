@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-12 col-md-7">
 
-          <div class="q-pa-md">
+          <div >
               <q-tabs
                 v-model="tab"
                 dense
@@ -16,7 +16,7 @@
                 indicator-color="black"
                 align="justify"
               >
-                <q-tab name="campaign_wall" label="Campaign Walls" />
+                <q-tab name="campaign_wall" label="Campaign Wall" />
                 <q-tab name="about_campaign" label="About Campaign" />
               </q-tabs>
 
@@ -25,8 +25,7 @@
               <q-tab-panels v-model="tab" animated>
 
                 <q-tab-panel name="campaign_wall">
-                  <div class="text-h6">Alarms</div>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <wall />
                 </q-tab-panel>
 
                 <q-tab-panel name="about_campaign" class="q-py-lg">
@@ -92,24 +91,22 @@
 
         <div class="row justify-center col-12 col-md-5">
 
-          <div class="q-py-md q-gutter-sm">
+          <div>
 
-            <q-btn-group flat class="share-group">
-              <q-btn flat disabled no-caps color="grey" label="Share" />
+            <q-btn-group flat>
+              <q-btn flat disabled no-caps color="grey" label="Share:" />
               <q-btn flat no-caps color="black" label="Facebook" />
               <q-btn flat no-caps color="black" label="Twitter" />
               <q-btn flat no-caps color="black" label="LinkedIn" />
             </q-btn-group>
 
-          <hr style="color: #fcfcfc; width: 100%"/>
+          <hr style="color: #fcfcfc; width: 100%; margin-top: 0px"/>
 
-          <Campaign_Organizers></Campaign_Organizers>
+          <Campaign_Leaders title="Supporting Organizations"></Campaign_Leaders>
+          <Campaign_Leaders title="Organizers"></Campaign_Leaders>
+          <Campaign_Leaders title="Managers"></Campaign_Leaders>
 
-          <Campaign_Managers></Campaign_Managers>
-
-          <Campaign_Supporters></Campaign_Supporters>
-
-          <Campaign_Manage_Users_Buttons></Campaign_Manage_Users_Buttons>
+          <Campaign_Supporters />
 
           <Campaign_Todos></Campaign_Todos>
 
@@ -125,12 +122,11 @@
 </template>
 
 <script>
+import wall from 'components/wall/Wall.vue'
 import Campaign_Question from 'components/campaign/Campaign_Question.vue'
 import Campaign_Supporters from 'components/campaign/Campaign_Supporters.vue'
-import Campaign_Manage_Users_Buttons from 'components/campaign/Campaign_Manage_Users_Buttons.vue'
+import Campaign_Leaders from 'components/campaign/Campaign_Leaders.vue'
 import Campaign_Todos from 'components/campaign/Campaign_Todos.vue'
-import Campaign_Managers from 'components/campaign/Campaign_Managers.vue'
-import Campaign_Organizers from 'components/campaign/Campaign_Organizers.vue'
 import Campaign_Comment from 'components/campaign/Campaign_Comment.vue'
 import Campaign_Comment_Item from 'components/campaign/Campaign_Comment_Item.vue'
 import Campaign_Subheader from 'components/campaign/Campaign_Subheader.vue'
@@ -138,12 +134,11 @@ import Campaign_Subheader from 'components/campaign/Campaign_Subheader.vue'
 export default {
   name: 'PageIndex',
   components: {
+    wall,
     Campaign_Question,
     Campaign_Supporters,
-    Campaign_Manage_Users_Buttons,
+    Campaign_Leaders,
     Campaign_Todos,
-    Campaign_Managers,
-    Campaign_Organizers,
     Campaign_Comment,
     Campaign_Comment_Item,
     Campaign_Subheader
@@ -162,10 +157,7 @@ export default {
   @media (min-width: 900px){
     .content-container{
       margin-left: 10vh;
-    }
-
-    .share-group{
-      margin-top: 4vw
+      margin-right: 10vh;
     }
   }
 

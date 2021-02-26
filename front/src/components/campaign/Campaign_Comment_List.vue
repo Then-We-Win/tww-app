@@ -2,7 +2,7 @@
   <div class="">
       <div class="row q-pa-sm">
         <div class="col-2 col-md-1">
-          <q-avatar rounded>
+          <q-avatar>
             <img src="https://cdn.quasar.dev/img/avatar.png">
           </q-avatar>
         </div>

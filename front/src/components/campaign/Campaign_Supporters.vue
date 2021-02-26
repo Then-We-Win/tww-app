@@ -1,121 +1,40 @@
 <template>
-  <div class="">
-
-  <div class="row">
-    <div class="col-6 col-md-6">
-      <div class="q-pt-md sidebar_headings">Supporters</div>
+  <div>
+    <div class="row justify-between q-py-md">
+      <div class="sidebar_headings">Supporters</div>
+      <q-btn no-caps size=".8rem" color="grey" flat padding="none" label="View All"/>
     </div>
-    <div class="col-6 col-md-6 row justify-end">
-      <div class="q-pt-md sidebar_headings">
-        <q-btn no-caps size=".8rem" color="grey" flat padding="none" label="View All"/>
+
+    <div class="row justify-between q-gutter-sm q-pb-xs">
+      <div v-for="(supporter, index) in supporters" :key="index">
+        <q-avatar size="5vh">
+          <img :src="supporter.img">
+        </q-avatar>
       </div>
     </div>
-  </div>
-
-  <div class="row q-py-xs">
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
+    <div class="row q-pt-md">
+      <q-btn no-caps class="item-end" color="grey" outlined flat style="background: #f3f3f3" label="Manage Users" />
     </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-  </div>
-
-  <div class="row q-py-xs">
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-  </div>
-
-  <div class="row q-py-xs">
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-    <div class="col-2 col-md-2">
-      <q-avatar size="5vh">
-        <img src="https://cdn.quasar.dev/img/avatar.png">
-      </q-avatar>
-    </div>
-  </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'campaign_supporters'
-
+  name: 'campaign-supporters',
+  data () {
+    return {
+      supporters: [
+        {img: 'https://cdn.quasar.dev/img/avatar.png'},
+        {img: 'https://cdn.quasar.dev/img/avatar.png'},
+        {img: 'https://cdn.quasar.dev/img/avatar.png'},
+        {img: 'https://cdn.quasar.dev/img/avatar.png'},
+        {img: 'https://cdn.quasar.dev/img/avatar.png'},
+        {img: 'https://cdn.quasar.dev/img/avatar.png'},
+        {img: 'https://cdn.quasar.dev/img/avatar.png'},
+        {img: 'https://cdn.quasar.dev/img/avatar.png'},
+        
+      ]
+    }
+  }
 }
 </script>

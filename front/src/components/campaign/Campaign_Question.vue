@@ -1,18 +1,17 @@
 <template>
   <div class="q-py-xl">
-    <div class="row">
-      <div class="col-3 col-md-8">
+    <div class="row justify-between">
+      <div>
         <q-btn
           no-caps
-          flat
+          unelevated
           color="grey"
           icon="keyboard_arrow_left"
           label="Back"
           @click="$router.go(-1)"
         />
       </div>
-      <div class="col-9 col-md-4">
-        <div class="q-gutter-md">
+      <div class="q-gutter-md row justify-end">
         <q-btn
           no-caps
           outline
@@ -26,7 +25,6 @@
           color="grey"
           label="Publish"
         />
-        </div>
       </div>
     </div>
 

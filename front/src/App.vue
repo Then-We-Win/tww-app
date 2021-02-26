@@ -68,6 +68,7 @@ export default {
           menu: {
             links: [
               {icon: 'home', text: 'Home', color: 'text-grey-8', action: 'app.route', payload: 'home'},
+              {icon: 'campaign', text: 'Campaigns', color: 'text-grey-8', action: 'app.route', payload: 'campaigns'},
               {icon: 'message', text: 'Messages', color: 'text-grey-8', action: 'app.route', payload: 'conversations'},
               {icon: 'library_add_check', text: 'Tasks', color: 'text-grey-8', action: 'app.route', payload: 'todo'},
               {type: 'separator'},
