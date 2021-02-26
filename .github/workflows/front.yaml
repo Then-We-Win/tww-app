@@ -6,25 +6,25 @@ on:
     paths:
       - 'front/**'
   workflow_dispatch:
-  
 jobs:
 
   deploy-over-ssh:
     name: SSH and deploy
     runs-on: ubuntu-latest
+    environment:
+      name: link
+      url: https://app.thenwewin.org
     steps:
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
-      env:
-        url: app.thenwewin.org
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          cd /home/{{ secrets.PATH }}/tww-app/
+          cd /home/ajay/tww-app/
           git pull origin master
           cd front/
           yarn install
-          service {{ secrets.FRONT_SERVICE_NAME }} restart 
+          service front restart 

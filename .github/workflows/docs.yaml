@@ -7,25 +7,24 @@ on:
     paths:
       - 'docs/**'
   workflow_dispatch:
-
-
 jobs:
 
   deploy-over-ssh:
     name: SSH and deploy
     runs-on: ubuntu-latest
+    environment:
+      name: link
+      url: https://docs.thenwewin.org
     steps:
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
-      env:
-        url: docs.thenwewin.org
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          cd /home/{{ secrets.PATH }}/tww-app/
+          cd /home/ajay/tww-app/
           git pull origin master
           cd docs/
           service docs restart 
