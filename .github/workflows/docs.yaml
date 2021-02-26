@@ -27,4 +27,4 @@ jobs:
           cd /home/ajay/tww-app/
           git pull origin master
           cd docs/
-          service docs restart 
+          sudo service docs restart 
