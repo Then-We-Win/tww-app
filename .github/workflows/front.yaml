@@ -1,0 +1,27 @@
+name: frontend-thenwewin-app
+on: 
+  push:
+    branches:
+      - master
+    paths:
+      - 'front/**'
+
+jobs:
+
+  deploy-over-ssh:
+    name: SSH and deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd /home/{{ secrets.PATH }}/tww-app/
+          git pull origin master
+          cd front/
+          yarn install
+          service {{ secrets.FRONT_SERVICE_NAME }} restart 
