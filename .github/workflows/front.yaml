@@ -5,7 +5,8 @@ on:
       - master
     paths:
       - 'front/**'
-
+  workflow_dispatch:
+  
 jobs:
 
   deploy-over-ssh:
