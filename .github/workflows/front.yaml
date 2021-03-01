@@ -24,6 +24,7 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd /home/ajay/tww-app/
+          git stash
           git pull origin master
           cd front/
           yarn install
