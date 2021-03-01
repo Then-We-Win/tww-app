@@ -19,7 +19,7 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store(ee.state, eeor)
   Store.commit('systemChangeAPI', {
-    base: 'https://api-dev.sourcesync.io'
+    base: 'https://api-app.thenwewin.org'
   })
   return Store
 }
