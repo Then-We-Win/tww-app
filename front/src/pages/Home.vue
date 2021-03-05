@@ -1,14 +1,6 @@
 <template>
   <q-page class="q-pa-md">
     <div class="column">
-      <div class="text-center">
-        <img style="width: 150px" src="../statics/weed.png" />
-      </div>
-      <div class="text-h5 q-py-sm text-center">
-        You aren't part of any campaigns...
-        <br/>
-        Choose one or more you care about.
-      </div>
       <div class="q-pt-md q-mx-xl q-gutter-md row">
         <q-card class="col cursor-pointer" @click="$bus.emit('app.route', 'campaign')">
           <img src="https://static01.nyt.com/images/2020/03/31/opinion/31Swisher/31Swisher-articleLarge.jpg?quality=75&auto=webp&disable=upscale">
@@ -46,6 +38,10 @@
 </template>
 
 <script>
+
+export default{
+
+}
 </script>
 
 <style scoped>
