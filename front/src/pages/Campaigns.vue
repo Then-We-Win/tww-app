@@ -1,11 +1,11 @@
 <template>
-  <q-page class="q-pa-md">
+  <q-page>
     <div class="column">
-      <div v-if="!items">
-        <NothingHere :text="text" :image="imgUrl"/>
-      </div>
-      <div v-else>
-        <div class="q-pt-md q-mx-xl q-gutter-md row">
+      <div class="">
+        <div v-if="!items" class="column">
+          <nothing-here :text="text" :image="imgUrl" />
+        </div>
+        <div v-else class="q-pt-md q-mx-xl q-gutter-md row">
           <q-card
             v-for="item in items"
             :key="item.id"
@@ -42,7 +42,7 @@ export default {
     return {
       items: null,
       text: `You aren't part of any Campaigns...`,
-      imgUrl: ''
+      imgUrl: "",
     };
   },
   async mounted() {

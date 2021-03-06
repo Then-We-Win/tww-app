@@ -6,7 +6,7 @@
         <todo-create-button :createTodo="createTodo"></todo-create-button>
       </div>
       <div v-if="!todos" class="full-width">
-        <NothingHere :text="text" :image="imgUrl" />
+        <nothing-here :text="text" :image="imgUrl" />
       </div>
       <div v-else>
         <q-list padding>
@@ -26,7 +26,8 @@
 import TodoCreateButton from "./todo-create-button.vue";
 import searchPage from "../searchPage.vue";
 import TodoTask from "./todo-task.vue";
-import NothingHere from "../NothingHere";
+
+import NothingHere from '../NothingHere';
 
 export default {
   props: ["todos", "createTodo", "editTodo"],

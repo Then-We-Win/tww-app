@@ -1,23 +1,20 @@
 <template>
   <q-page class="q-pa-md">
     <page-header text="Messages"></page-header>
-    <div v-if="!userList">
-      <NothingHere :text="text" :image="imgUrl" />
-    </div>
-    <div v-else>
-      <div class="row q-mt-md">
-        <div class="q-pa-sm" style="width:300px">
-          <search-page v-on:doSearch="search4user"></search-page>
-          <messages-user-list
-            v-bind:messages="subUserList"
-            v-on:selectUser="openMsgThread"
-          ></messages-user-list>
-        </div>
-        <div class="q-pa-sm" style="max-width:700px">
-          <messages-conversation
-            v-bind:selUser="selectedUser"
-          ></messages-conversation>
-        </div>
+
+    <div class="row q-mt-md">
+      <div class="q-pa-sm" style="width:300px">
+        <search-page v-on:doSearch="search4user"></search-page>
+
+        <messages-user-list
+          v-bind:messages="subUserList"
+          v-on:selectUser="openMsgThread"
+        ></messages-user-list>
+      </div>
+      <div class="q-pa-sm" style="max-width:700px">
+        <messages-conversation
+          v-bind:selUser="selectedUser"
+        ></messages-conversation>
       </div>
     </div>
   </q-page>
@@ -28,7 +25,6 @@ import pageHeader from "../components/pageHeader";
 import searchPage from "../components/searchPage";
 import MessagesUserList from "../components/messages/UserList";
 import MessagesConversation from "../components/messages/Conversation";
-import NothingHere from "../components/NothingHere";
 
 // We're using sample data here. TODO: Model will provide the data from the DB
 import * as myData from "../model/messages.js";
@@ -42,7 +38,6 @@ export default {
     searchPage,
     MessagesUserList,
     MessagesConversation,
-    NothingHere
   },
   mixins: [TimeSince],
   data() {
@@ -50,8 +45,8 @@ export default {
       userList: myData.sampleData.messages,
       subUserList: this.formatData(myData.sampleData.messages),
       selectedUser: myData.sampleData.messages[0],
-      text: '',
-      imgUrl: ''
+      text: "",
+      imgUrl: "",
     };
   },
 

@@ -4,6 +4,5 @@
 export default {
   failed: 'Action failed',
   success: 'Action was successful',
-  defaultTextForNothingHereCmp: 'Nothing here...',
-  defaultImageForNothingHereCmp: '../statics/weed.png'
+  nothingHere: `There's nothing here.`,
 }

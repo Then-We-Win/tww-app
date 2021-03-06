@@ -1,9 +1,9 @@
 <template>
   <q-page class="column justify-center">
-    <div class="text-center ">
-      <img style="width: 150px" :src="image || $t('defaultImageForNothingHereCmp')" />
+    <div class="text-center col-4">
+      <img class="w-150" :src="image || `../statics/weed.png`" />
     </div>
-    <div class="text-h5 q-py-sm text-center">{{ text || $t('defaultTextForNothingHereCmp') }}</div>
+    <div class="text-h5 q-py-sm text-center">{{ text || $t('nothingHere') }}</div>
   </q-page>
 </template>
 
@@ -13,3 +13,9 @@ export default {
   props: ["text", "image"],
 };
 </script>
+
+<style scoped>
+.w-150{
+  width: 9.375rem;
+}
+</style>
