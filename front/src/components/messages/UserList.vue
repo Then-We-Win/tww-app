@@ -1,7 +1,7 @@
 <template>
   <q-list>
     <div v-if="!messages">
-      <nothing-here :text="text" :image="imgUrl" />
+      <nothing-here :text="$t('messageNothingHereText')" />
     </div>
     <div v-else>
       <q-item

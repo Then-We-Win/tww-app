@@ -6,7 +6,7 @@
         <todo-create-button :createTodo="createTodo"></todo-create-button>
       </div>
       <div v-if="!todos" class="full-width">
-        <nothing-here :text="text" :image="imgUrl" />
+        <nothing-here :text="$t('todoNothingHereText')" />
       </div>
       <div v-else>
         <q-list padding>

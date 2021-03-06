@@ -3,7 +3,7 @@
     <div class="column">
       <div class="">
         <div v-if="!items" class="column">
-          <nothing-here :text="text" :image="imgUrl" />
+          <nothing-here :text="$t('campaignNothingHereText')" :image="imgUrl" />
         </div>
         <div v-else class="q-pt-md q-mx-xl q-gutter-md row">
           <q-card
@@ -41,15 +41,17 @@ export default {
   data() {
     return {
       items: null,
-      text: `You aren't part of any Campaigns...`,
       imgUrl: "",
+      
     };
   },
   async mounted() {
+    
     const result = await this.$axios.get(
       this.$store.state.system.api.base + "/campaigns"
     );
     this.items = result.data;
+    
   },
 };
 </script>
