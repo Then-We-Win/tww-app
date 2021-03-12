@@ -6,12 +6,13 @@
   "author": "Nick Steele <njsteele@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "quasar dev", 
+    "dev": "quasar dev",
     "build": "quasar build",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@mdi/font": "^5.9.55",
     "@quasar/extras": "^1.0.0",
     "apexcharts": "^3.16.0",
     "axios": "^0.18.1",

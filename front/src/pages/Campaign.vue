@@ -93,12 +93,7 @@
 
           <div>
 
-            <q-btn-group flat>
-              <q-btn flat disabled no-caps color="grey" label="Share:" />
-              <q-btn flat no-caps color="black" label="Facebook" />
-              <q-btn flat no-caps color="black" label="Twitter" />
-              <q-btn flat no-caps color="black" label="LinkedIn" />
-            </q-btn-group>
+            <Campaign_Share></Campaign_Share>
 
           <hr style="color: #fcfcfc; width: 100%; margin-top: 0px"/>
 
@@ -130,6 +125,7 @@ import Campaign_Todos from 'components/campaign/Campaign_Todos.vue'
 import Campaign_Comment from 'components/campaign/Campaign_Comment.vue'
 import Campaign_Comment_Item from 'components/campaign/Campaign_Comment_Item.vue'
 import Campaign_Subheader from 'components/campaign/Campaign_Subheader.vue'
+import Campaign_Share from 'components/campaign/Campaign_Share.vue'
 
 export default {
   name: 'PageIndex',
@@ -141,7 +137,8 @@ export default {
     Campaign_Todos,
     Campaign_Comment,
     Campaign_Comment_Item,
-    Campaign_Subheader
+    Campaign_Subheader,
+    Campaign_Share
     },
   data () {
     return {
