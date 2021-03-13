@@ -3,7 +3,7 @@
     <div class="col-12 q-py-lg">
       <div class="flex">
         <q-item-section avatar>
-          <q-avatar>
+          <q-avatar size="5vh">
             <img :src="post.userDetails.avatar" />
           </q-avatar>
         </q-item-section>

@@ -1,27 +1,43 @@
 <template>
   <div class="">
-      <div class="row q-pa-sm">
-        <div class="col-2 col-md-1">
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/img/avatar.png">
+    <div class="row q-pa-sm">
+      <div class="flex items-start">
+        <q-item-section avatar>
+          <q-avatar size="5vh">
+            <img :src="avatar" />
           </q-avatar>
-        </div>
-        <div class="col-10 col-md-11 q-px-md">
-          <p>{{ name }}<br> <span class="text-grey">{{ username }}</span></p>
-          <p class="text-grey">{{ time }}</p>
-          <p class="text-grey"> {{ comment }} </p>
+        </q-item-section>
+        <q-item-section>
+          <q-item-label class="text-weight-medium text-grey-8 text-subtitle1">{{
+            name
+          }}</q-item-label>
+          <q-item-label caption class="text-weight-medium">@{{
+            username
+          }}</q-item-label>
+          <q-item-label caption class="text-weight-medium q-py-sm">{{
+            time
+          }}</q-item-label>
 
-          <q-btn outline padding="none" size="1.1rem" flat no-caps label="Reply"/>
-        </div>
+          <div class="q-py-sm">
+            <p class="text-grey">{{ comment }}</p>
+            <q-btn
+              outline
+              padding="none"
+              size="md"
+              flat
+              no-caps
+              label="Reply"
+            />
+          </div>
+        </q-item-section>
       </div>
-
-      <hr style="color: #fcfcfc; width: 100%"/>
+    </div>
+    <q-separator class="q-my-sm" />
   </div>
 </template>
 
 <script>
 export default {
-  props: ['name', 'username', 'time', 'comment']
-
-}
+  props: ["name", "username", "avatar", "time", "comment"],
+};
 </script>
