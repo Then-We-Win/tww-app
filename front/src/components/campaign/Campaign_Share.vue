@@ -1,23 +1,30 @@
 <template>
     <div>
-        <div class="q-pa-md q-gutter-sm">
+        <div class="q-pa-md">
+            <a href="https://twitter.com" target="_blank">
               <q-btn 
                 color="cyan" 
                 :icon="mdiTwitter" 
                 />
+            </a>
+            <a href="https://facebook.com" target="_blank">
               <q-btn 
                 color="blue" 
                 :icon="mdiFacebook" 
                 />
-
+            </a>
+            <a href="https://linkedin.com" target="_blank">
               <q-btn  
                 color="primary" 
                 :icon="mdiLinkedin" 
                 />
-              <q-btn 
+            </a>
+              <q-btn
                 color="grey" 
-                :icon="mdiLinkVariant" 
+                :icon="mdiLinkVariant"
+                @click="copyLink()" 
                 />
+            
         </div>
     </div>
 </template>
@@ -27,7 +34,6 @@ import { mdiTwitter } from '@quasar/extras/mdi-v5'
 import { mdiFacebook } from '@quasar/extras/mdi-v5'
 import { mdiLinkedin } from '@quasar/extras/mdi-v5'
 import { mdiLinkVariant } from '@quasar/extras/mdi-v5'
-import { openURL } from 'quasar'
 import { copyToClipboard } from 'quasar'
 
 export default {
@@ -38,13 +44,8 @@ export default {
         this.mdiLinkVariant = mdiLinkVariant;
     },
     methods: {
-        followLink: function(url){
-            openURL(url)
-            .then(()=>{console.log('Success!')})
-            .catch(()=>{console.log('ERROR: '+url+' cannot be found')})
-        },
-        copy: function(){
-            copyToClipboard('some text')
+        copyLink: function(){
+            copyToClipboard('https://app.thenwewin.org')
             .then(() => {
                 alert('Link copied to clipboard')
             })
