@@ -44,6 +44,7 @@ export default {
               likes: '10.2K',
               comments: '1K'
             },
+            likedPost: false,
             category: '',
             modifiedBy: '',
             dateModified: '',
@@ -69,6 +70,7 @@ export default {
               likes: '15.2K',
               comments: '1.2K'
             },
+            likedPost: false,
             category: '',
             modifiedBy: '',
             dateModified: '',
@@ -92,6 +94,7 @@ export default {
               likes: '5.2K',
               comments: '1K'
             },
+            likedPost: false,
             category: '',
             modifiedBy: '',
             dateModified: '',
@@ -121,6 +124,7 @@ export default {
               likes: '30.2K',
               comments: '4K'
             },
+            likedPost: false,
             category: '',
             modifiedBy: '',
             dateModified: '',
@@ -148,6 +152,7 @@ export default {
               likes: '15.2K',
               comments: '1.2K'
             },
+            likedPost: false,
             category: '',
             modifiedBy: '',
             dateModified: '',
@@ -171,6 +176,7 @@ export default {
               likes: '5.2K',
               comments: '1K'
             },
+            likedPost: false,
             category: '',
             modifiedBy: '',
             dateModified: '',
