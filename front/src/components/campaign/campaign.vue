@@ -63,13 +63,13 @@
                 </p>
 
                 <div class="row">
-                  <div class="col">
+                  <div class="col" v-if="campaign.mainTarget">
                     <h6 class="text-subtitle1 text-weight-medium q-my-sm text-grey-9">Main target</h6>
                     <div v-for="(item, index) in campaign.mainTarget" :key="index" class="text-grey q-my-sm text-body2"> 
                         <span >{{item.target}}</span>
                     </div>
                   </div>
-                  <div class="col">
+                  <div class="col" v-if="campaign.secondaryTarget">
                     <h6 class="text-subtitle1 text-weight-medium q-my-sm text-grey-9">Secondary target</h6>
                     <div v-for="(item, index) in campaign.secondaryTarget" :key="index" class="text-grey q-my-sm text-body2"> 
                         <span >{{item.target}}</span>
