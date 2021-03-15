@@ -1,125 +1,106 @@
 <template>
-  <div class="">
-
-
-          <div class="row">
-            <div class="col-6 col-md-6">
-              <div class="q-pt-md sidebar_headings">To Do List</div>
-            </div>
-            <div class="col-6 col-md-6 row justify-end">
-              <div class="q-pt-md sidebar_headings">
-                <q-btn no-caps size=".8rem" color="grey" flat padding="none" label="View All"/>
-              </div>
-            </div>
-          </div>
-
-          <template>
-
-            <div class="row">
-              <div class="col-6 col-md-6">
-                <div class="q-pt-sm" style="font-size: .8rem">Today</div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-6 col-md-6">
-                <div class="">
-                  <q-checkbox dense size="lg" v-model="right" label="Create To Do List" />
-                </div>
-              </div>
-              <div class="col-6 col-md-6 row justify-end">
-                <div class="">
-                  <p>Assign User</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="row" style="margin-top: -.8vw">
-              <div class="col-6 col-md-6">
-                <div class="">
-                  <q-checkbox dense size="lg" v-model="right" label="Visit TV Anchor" />
-                </div>
-              </div>
-              <div class="col-6 col-md-6 row justify-end">
-                <div class="">
-                  <p style="margin-top: .1vw">Assign User</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="row" style="margin-top: -.8vw">
-              <div class="col-9 col-md-9">
-                <div class="">
-                  <q-checkbox dense size="lg" v-model="right" label="Share campaign to social media" />
-                </div>
-              </div>
-              <div class="col-3 col-md-3 row justify-end">
-                <div class="">
-                  <p style="margin-top: .1vw">Assign User</p>
-                </div>
-              </div>
-            </div>
-
-          </template>
-
-          <template>
-
-            <div class="row">
-              <div class="col-6 col-md-6">
-                <div class="q-pt-sm" style="font-size: .8rem">Tomorrow</div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-9 col-md-9">
-                <div class="">
-                  <q-checkbox dense size="lg" v-model="right" label="Assign task to manager" />
-                </div>
-              </div>
-              <div class="col-3 col-md-3 row justify-end">
-                <div class="">
-                  <p>Assign User</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="row" style="margin-top: -.8vw">
-              <div class="col-9 col-md-9">
-                <div class="">
-                  <q-checkbox dense size="lg" v-model="right" label="Create article for anchor" />
-                </div>
-              </div>
-              <div class="col-3 col-md-3 row justify-end">
-                <div class="">
-                  <p style="margin-top: .1vw">Assign User</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="row" style="margin-top: -.8vw">
-              <div class="col-9 col-md-9">
-                <div class="">
-                  <q-checkbox dense size="lg" v-model="right" label="Follow up for social media" />
-                </div>
-              </div>
-              <div class="col-3 col-md-3 row justify-end">
-                <div class="">
-                  <p style="margin-top: .1vw">Assign User</p>
-                </div>
-              </div>
-            </div>
-
-          </template>
+  <div>
+    <div class="row">
+      <div class="col-6 col-md-6">
+        <div class="q-pt-md sidebar_headings">To Do List</div>
+      </div>
+      <div class="col-6 col-md-6 row justify-end">
+        <div class="q-pt-md sidebar_headings">
+          <q-btn
+            no-caps
+            size=".8rem"
+            color="grey"
+            flat
+            padding="none"
+            label="View All"
+          />
+        </div>
+      </div>
+    </div>
+    <todo-task
+      :todo="todo"
+      v-for="(todo, index) in todos"
+      :key="index"
+    ></todo-task>
   </div>
 </template>
 
 <script>
+import TodoTask from "../../components/todo/todo-task.vue";
+
 export default {
-name: 'campaign_todos',
-  data () {
+  components: {
+    TodoTask,
+  },
+  name: "Todo",
+  data() {
     return {
-      right: ''
-    }
-  }
-}
+      edit_todo: false,
+      new_todo: false,
+      to_edit_todo: null,
+      edit_index: null,
+      todos: [
+        {
+          completed: false,
+          title: "Create a Todo List",
+          date: "4:12pm, 12th December to 12:00pm, 14th Decemeber",
+          task:
+            "",
+        },
+        {
+          completed: false,
+          title: "Visit TV Anchor",
+          date: "4:12pm, 12th December to 12:00pm, 14th Decemeber",
+          task:
+            "",
+        },
+        {
+          completed: false,
+          title: "Share campaigns to social media",
+          date: "4:12pm, 12th December to 12:00pm, 14th Decemeber",
+          task:
+            "",
+        },
+        {
+          completed: false,
+          title: "Create a Todo List",
+          date: "4:12pm, 12th December to 12:00pm, 14th Decemeber",
+          task:
+            "",
+        },
+        {
+          completed: false,
+          title: "Create a Todo List",
+          date: "4:12pm, 12th December to 12:00pm, 14th Decemeber",
+          task:
+            " ",
+        },
+      ],
+    };
+  },
+  methods: {
+    createTodo() {
+      this.new_todo = true;
+    },
+    showTodoLandingPage() {
+      this.new_todo = false;
+      this.edit_todo = false;
+    },
+    saveTodo(todo) {
+      this.todos.unshift(todo);
+      this.new_todo = false;
+    },
+    editTodo(index) {
+      this.edit_index = index;
+      this.to_edit_todo = this.todos[index];
+      this.edit_todo = true;
+    },
+    saveEdit(todo) {
+      this.todos[this.edit_index] = todo;
+      this.edit_todo = false;
+    },
+  },
+};
 </script>
+
+<style scoped></style>
