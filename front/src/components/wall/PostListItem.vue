@@ -15,20 +15,26 @@
             post.dateCreated
           }}</q-item-label>
         </q-item-section>
-        <q-icon flat dense name="fas fa-ellipsis-h" size="xs" class="text-grey-8 cursor-pointer">
+        <q-icon
+          flat
+          dense
+          name="fas fa-ellipsis-h"
+          size="xs"
+          class="text-grey-8 cursor-pointer"
+        >
           <q-popup-proxy>
             <q-banner>
               <q-list>
-                <q-item clickable v-ripple>
-                  <q-icon color="primary" name="report_problem" size="sm" />
+                <q-item clickable v-ripple class="items-center">
+                  <q-icon color="primary" name="report_problem" size="xs" />
                   <q-item-section class="q-mx-sm">
-                    <span class="text-grey-8 text-body2">Report post</span>
+                    <span class="text-grey-8 text-body1">Report post</span>
                   </q-item-section>
                 </q-item>
                 <q-item clickable v-ripple class="items-center">
-                  <q-icon color="primary" name="block" size="sm" />
+                  <q-icon color="primary" name="block" size="xs" />
                   <q-item-section class="q-mx-sm">
-                    <span class="text-grey-8 text-body2"> Block user</span>
+                    <span class="text-grey-8 text-body1"> Block user</span>
                   </q-item-section>
                 </q-item>
               </q-list>
@@ -40,9 +46,11 @@
         <h4 v-if="post.title" class="text-h6 text-grey-8 q-my-md">
           {{ post.title }}
         </h4>
-        <p v-if="post.contents.text" class="q-my-xs text-grey-6">
-          {{ post.contents.text }}
-        </p>
+        <p
+          v-if="post.contents.text"
+          class="q-my-xs text-grey-6"
+          v-html="post.contents.text"
+        ></p>
         <div v-if="post.contents.link" class="bg-grey-3 flex q-my-md">
           <q-btn flat icon="link" class="q-mx-sm text-h6 text-grey-8" />
           <q-separator vertical />
@@ -114,18 +122,19 @@
         </div>
       </div>
       <div class="full-width q-my-md" v-if="showComment">
+        <q-separator class="q-my-sm" />
+        <campaign-comment-item />
         <q-editor
           v-model="commentText"
           @click="commentText = ''"
           min-height="5rem"
-          :toolbar="[
-            ['bold', 'italic', 'strike', 'underline']
-          ]"
+          :toolbar="[['bold', 'italic', 'strike', 'underline']]"
         />
         <q-btn
           class="q-my-sm float-right	"
           rounded
-          color="grey-3" text-color="black"
+          color="grey-3"
+          text-color="black"
           size="md"
           label="Submit Comment"
         />
@@ -136,9 +145,13 @@
 </template>
 
 <script>
+import CampaignCommentItem from "components/campaign/campaign-comment-item.vue";
 export default {
   name: "PostListItem",
   props: ["post", "index"],
+  components: {
+    CampaignCommentItem,
+  },
   data() {
     return {
       showComment: false,

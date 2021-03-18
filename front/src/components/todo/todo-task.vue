@@ -9,10 +9,12 @@
         />
       </q-item-section>
 
-      <q-item-section class="text-body1 text-wrap" :class="todo.completed?'text-strike	':''">
+      <q-item-section class="text-body1 text-wrap q-mt-sm" :class="todo.completed?'text-strike	':''">
         <q-item-label class="text-h6">{{ todo.title}}</q-item-label>
-        <q-item-label caption class="text-grey-8 q-pt-xs">{{ todo.date}}</q-item-label>
-        <q-item-label class="text-justify q-pt-md">{{todo.task}}</q-item-label>
+        <q-item-label caption class="text-grey-6 q-pt-xs">{{ todo.date}}</q-item-label>
+        <p class="text-justify text-body2 q-my-md text-grey-8 text-weight-regular">
+          {{ todo.task }}
+        </p>
         <div class="flex q-mt-sm q-gutter-x-md items-center">
           <q-avatar size='sm'>
             <img src="https://cdn.quasar.dev/img/avatar1.jpg" alt="">
@@ -25,7 +27,7 @@
       </q-item-section>
 
       <q-item-section side top v-if="editTodo"> 
-        <q-btn @click="edit()" class="text-black text-weight-light" flat label='edit'/>
+        <q-btn @click="edit()" class="text-black text-body2" flat label='edit'/>
       </q-item-section>
 
     </q-item>

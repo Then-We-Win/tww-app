@@ -59,7 +59,7 @@ export default {
           username: "winston",
           avatar: 'https://cdn.quasar.dev/img/avatar2.jpg',
           comment:
-            "Praesent eleifend massa at dolor vestibulum vestibulum.",
+            "Praesent eleifend massa at dolor vestibulum vestibulum. Venenatis sit amet elementum sed, dapibus tempor dolor. Nunc et sagittis lectus. Pellentesque eleifend sollicitudin augue, ",
           time: "9:30 am",
         },
         {
