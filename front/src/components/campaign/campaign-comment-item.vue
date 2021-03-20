@@ -48,7 +48,8 @@ export default {
           id: this.getID(),
           name: "John Wick",
           username: "john.wick",
-          avatar: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
+          avatar:
+            "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
           comment:
             "Vestibulum metus magna, venenatis sit amet elementum sed, dapibus tempor dolor. Nunc et sagittis lectus. Pellentesque eleifend sollicitudin augue, gravida fermentum magna ultricies quis.",
           time: "8:00 am",
@@ -57,7 +58,7 @@ export default {
           id: this.getID(),
           name: "Winston",
           username: "winston",
-          avatar: 'https://cdn.quasar.dev/img/avatar2.jpg',
+          avatar: "https://cdn.quasar.dev/img/avatar2.jpg",
           comment:
             "Praesent eleifend massa at dolor vestibulum vestibulum. Venenatis sit amet elementum sed, dapibus tempor dolor. Nunc et sagittis lectus. Pellentesque eleifend sollicitudin augue, ",
           time: "9:30 am",
@@ -65,7 +66,7 @@ export default {
         {
           id: this.getID(),
           name: "Sofia",
-          avatar: 'https://cdn.quasar.dev/img/avatar2.jpg',
+          avatar: "https://cdn.quasar.dev/img/avatar2.jpg",
           username: "sofia",
           comment:
             "Vestibulum metus magna, venenatis sit amet elementum sed, dapibus tempor dolor. Nunc et sagittis lectus. Pellentesque eleifend sollicitudin augue, gravida fermentum magna ultricies quis.",
@@ -75,7 +76,8 @@ export default {
           id: this.getID(),
           name: "Bowery King",
           username: "bowery",
-          avatar: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
+          avatar:
+            "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
           comment:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihilpraesentium molestias a adipisci, dolore vitae odit, quidem consequatur optio voluptates asperiores",
           time: "1.30 am",
@@ -84,10 +86,12 @@ export default {
     };
   },
   methods: {
-     //Returns a random ID to the caller
-      getID(){
-        return Math.random().toString(16).slice(2);
-      }
-  }
+    //Returns a random ID to the caller
+    getID() {
+      return Math.random()
+        .toString(16)
+        .slice(2);
+    },
+  },
 };
 </script>

@@ -27,93 +27,98 @@
               </q-tab-panel>
 
               <q-tab-panel name="about_campaign" class="q-py-lg">
-                <h4 class="text-h4 q-my-xs text-weight-bold text-grey-10">
-                  {{ campaign.title }}
-                </h4>
-                <div class="text-grey q-pt-sm">
-                  <span class="text-capitalize">{{ campaign.location }}</span>
-                </div>
-                <div class="text-grey q-py-xs justify-center">
-                  {{ campaign.supporters }} Supporters
-                  <q-icon class="q-mx-xs" name="fas fa-circle" size="2px" />
-                  <span class="text-capitalize q-ml-xs">{{
-                    campaign.groupType
-                  }}</span>
-                  group
-                </div>
-                <div class="text-grey q-py-xs">
-                  Organized by
-                  <span class="text-weight-bold">{{
-                    getFirstOrganizerName(campaign.organizedBy)
-                  }}</span>
-                  and
-                  <span class="text-weight-bold"
-                    >{{ getTotalOrganizers(campaign.organizedBy) }} others</span
+                <div class="q-pa-md">
+                  <h4 class="text-h4 q-my-xs text-weight-bold text-grey-10">
+                    {{ campaign.title }}
+                  </h4>
+                  <div class="text-grey q-pt-sm">
+                    <span class="text-capitalize">{{ campaign.location }}</span>
+                  </div>
+                  <div class="text-grey q-py-xs justify-center">
+                    {{ campaign.supporters }} Supporters
+                    <q-icon class="q-mx-xs" name="fas fa-circle" size="2px" />
+                    <span class="text-capitalize q-ml-xs">{{
+                      campaign.groupType
+                    }}</span>
+                    group
+                  </div>
+                  <div class="text-grey q-py-xs">
+                    Organized by
+                    <span class="text-weight-bold">{{
+                      getFirstOrganizerName(campaign.organizedBy)
+                    }}</span>
+                    and
+                    <span class="text-weight-bold"
+                      >{{
+                        getTotalOrganizers(campaign.organizedBy)
+                      }}
+                      others</span
+                    >
+                  </div>
+
+                  <q-separator class="q-mt-md" />
+                  <div class="row q-py-sm">
+                    <div class="col-8">
+                      <div class="text-grey">
+                        <h6 class="text-h6 q-ml-lg q-my-none text-weight-light">
+                          Do you supporting this Campaign?
+                        </h6>
+                      </div>
+                    </div>
+                    <div class="col-4 row justify-end q-px-sm">
+                      <q-btn-group flat>
+                        <q-btn flat label="Yes" />
+                        <q-btn flat label="No" />
+                      </q-btn-group>
+                    </div>
+                  </div>
+                  <q-separator class="q-mb-md" />
+
+                  <h6
+                    class="text-subtitle1 text-weight-medium q-my-none text-grey-9"
                   >
-                </div>
+                    What is this campagin is about?
+                  </h6>
 
-                <q-separator class="q-mt-md" />
-                <div class="row q-py-sm">
-                  <div class="col-8">
-                    <div class="text-grey">
-                      <h6 class="text-h6 q-ml-lg q-my-none text-weight-light">
-                        Do you supporting this Campaign?
+                  <p class="text-grey q-py-sm text-body2">
+                    {{ campaign.about }}
+                  </p>
+
+                  <div class="row">
+                    <div class="col" v-if="campaign.mainTarget">
+                      <h6
+                        class="text-subtitle1 text-weight-medium q-my-sm text-grey-9"
+                      >
+                        Main target
                       </h6>
+                      <div
+                        v-for="(item, index) in campaign.mainTarget"
+                        :key="index"
+                        class="text-grey q-my-sm text-body2"
+                      >
+                        <span>{{ item.target }}</span>
+                      </div>
+                    </div>
+                    <div class="col" v-if="campaign.secondaryTarget">
+                      <h6
+                        class="text-subtitle1 text-weight-medium q-my-sm text-grey-9"
+                      >
+                        Secondary target
+                      </h6>
+                      <div
+                        v-for="(item, index) in campaign.secondaryTarget"
+                        :key="index"
+                        class="text-grey q-my-sm text-body2"
+                      >
+                        <span>{{ item.target }}</span>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-4 row justify-end q-px-sm">
-                    <q-btn-group flat>
-                      <q-btn flat label="Yes" />
-                      <q-btn flat label="No" />
-                    </q-btn-group>
-                  </div>
+                  <q-separator class="q-my-sm" />
+                  <campaign-comment></campaign-comment>
+                  <q-separator class="q-my-sm" />
+                  <campaign-comment-Item></campaign-comment-Item>
                 </div>
-                <q-separator class="q-mb-md" />
-
-                <h6
-                  class="text-subtitle1 text-weight-medium q-my-none text-grey-9"
-                >
-                  What is this campagin is about?
-                </h6>
-
-                <p class="text-grey q-py-sm text-body2">
-                  {{ campaign.about }}
-                </p>
-
-                <div class="row">
-                  <div class="col" v-if="campaign.mainTarget">
-                    <h6
-                      class="text-subtitle1 text-weight-medium q-my-sm text-grey-9"
-                    >
-                      Main target
-                    </h6>
-                    <div
-                      v-for="(item, index) in campaign.mainTarget"
-                      :key="index"
-                      class="text-grey q-my-sm text-body2"
-                    >
-                      <span>{{ item.target }}</span>
-                    </div>
-                  </div>
-                  <div class="col" v-if="campaign.secondaryTarget">
-                    <h6
-                      class="text-subtitle1 text-weight-medium q-my-sm text-grey-9"
-                    >
-                      Secondary target
-                    </h6>
-                    <div
-                      v-for="(item, index) in campaign.secondaryTarget"
-                      :key="index"
-                      class="text-grey q-my-sm text-body2"
-                    >
-                      <span>{{ item.target }}</span>
-                    </div>
-                  </div>
-                </div>
-                <q-separator class="q-my-sm" />
-                <campaign-comment></campaign-comment>
-                <q-separator class="q-my-sm" />
-                <campaign-comment-Item></campaign-comment-Item>
               </q-tab-panel>
               <q-tab-panel name="campaign_todos">
                 <todo />

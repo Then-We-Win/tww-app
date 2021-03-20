@@ -25,28 +25,72 @@
           />
           <q-separator class="q-mb-xs full-width" />
           <div class="row">
-            <div class="col-8 flex">
-              <div>
-                <q-file dense borderless use-chips v-model="post.contents.imgs">
-                  <template v-slot:append>
-                    <q-icon
-                      name="camera_alt"
-                      class="cursor-pointer	"
-                      @click.stop
-                    />
+            <div class="col-10 flex">
+              <div class="full-width  q-pr-sm">
+                <q-uploader
+                  @added="addFile"
+                  @removed="removedFile"
+                  @rejected="onFileReject"
+                  label="Add files"
+                  ref="uploader"
+                  color="grey-6"
+                  hide-upload-btn
+                  flat
+                  multiple
+                  :max-files="4"
+                  accept=".jpg, .png, image/*"
+                  class="full-width"
+                >
+                  <template v-slot:list="scope">
+                    <q-list separator>
+                      <q-item v-for="file in scope.files" :key="file.name">
+                        <q-item-section>
+                          <q-item-label class="full-width ellipsis">
+                            {{ file.name }}
+                          </q-item-label>
+
+                          <q-item-label caption>
+                            Status: {{ file.__status }}
+                          </q-item-label>
+
+                          <q-item-label caption>
+                            {{ file.__sizeLabel }} / {{ file.__progressLabel }}
+                          </q-item-label>
+                        </q-item-section>
+
+                        <q-item-section
+                          v-if="file.__img"
+                          thumbnail
+                          class="gt-xs"
+                        >
+                          <img :src="file.__img.src" />
+                        </q-item-section>
+
+                        <q-item-section top side>
+                          <q-btn
+                            class="gt-xs"
+                            size="12px"
+                            flat
+                            dense
+                            round
+                            icon="delete"
+                            @click="scope.removeFile(file)"
+                          />
+                        </q-item-section>
+                      </q-item>
+                    </q-list>
                   </template>
-                </q-file>
+                </q-uploader>
               </div>
-              <q-separator vertical class="q-mx-sm" />
-              <q-btn round dense flat icon="videocam" class="text-grey-6" />
+              <!--camera_alt <q-separator vertical class="q-mx-sm" />
+              <q-btn round dense flat icon="videocam" class="text-grey-6" /> -->
             </div>
-            <div class="col-4">
+            <div class="col-2 q-pl-sm">
               <q-btn
                 unelevated
-                rounded
                 color="grey-6"
                 label="Post"
-                class="float-right"
+                class="float-right full-width q-py-sm"
                 @click="savePost()"
               />
             </div>
@@ -62,13 +106,14 @@ export default {
   name: "PostCreate",
   data() {
     return {
+      fileList: [],
       post: {
         id: null,
         title: "",
         status: "Published",
         contents: {
           text: "",
-          imgs: null,
+          imgs: [],
           videoUrl: "",
           link: null,
           likes: "0",
@@ -87,16 +132,18 @@ export default {
         campaign: "",
       },
       showEditor: false,
-
     };
   },
   methods: {
     savePost() {
-      this.post.id =  this.getID();
+      this.post.id = this.getID();
+      this.addFilesBeforeUpload()
       const postData = JSON.parse(JSON.stringify(this.post));
       if (this.post.contents.text != "") {
         this.$emit("save-post", postData);
-        this.post.contents.text = ''
+        this.post.contents.text = "";
+        this.post.contents.imgs = [];
+        this.$refs.uploader.reset();
       } else {
         // Wall: standard error messages
         this.$q.notify({
@@ -105,9 +152,29 @@ export default {
         });
       }
     },
+    addFilesBeforeUpload(){
+      this.fileList.map( item => {
+        const path = (window.URL || window.webkitURL).createObjectURL(item);
+        this.post.contents.imgs.push(path);
+      })
+    },
+    addFile(file) {
+      //this.fileList = file
+      this.fileList = this.$refs.uploader.files;
+    },
+    removedFile(file){
+       this.fileList = this.$refs.uploader.files;
+    },
+    onFileReject(rejectedEntries){
+      this.$q.notify({
+        type: 'negative',
+        message: `${rejectedEntries.length} file(s) did not pass validation`
+      })
+    },
     getID() {
       return Math.random()
-        .toString(36).substr(2, 6);
+        .toString(36)
+        .substr(2, 6);
     },
     getCurrentDate() {
       let date = new Date();

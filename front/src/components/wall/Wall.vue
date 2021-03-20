@@ -185,7 +185,6 @@ export default {
   },
   methods: {
     savePostData(val) {
-      
       this.posts.unshift(val);
     },
     //Returns a random ID to the caller
