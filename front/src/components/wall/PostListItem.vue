@@ -9,7 +9,7 @@
         </q-item-section>
         <q-item-section>
           <q-item-label class="text-weight-bold text-grey-8">{{
-            post.userDetails.fullName || post.userDetails.userName 
+            post.userDetails.fullName || post.userDetails.userName
           }}</q-item-label>
           <q-item-label caption class="text-weight-medium">{{
             post.dateCreated
@@ -123,7 +123,9 @@
       </div>
       <div class="full-width q-my-md" v-if="showComment">
         <q-separator class="q-my-sm" />
-        <campaign-comment-item />
+        <campaign-comment-item
+          :comment="comment"
+        />
         <q-editor
           v-model="commentText"
           @click="commentText = ''"
@@ -137,6 +139,7 @@
           text-color="black"
           size="md"
           label="Submit Comment"
+          @click="saveComment"
         />
       </div>
     </div>
@@ -156,7 +159,58 @@ export default {
     return {
       showComment: false,
       commentText: "Leave a comment",
+      commentData: {
+        id: null,
+        name: "",
+        username: "",
+        avatar: "",
+        comment: "",
+        time: this.getCurrentDate(),
+      },
+      comment: null
     };
+  },
+  methods: {
+    saveComment() {
+      this.setUserInfo()
+      this.commentData.id = this.getID();
+      this.commentData.comment = this.commentText;
+      if (this.commentText != "") {
+        this.comment = JSON.parse(JSON.stringify(this.commentData));
+        this.commentText = "";
+      } else {
+        // Wall: standard error messages
+        this.$q.notify({
+          type: "negative",
+          message: `Please enter a post comment`,
+        });
+      }
+    },
+    getID() {
+      return Math.random()
+        .toString(36)
+        .substr(2, 6);
+    },
+    setUserInfo() {
+      this.commentData.name = this.$store.state.user.name
+        ? this.$store.state.user.name
+        : this.$store.state.user.username;
+      this.commentData.username = this.$store.state.user.username;
+      this.commentData.avatar = this.$store.state.user.avatar
+        ? this.$store.state.user.avatar
+        : "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50";
+    },
+    getCurrentDate() {
+      let date = new Date();
+      let options = {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      };
+      return `${date.toLocaleTimeString("en-us", options)}`;
+    },
   },
 };
 </script>

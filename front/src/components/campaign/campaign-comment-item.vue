@@ -8,6 +8,7 @@
       :comment="comment.comment"
       :username="comment.username"
       :time="comment.time"
+      @save-comment="saveComment"
     ></campaign-comment-list>
 
     <!-- <div v-for="n in 4" :key="n">
@@ -38,6 +39,7 @@
 import CampaignCommentList from "components/campaign/campaign-comment-list.vue";
 export default {
   name: "campaign_comment_item",
+  props: ["comment"],
   components: {
     CampaignCommentList,
   },
@@ -85,6 +87,13 @@ export default {
       ],
     };
   },
+  watch:{
+      comment(newVal, oldVal){
+        if(newVal){
+          this.comments.push(newVal);
+        }
+      }
+  },
   methods: {
     //Returns a random ID to the caller
     getID() {
@@ -92,6 +101,9 @@ export default {
         .toString(16)
         .slice(2);
     },
+    saveComment(val){
+      this.comments.push(val);
+    }
   },
 };
 </script>
