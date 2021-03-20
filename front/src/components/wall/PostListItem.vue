@@ -9,7 +9,7 @@
         </q-item-section>
         <q-item-section>
           <q-item-label class="text-weight-bold text-grey-8">{{
-            post.userDetails.userName
+            post.userDetails.fullName || post.userDetails.userName 
           }}</q-item-label>
           <q-item-label caption class="text-weight-medium">{{
             post.dateCreated
@@ -48,7 +48,7 @@
         </h4>
         <p
           v-if="post.contents.text"
-          class="q-my-xs text-grey-6"
+          class="q-my-xs text-grey-8"
           v-html="post.contents.text"
         ></p>
         <div v-if="post.contents.link" class="bg-grey-3 flex q-my-md">
@@ -75,7 +75,7 @@
             v-for="img in post.contents.imgs"
             :key="img"
             :src="img"
-            :ratio="16 / 9"
+            ratio="1"
           />
         </div>
         <q-video

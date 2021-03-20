@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-1">
         <q-avatar size="5vh">
-          <img src="https://cdn.quasar.dev/img/avatar2.jpg" />
+          <img :src="post.userDetails.avatar" />
         </q-avatar>
       </div>
       <div class="col-11">
@@ -107,6 +107,7 @@ export default {
   data() {
     return {
       fileList: [],
+      user: this.$store.state.user,
       post: {
         id: null,
         title: "",
@@ -126,13 +127,19 @@ export default {
         dateCreated: this.getCurrentDate(),
         userId: "",
         userDetails: {
-          userName: "Mrs. Wick",
-          avatar: "https://cdn.quasar.dev/img/avatar2.jpg",
+          fullName: "",
+          userName: "",
+          email: '',
+          avatar: '',
         },
         campaign: "",
       },
       showEditor: false,
+      
     };
+  },
+  created(){
+    this.setUserInfo()
   },
   methods: {
     savePost() {
@@ -150,6 +157,14 @@ export default {
           type: "negative",
           message: `Please enter a post details`,
         });
+      }
+    },
+    setUserInfo(){
+      if(this.user){
+        this.post.userDetails.fullName = this.user.name
+        this.post.userDetails.avatar = this.user.avatar ? this.user.avatar : 'https://cdn.quasar.dev/img/boy-avatar.png'
+        this.post.userDetails.userName = this.user.username
+        this.post.userDetails.email = this.user.email
       }
     },
     addFilesBeforeUpload(){
