@@ -31,10 +31,10 @@
                   <h4 class="text-h4 q-my-xs text-weight-bold text-grey-10">
                     {{ campaign.title }}
                   </h4>
-                  <div class="text-grey q-pt-sm">
+                  <div class="text-grey-8 q-pt-sm">
                     <span class="text-capitalize">{{ campaign.location }}</span>
                   </div>
-                  <div class="text-grey q-py-xs justify-center">
+                  <div class="text-grey-8 q-py-xs justify-center">
                     {{ campaign.supporters }} Supporters
                     <q-icon class="q-mx-xs" name="fas fa-circle" size="2px" />
                     <span class="text-capitalize q-ml-xs">{{
@@ -42,7 +42,7 @@
                     }}</span>
                     group
                   </div>
-                  <div class="text-grey q-py-xs">
+                  <div class="text-grey-8 q-py-xs">
                     Organized by
                     <span class="text-weight-bold">{{
                       getFirstOrganizerName(campaign.organizedBy)
@@ -59,7 +59,7 @@
                   <q-separator class="q-mt-md" />
                   <div class="row q-py-sm">
                     <div class="col-8">
-                      <div class="text-grey">
+                      <div class="text-grey-8">
                         <h6 class="text-h6 q-ml-lg q-my-none text-weight-light">
                           Do you supporting this Campaign?
                         </h6>
@@ -75,40 +75,40 @@
                   <q-separator class="q-mb-md" />
 
                   <h6
-                    class="text-subtitle1 text-weight-medium q-my-none text-grey-9"
+                    class="text-subtitle1 text-weight-medium q-my-none text-grey-8"
                   >
                     What is this campagin is about?
                   </h6>
 
-                  <p class="text-grey q-py-sm text-body2">
+                  <p class="text-grey-8 q-py-sm text-body2">
                     {{ campaign.about }}
                   </p>
 
                   <div class="row">
                     <div class="col" v-if="campaign.mainTarget">
                       <h6
-                        class="text-subtitle1 text-weight-medium q-my-sm text-grey-9"
+                        class="text-subtitle1 text-weight-medium q-my-sm text-grey-8"
                       >
                         Main target
                       </h6>
                       <div
                         v-for="(item, index) in campaign.mainTarget"
                         :key="index"
-                        class="text-grey q-my-sm text-body2"
+                        class="text-grey-8 q-my-sm text-body2"
                       >
                         <span>{{ item.target }}</span>
                       </div>
                     </div>
                     <div class="col" v-if="campaign.secondaryTarget">
                       <h6
-                        class="text-subtitle1 text-weight-medium q-my-sm text-grey-9"
+                        class="text-subtitle1 text-weight-medium q-my-sm text-grey-8"
                       >
                         Secondary target
                       </h6>
                       <div
                         v-for="(item, index) in campaign.secondaryTarget"
                         :key="index"
-                        class="text-grey q-my-sm text-body2"
+                        class="text-grey-8 q-my-sm text-body2"
                       >
                         <span>{{ item.target }}</span>
                       </div>

@@ -1,13 +1,21 @@
 <template>
-  <q-btn @click="create()" class="text-black float-right bg-grey-3" rounded padding='8px 40px' unelevated  no-caps label='Create To Do'/>
+  <q-btn
+    @click="create()"
+    class="text-black float-right bg-grey-3"
+    outlined
+    padding="8px 40px"
+    unelevated
+    no-caps
+    label="Create To Do"
+  />
 </template>
 <script>
 export default {
-  props: ['createTodo'],
+  props: ["createTodo"],
   methods: {
-    create(){
-      this.createTodo()
-    }
+    create() {
+      this.createTodo();
+    },
   },
-}
+};
 </script>

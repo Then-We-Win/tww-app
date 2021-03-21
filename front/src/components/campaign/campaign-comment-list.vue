@@ -38,9 +38,9 @@
               />
               <q-btn
                 class="q-my-sm float-right	"
-                rounded
+                outline
                 color="grey-3"
-                text-color="black"
+                text-color="grey-6"
                 size="md"
                 label="Reply"
               />

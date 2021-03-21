@@ -75,7 +75,7 @@
             v-for="img in post.contents.imgs"
             :key="img"
             :src="img"
-            ratio="1"
+            :ratio="16/9"
           />
         </div>
         <q-video
@@ -134,9 +134,9 @@
         />
         <q-btn
           class="q-my-sm float-right	"
-          rounded
+          outline
           color="grey-3"
-          text-color="black"
+          text-color="grey-6"
           size="md"
           label="Submit Comment"
           @click="saveComment"

@@ -25,8 +25,8 @@
           />
           <q-separator class="q-mb-xs full-width" />
           <div class="row">
-            <div class="col-10 flex">
-              <div class="full-width  q-pr-sm">
+            <div class="full-width flex">
+              <div class="full-width">
                 <q-uploader
                   @added="addFile"
                   @removed="removedFile"
@@ -35,7 +35,6 @@
                   ref="uploader"
                   color="grey-6"
                   hide-upload-btn
-                  flat
                   multiple
                   :max-files="4"
                   accept=".jpg, .png, image/*"
@@ -85,12 +84,12 @@
               <!--camera_alt <q-separator vertical class="q-mx-sm" />
               <q-btn round dense flat icon="videocam" class="text-grey-6" /> -->
             </div>
-            <div class="col-2 q-pl-sm">
+            <div class="q-my-sm">
               <q-btn
-                unelevated
+                outline
                 color="grey-6"
                 label="Post"
-                class="float-right full-width q-py-sm"
+                class="float-left q-px-sm"
                 @click="savePost()"
               />
             </div>

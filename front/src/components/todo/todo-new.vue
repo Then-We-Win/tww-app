@@ -1,20 +1,20 @@
 <template>
   <div
-    class=" full-width"
-    :class="$q.screen.lt.sm ? 'q-ma-sm' : 'q-ma-xl q-px-xl'"
+    class="full-width"
+    :class="$q.screen.lt.sm || $route.name == 'campaign' ? 'q-ma-sm' : 'q-ma-xl q-px-xl'"
   >
     <div
       class=""
-      :class="$q.screen.lt.sm ? 'q-ma-sm q-px-sm' : 'q-ma-xl q-px-xl'"
+      :class="$q.screen.lt.sm || $route.name == 'campaign' ? 'q-ma-sm q-px-sm' : 'q-ma-xl q-px-xl'"
     >
-      <p @click="goBack()" class="text-grey-8 text-h6 cursor-pointer">
+      <p @click="goBack()" class="text-grey-8 q-my-md text-h6 cursor-pointer">
         <q-icon name="navigate_before" />Back
       </p>
-      <p class="text-h3 text-weight-light">Add To Do</p>
-      <div class="q-mt-xl">
-        <q-form ref="add_form" class="row q-col-gutter-x-md q-col-gutter-y-lg">
+      <p class="text-h4 text-weight-light">Add To Do</p>
+      <div class="q-mt-sm">
+        <q-form ref="add_form" class="row q-col-gutter-x-md q-col-gutter-y-xs">
           <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-            <p class="text-h6 text-weight-light">Task Name</p>
+            <p class="text-body1 text-weight-light">Task Name</p>
             <q-input
               v-model="todo.title"
               filled
@@ -26,7 +26,7 @@
             />
           </div>
           <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-            <p class="text-h6 text-weight-light">Date And Time</p>
+            <p class="text-body1 text-weight-light">Date And Time</p>
             <q-input
               v-model="todo.date"
               filled
@@ -39,7 +39,7 @@
             />
           </div>
           <div class="col-12">
-            <p class="text-h6 text-weight-light">Details</p>
+            <p class="text-body1 text-weight-light">Details</p>
             <q-input
               v-model="todo.task"
               label="Details"
@@ -52,7 +52,7 @@
             />
           </div>
           <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-            <p class="text-h6 text-weight-light">Assign To User</p>
+            <p class="text-body1 text-weight-light">Assign To User</p>
             <q-select
               filled
               v-model="selected_users"
@@ -80,8 +80,7 @@
                 size="lg"
                 @click="goBack()"
                 class="q-mt-xl text-black float-right"
-                style="background: #F2F2F2"
-                rounded
+                color="grey-2"
                 padding="8px 40px"
                 unelevated
                 no-caps
@@ -91,8 +90,7 @@
                 size="lg"
                 @click="save()"
                 class="q-mt-xl text-white float-right"
-                style="background: #4F4F4F"
-                rounded
+                color="grey-8"
                 padding="8px 40px"
                 unelevated
                 no-caps
