@@ -14,7 +14,7 @@
 </template>
 <script>
 import TodoCreateButton from './todo-create-button.vue'
-import searchPage from '../searchPage.vue'
+import searchPage from '../search-page.vue'
 import TodoTask from './todo-task.vue'
 export default {
   props: ['todos', 'createTodo', 'editTodo'],

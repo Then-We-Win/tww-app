@@ -13,7 +13,7 @@ import TodoCreateButton from '../components/todo/todo-create-button.vue'
 import TodoList from '../components/todo/todo-list.vue'
 import TodoNew from '../components/todo/todo-new.vue'
 import TodoEdit from '../components/todo/todo-edit.vue'
-import pageHeader from '../components/pageHeader.vue'
+import pageHeader from '../components/page-header.vue'
 
 export default {
   components: { Todo, TodoCreateButton, TodoList, TodoNew, TodoEdit, pageHeader },
