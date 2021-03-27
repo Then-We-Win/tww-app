@@ -1,156 +1,206 @@
 <template>
   <q-page class="q-pa-sm">
-    <div class="row q-col-gutter-sm">
-      <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12">
-        <q-card class="card-bg text-white">
-          <q-card-section class="text-h6 ">
-            <div class="text-h6">Edit Profile</div>
-            <div class="text-subtitle2">Complete your profile</div>
-          </q-card-section>
-          <q-card-section class="q-pa-sm">
-            <q-list class="row">
-              <q-item class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <q-item-section side>
-                  <q-avatar size="100px">
-                    <img src="https://cdn.quasar.dev/img/boy-avatar.png">
-                  </q-avatar>
-                </q-item-section>
-                <q-item-section>
-                  <q-btn label="Add Photo" class="text-capitalize" rounded color="info" style="max-width: 120px"></q-btn>
-                </q-item-section>
-              </q-item>
-
-              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <q-item-section>
-                  <q-input dark color="white" dense v-model="user_details.user_name" label="User Name"/>
-                </q-item-section>
-              </q-item>
-              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <q-item-section>
-                  <q-input dark color="white" dense v-model="user_details.email" label="Email Address"/>
-                </q-item-section>
-              </q-item>
-              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <q-item-section>
-                  <q-input dark color="white" dense v-model="user_details.first_name" label="First Name"/>
-                </q-item-section>
-              </q-item>
-              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <q-item-section>
-                  <q-input dark color="white" dense v-model="user_details.last_name" label="Last Name"/>
-                </q-item-section>
-              </q-item>
-              <q-item class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <q-item-section>
-                  <q-input dark color="white" autogrow dense v-model="user_details.address" label="Address"/>
-                </q-item-section>
-              </q-item>
-              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <q-item-section>
-                  <q-input dark color="white" dense v-model="user_details.city" label="City"/>
-                </q-item-section>
-              </q-item>
-              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <q-item-section>
-                  <q-input dark color="white" dense v-model="user_details.post_code" label="Postal Code"/>
-                </q-item-section>
-              </q-item>
-              <q-item class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <q-item-section>
-                  <q-input dark color="white" type="textarea" dense v-model="user_details.about" label="About"/>
-                </q-item-section>
-              </q-item>
-            </q-list>
-          </q-card-section>
-          <q-card-actions align="right">
-            <q-btn class="text-capitalize bg-info text-white">Update User Info</q-btn>
-          </q-card-actions>
-        </q-card>
-      </div>
-      <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
-
-        <q-card class="card-bg text-white">
-          <q-card-section class="text-center bg-transparent">
-            <q-avatar size="100px" class="shadow-10">
-              <img src="../statics/profile.svg">
-            </q-avatar>
-            <div class="text-h6 q-mt-md">Welcome!</div>
-          </q-card-section>
-          <q-card-section>
-            <div class="text-body2 text-justify">
-              Welcome to Then We Win! Your personal information <b>must</b> be valid and accurate.
-              Failing to do so violates our Terms of Service.
-              This information will never be shared with others.
+    <div>
+      <q-parallax>
+        <img src="https://cdn.quasar.dev/img/parallax2.jpg" />
+      </q-parallax>
+    </div>
+    <div class="q-ml-xl">
+      <div class="q-ml-xl">
+        <div class="row q-col-gutter-md">
+          <div class="col-4 q-pr-xl">
+            <div class="profile-image">
+              <q-avatar size="150px" class="bg-white">
+                <img
+                  src="https://cdn.quasar.dev/img/avatar.png"
+                  class="q-pa-xs"
+                />
+              </q-avatar>
+              <div class="q-mt-md">
+                <div class="text-weight-bold text-h5">Jhon Wick</div>
+                <div class="text-body1 q-my-sm">@jhon.wick</div>
+                <div class="q-my-md text-body1">
+                  Lorem ipsum is a placeholder text commonly used to demonstrate
+                  the visual form of a document or a typeface without relying on
+                  meaningful content.
+                </div>
+                <div class="q-my-sm">
+                  <q-icon name="fas fa-map-marker-alt" size="20px" />
+                  <span class="q-ml-sm text-body1 text-weight-bold">
+                    Pennsylvania
+                  </span>
+                  <span class="float-right text-body1 text-weight-bold">
+                    www.campaign.com
+                  </span>
+                </div>
+                <div class="q-my-sm">
+                  <q-icon name="fas fa-calendar-alt" size="20px" />
+                  <span class="q-ml-sm text-body1">Created January 2016</span>
+                </div>
+              </div>
             </div>
-          </q-card-section>
-        </q-card>
-      </div>
+          </div>
+          <div class="col-8">
+            <div class="q-ml-xl q-my-xl">
+              <div
+                class="inline-block q-mr-xl text-subtitle2 text-grey text-weight-light"
+              >
+                <span class="q-pr-sm text-weight-bold text-body1 text-black">
+                  15
+                </span>
+                Posts
+              </div>
+              <div
+                class="inline-block q-mr-xl text-subtitle2 text-grey text-weight-light"
+              >
+                <span class="q-pr-sm text-weight-bold text-body1 text-black">
+                  30.20k
+                </span>
+                Followers
+              </div>
+              <div
+                class="inline-block q-mr-xl text-subtitle2 text-grey text-weight-light"
+              >
+                <span class="q-pr-sm text-weight-bold text-body1 text-black">
+                  100
+                </span>
+                Following
+              </div>
 
-      <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12">
-        <q-card class="card-bg text-white">
-          <q-card-section class="text-h6 q-pa-sm">
-            <div class="text-h6">Change Password</div>
-          </q-card-section>
-          <q-card-section class="q-pa-sm row">
-            <q-item class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-              <q-item-section>
-                Current Password
-              </q-item-section>
-            </q-item>
-            <q-item class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-              <q-item-section>
-                <q-input type="password" dark dense outlined color="white" round v-model="password_dict.current_password"
-                         label="Current Password"/>
-              </q-item-section>
-            </q-item>
-            <q-item class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-              <q-item-section>
-                New Password
-              </q-item-section>
-            </q-item>
-            <q-item class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-              <q-item-section>
-                <q-input type="password" dark dense outlined color="white" round v-model="password_dict.new_password"
-                         label="New Password"/>
-              </q-item-section>
-            </q-item>
-            <q-item class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-              <q-item-section>
-                Confirm New Password
-              </q-item-section>
-            </q-item>
-            <q-item class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-              <q-item-section>
-                <q-input type="password" dark dense outlined round color="white" v-model="password_dict.confirm_new_password"
-                         label="Confirm New Password"/>
-              </q-item-section>
-            </q-item>
-          </q-card-section>
-          <q-card-actions align="right">
-            <q-btn class="text-capitalize bg-info text-white">Change Password</q-btn>
-          </q-card-actions>
+              <q-btn
+                unelevated
+                color="grey-6"
+                to="/edit-account"
+                class="float-right q-mr-xl"
+              >
+                Edit Profile
+              </q-btn>
+              <div>
+                <q-tabs v-model="tab" dense align="left" class="q-mt-xl">
+                  <q-tab
+                    name="my_campaign"
+                    label="My Campaigns"
+                    class=""
+                    no-caps
+                  ></q-tab>
+                  <q-tab
+                    name="supporting_campaigns"
+                    label="Supporting Campaigns"
+                    no-caps
+                  ></q-tab>
+                </q-tabs>
 
-        </q-card>
+                <q-separator></q-separator>
+
+                <q-tab-panels v-model="tab" class="bg-transparent" animated>
+                  <q-tab-panel name="my_campaign" class="q-px-none">
+                    <q-list>
+                      <q-item
+                        class="row q-px-none q-mb-md"
+                        v-for="(data, index) in tabPanelData"
+                        :key="index"
+                      >
+                        <q-item-section avatar>
+                          <img :src="data.img" width="150px" />
+                        </q-item-section>
+
+                        <q-item-section top class="q-px-md justify-between">
+                          <div>
+                            <q-item-label class="text-weight-bold">
+                              {{ data.description }}
+                            </q-item-label>
+                            <q-item-label class="text-grey"
+                              >{{ data.date }}
+                            </q-item-label>
+                          </div>
+                          <q-item-label class="text-grey"> Draft </q-item-label>
+                        </q-item-section>
+
+                        <q-item-section side top class="q-ml-xl">
+                          <q-btn
+                            dense
+                            flat
+                            icon="fas fa-ellipsis-v"
+                            size="10px"
+                          >
+                            <q-menu
+                              transition-show="jump-down"
+                              transition-hide="jump-up"
+                            >
+                              <q-list style="min-width: 200px">
+                                <q-item clickable>
+                                  <q-item-section class="text-grey-8">
+                                    Edit
+                                  </q-item-section>
+                                </q-item>
+                                <q-item clickable>
+                                  <q-item-section class="text-grey-8">
+                                    Delete
+                                  </q-item-section>
+                                </q-item>
+                              </q-list>
+                            </q-menu>
+                          </q-btn>
+                        </q-item-section>
+                      </q-item>
+                    </q-list>
+                  </q-tab-panel>
+                  <q-tab-panel name="supporting_campaigns">
+                    <div class="text-h6">Supporting Campaigns</div>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </q-tab-panel>
+                </q-tab-panels>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </q-page>
 </template>
 
 <script>
-    export default {
-        name: "UserProfile",
-        data() {
-            return {
-                user_details: {},
-                password_dict: {}
-            }
+export default {
+  name: "UserProfile",
+  data() {
+    return {
+      tab: "my_campaign",
+      tabPanelData: [
+        {
+          img: "https://cdn.quasar.dev/img/avatar.png",
+          description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          date: "Sat, Aug 31 9.30AM"
+        },
+        {
+          img: "https://cdn.quasar.dev/img/avatar.png",
+          description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          date: "Sat, Aug 31 9.30AM"
+        },
+        {
+          img: "https://cdn.quasar.dev/img/avatar.png",
+          description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          date: "Sat, Aug 31 9.30AM"
+        },
+        {
+          img: "https://cdn.quasar.dev/img/avatar.png",
+          description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          date: "Sat, Aug 31 9.30AM"
         }
-    }
+      ]
+    };
+  }
+};
 </script>
 
-<style scoped>
-
-  .card-bg {
-    background-color: #162b4d;
-  }
+<style lang="stylus" scoped>
+.profile-image {
+  position sticky
+  top 0
+  padding-top 64px
+  margin-top -140px
+}
 </style>

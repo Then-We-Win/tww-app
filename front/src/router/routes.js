@@ -7,6 +7,7 @@ const routes = [
     children: [
       {path: '', name: 'home', component: () => import('pages/Home.vue')},
       {path: '/account', name:'account', component: () => import('pages/Account.vue')},
+      {path: '/edit-account', name:'edit-account', component: () => import('pages/edit-account.vue')},
       {path: '/conversations', name: 'conversations', component: () => import('pages/Messages.vue')},
       {path: '/updates', name: 'updates', component: () => import('pages/Cards.vue')},
       {path: '/Tables', name: 'tables', component: () => import('pages/Tables.vue')},
