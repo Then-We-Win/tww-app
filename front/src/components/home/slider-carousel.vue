@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  name: "SliderCarousel",
+  name: "slidercarousel",
   props: {
     goto: {
       type: String,

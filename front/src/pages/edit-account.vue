@@ -34,28 +34,28 @@
       </q-avatar>
       <div class="row q-col-gutter-lg q-mt-xl q-pt-xl">
         <div class="col-6 q-mb-md q-mb-md">
-          <div class="text-grey-5 text-weight-bold text-body1">First name</div>
+          <div class="text-grey-5 text-weight-bold text-body1"> {{ $t('form.first_name') }} </div>
           <q-input type="text" v-model="fname" filled />
         </div>
         <div class="col-6 q-mb-md">
-          <div class="text-grey-5 text-weight-bold text-body1">Last name</div>
+          <div class="text-grey-5 text-weight-bold text-body1"> {{ $t('form.last_name') }} </div>
           <q-input type="text" v-model="lname" filled />
         </div>
         <div class="col-6 q-mb-md">
           <div class="text-grey-5 text-weight-bold text-body1">
-            Email address
+             {{ $t('form.email_address') }} 
           </div>
           <q-input type="email" v-model="email" filled />
         </div>
         <div class="col-6 q-mb-md">
           <div class="text-grey-5 text-weight-bold text-body1">
-            Change location
+             {{ $t('pages.edit.account.change_location') }} 
           </div>
           <q-input type="text" v-model="location" filled />
         </div>
         <div class="col-6 q-mb-md">
           <div class="text-grey-5 text-weight-bold text-body1">
-            Phone number
+             {{ $t('form.phone_no') }} 
           </div>
           <q-input
             filled
@@ -65,12 +65,12 @@
           />
         </div>
         <div class="col-6 q-mb-md">
-          <div class="text-grey-5 text-weight-bold text-body1">Website</div>
+          <div class="text-grey-5 text-weight-bold text-body1"> {{ $t('pages.contact.website') }} </div>
           <q-input type="text" v-model="website" filled />
         </div>
       </div>
       <div>
-        <div class="text-grey-5 text-weight-bold text-body1">Add bio</div>
+        <div class="text-grey-5 text-weight-bold text-body1">{{ $t('pages.edit.account.add_bio') }}</div>
         <q-input type="textarea" v-model="bio" filled />
       </div>
       <div class="text-right q-mt-md">

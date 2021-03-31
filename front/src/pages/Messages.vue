@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-md">
-    <page-header text="Messages"></page-header>
+    <page-header :text="$t('pages.messages.title')"></page-header>
     <div class="row q-col-gutter-md q-mt-md">
       <div class="q-pa-sm col-md-4 col-12">
         <search-page v-on:doSearch="search4user"></search-page>
@@ -14,8 +14,8 @@
 </template>
 
 <script>
-  import pageHeader from '../components/page-header';
-  import searchPage from '../components/search-page';
+  import PageHeader from '../components/page-header';
+  import SearchPage from '../components/search-page';
   import MessagesUserList from '../components/messages/user-list';
   import MessagesConversation from '../components/messages/conversation';
 
@@ -27,8 +27,8 @@
   export default {
     name: "Messages",
     components: {
-      pageHeader,
-      searchPage,
+      PageHeader,
+      SearchPage,
       MessagesUserList,
       MessagesConversation
     },

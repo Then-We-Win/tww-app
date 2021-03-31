@@ -3,30 +3,30 @@
     <q-spinner-pie v-if="loading" color="light-blue" size="5em" />
     <div v-else>
       <div>
-        <HomeTitle title="Trending Campaign">
+        <home-title title="Trending Campaign">
           <template #description>
             {{ description }}
           </template>
-        </HomeTitle>
-        <SliderCarousel :sliderData="sliderData" :goto="campaign" />
+        </home-title>
+        <slider-carousel :sliderData="sliderData" goto="campaign" />
       </div>
 
       <div>
-        <HomeTitle title="Top Campaign">
+        <home-title title="Top Campaign">
           <template #description>
             {{ description }}
           </template>
-        </HomeTitle>
-        <SliderCarousel :sliderData="sliderData" />
+        </home-title>
+        <slider-carousel :sliderData="sliderData" />
       </div>
 
       <div>
-        <HomeTitle title="For You">
+        <home-title title="For You">
           <template #description>
             {{ description }}
           </template>
-        </HomeTitle>
-        <SliderCarousel :sliderData="sliderData" />
+        </home-title>
+        <slider-carousel :sliderData="sliderData" />
       </div>
     </div>
   </div>

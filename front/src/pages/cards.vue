@@ -210,7 +210,7 @@
 <script>
     import BasicCard from "layouts/basic-card";
     export default {
-        name: "DashboardPublic",
+        name: "Cards",
         components: {BasicCard},
         data() {
             return {
