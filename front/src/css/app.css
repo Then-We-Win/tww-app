@@ -55,3 +55,7 @@
 .rounded-none{
   border-radius: 0px;
 }
+.q-carousel__control.q-carousel__arrow.q-carousel__next-arrow.q-carousel__next-arrow--horizontal.absolute.flex.flex-center,
+.q-carousel__control.q-carousel__arrow.q-carousel__prev-arrow.q-carousel__prev-arrow--horizontal.absolute.flex.flex-center{
+ display: none;
+}

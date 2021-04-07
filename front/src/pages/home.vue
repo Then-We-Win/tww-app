@@ -4,7 +4,7 @@
       <div class="text-center">
         <img style="width: 150px" src="../statics/weed.png" />
       </div>
-      <div class="text-h5 q-py-sm text-center">
+      <div class="text-h5 q-py-xs text-center">
         {{ $t("pages.campaigns.not_part_of") }}
         <br />
         {{ $t("pages.campaigns.choose_one") }}

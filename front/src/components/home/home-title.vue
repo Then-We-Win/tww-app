@@ -1,6 +1,6 @@
 <template>
-  <div class="q-ml-xl q-pl-lg q-pr-sm">
-    <div class="inline-block ">
+  <div class="row q-ml-xl q-mb-md q-px-lg justify-between items-center">
+    <div class="col-10">
       <div class="text-h4 text-weight-light q-mb-sm">
         {{ title }}
       </div>
@@ -9,8 +9,8 @@
       </div>
     </div>
     <div
-      @click="$router.replace('/all-campaign')"
-      class="inline-block float-right cursor-pointer q-pb-md q-mr-xl"
+      @click="$router.replace('/campaigns')"
+      class="cursor-pointer q-px-md col-2 text-right"
     >
       View all
     </div>

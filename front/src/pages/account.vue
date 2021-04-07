@@ -1,12 +1,12 @@
 <template>
-  <q-page class="q-pa-sm">
+  <q-page>
     <div>
-      <q-parallax>
+      <q-parallax :height="150">
         <img src="https://cdn.quasar.dev/img/parallax2.jpg" />
       </q-parallax>
     </div>
-    <div class="q-ml-xl">
-      <div class="q-ml-xl">
+    <div class="q-mx-xl">
+      <div>
         <div class="row q-col-gutter-md">
           <div class="col-4 q-pr-xl">
             <div class="profile-image">
@@ -16,7 +16,7 @@
                   class="q-pa-xs"
                 />
               </q-avatar>
-              <div class="q-mt-md">
+              <div class="q-mt-md q-pl-sm">
                 <div class="text-weight-bold text-h5">Jhon Wick</div>
                 <div class="text-body1 q-my-sm">@jhon.wick</div>
                 <div class="q-my-md text-body1">
@@ -28,11 +28,14 @@
                   <q-icon name="fas fa-map-marker-alt" size="20px" />
                   <span class="q-ml-sm text-body1 text-weight-bold">
                     Pennsylvania
-                  </span>
-                  <span class="float-right text-body1 text-weight-bold">
+                  </span> 
+                </div>
+                 <div class="q-my-md">
+                   <q-icon name="fas fa-globe" size="20px" />
+                  <span class="text-body1 q-ml-sm text-weight-bold">
                     www.campaign.com
                   </span>
-                </div>
+                </div> 
                 <div class="q-my-sm">
                   <q-icon name="fas fa-calendar-alt" size="20px" />
                   <span class="q-ml-sm text-body1">Created January 2016</span>
@@ -93,7 +96,7 @@
                 <q-separator></q-separator>
 
                 <q-tab-panels v-model="tab" class="bg-transparent" animated>
-                  <q-tab-panel name="my_campaign" class="q-px-none">
+                  <q-tab-panel name="my_campaign">
                     <q-list>
                       <q-item
                         class="row q-px-none q-mb-md"
@@ -113,7 +116,7 @@
                               >{{ data.date }}
                             </q-item-label>
                           </div>
-                          <q-item-label class="text-grey"> {{ $t('pages.common.draft') }} </q-item-label>
+                          <q-item-label class="text-grey"> {{ $t('common.draft') }} </q-item-label>
                         </q-item-section>
 
                         <q-item-section side top class="q-ml-xl">
@@ -130,12 +133,12 @@
                               <q-list style="min-width: 200px">
                                 <q-item clickable>
                                   <q-item-section class="text-grey-8">
-                                    {{ $t('pages.common.edit') }}
+                                    {{ $t('common.edit') }}
                                   </q-item-section>
                                 </q-item>
                                 <q-item clickable>
                                   <q-item-section class="text-grey-8">
-                                    {{ $t('pages.common.delete') }}
+                                    {{ $t('common.delete') }}
                                   </q-item-section>
                                 </q-item>
                               </q-list>

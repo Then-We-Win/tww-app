@@ -18,8 +18,8 @@
 <script>
 import axios from "axios";
 import MessagesSubheader from "./sub-header";
-import MessagesMessage from "./message";
-import MessagesInput from "./input";
+import MessagesMessage from "./Message";
+import MessagesInput from "./Input";
 
 // We're using sample data here. TODO: Model will provide the data from the DB
 import * as myData from "../../model/messages.js";

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="justify-center">
     <q-spinner-pie v-if="loading" color="light-blue" size="5em" />
     <div v-else>
       <div>
@@ -8,7 +8,7 @@
             {{ description }}
           </template>
         </home-title>
-        <slider-carousel :sliderData="sliderData" goto="campaign" />
+        <slider-carousel :sliderData="sliderData" goto="campaign" :size="chunk_size" />
       </div>
 
       <div>
@@ -17,7 +17,7 @@
             {{ description }}
           </template>
         </home-title>
-        <slider-carousel :sliderData="sliderData" />
+        <slider-carousel :sliderData="sliderData" :size="chunk_size"/>
       </div>
 
       <div>
@@ -26,7 +26,7 @@
             {{ description }}
           </template>
         </home-title>
-        <slider-carousel :sliderData="sliderData" />
+        <slider-carousel :sliderData="sliderData" :size="chunk_size"/>
       </div>
     </div>
   </div>
@@ -38,6 +38,11 @@ export default {
   components: {
     HomeTitle,
     SliderCarousel
+  },
+  watch: {
+    '$q.screen.width' (val) {
+      this.handleSlider(val)
+    }
   },
   data() {
     return {
@@ -52,12 +57,20 @@ export default {
     };
   },
   methods: {
-    async carouselSlider() {
+    handleSlider (val) {
+      this.chunk_size = 4
+      if (val <= 720 && val > 540) {
+        this.chunk_size = 3
+      } else if (val <= 539 && val > 401) {
+        this.chunk_size = 2
+      } else if (val <= 400) {
+        this.chunk_size = 1
+      }
+
+      this.sliderData = this.handleChunk(this.originalChunk)
+    },
+    handleChunk (campaignData) {
       var results = [];
-      this.loading = true;
-      const campaignData = await this.$axios.get(
-        this.$store.state.system.api.base + "/campaigns"
-      );
       const data = [
         ...campaignData.data,
         ...campaignData.data,
@@ -65,19 +78,25 @@ export default {
         ...campaignData.data
       ];
       data.forEach((element, index) => {
-        setTimeout(() => {
-          element.id = Date.now() + index;
-        }, 300);
+        element.id = Date.now() + index;
       });
 
       while (data.length) {
         results.push(data.splice(0, this.chunk_size));
       }
       return results;
+    },
+    async carouselSlider() {
+      this.loading = true;
+      const campaignData = await this.$axios.get(
+        this.$store.state.system.api.base + "/campaigns"
+      );
+      this.originalChunk = campaignData
     }
   },
   async mounted() {
-    this.sliderData = await this.carouselSlider();
+    await this.carouselSlider();
+    this.handleSlider(this.$q.screen.width)
     this.loading = false;
   }
 };
