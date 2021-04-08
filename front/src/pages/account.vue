@@ -1,14 +1,14 @@
 <template>
   <q-page>
     <div>
-      <q-parallax :height="150">
+      <q-parallax :height="150" :class=" $q.screen.gt.md ? '' : 'text justify-center'">
         <img src="https://cdn.quasar.dev/img/parallax2.jpg" />
       </q-parallax>
     </div>
     <div class="q-mx-xl">
       <div>
-        <div class="row q-col-gutter-md">
-          <div class="col-4 q-pr-xl">
+        <div :class="$q.screen.gt.md ? 'row q-col-gutter-md' : 'column q-col-gutter-md'">
+          <div :class=" $q.screen.gt.md ? 'col-4 q-pr-xl' : 'text justify-center'">
             <div class="profile-image">
               <q-avatar size="150px" class="bg-white">
                 <img
@@ -43,8 +43,9 @@
               </div>
             </div>
           </div>
-          <div class="col-8">
-            <div class="q-ml-xl q-my-xl">
+          <div class="col-8"> 
+            <div class="row">          
+                <div :class="$q.screen.gt.md ? 'q-ml-xl q-my-xl' : ''">
               <div
                 class="inline-block q-mr-xl text-subtitle2 text-grey text-weight-light"
               >
@@ -74,12 +75,12 @@
                 unelevated
                 color="grey-6"
                 to="/edit-account"
-                class="float-right q-mr-xl"
+                :class="$q.screen.gt.md ? 'float-right q-mr-lg' : 'text justify-center q-mt-sm'"
               >
                 {{ $t('pages.account.edit_profile') }}
               </q-btn>
               <div>
-                <q-tabs v-model="tab" dense align="left" class="q-mt-xl">
+                <q-tabs v-model="tab" dense align="left" :class="$q.screen.gt.md ? 'q-mt-xl' : 'q-ml-none'">
                   <q-tab
                     name="my_campaign"
                     :label="$t('pages.account.my_campaigns')"
@@ -95,7 +96,7 @@
 
                 <q-separator></q-separator>
 
-                <q-tab-panels v-model="tab" class="bg-transparent" animated>
+                <q-tab-panels v-model="tab" class="bg-transparent" :class="$q.screen.gt.md ? '' : 'column' " animated>
                   <q-tab-panel name="my_campaign">
                     <q-list>
                       <q-item
@@ -103,11 +104,11 @@
                         v-for="(data, index) in tabPanelData"
                         :key="index"
                       >
-                        <q-item-section avatar>
+                        <q-item-section avatar :class="$q.screen.gt.md ? '' : 'col' ">
                           <img :src="data.img" width="150px" />
                         </q-item-section>
 
-                        <q-item-section top class="q-px-md justify-between">
+                        <q-item-section top class="q-px-md justify-between" :class="$q.screen.gt.md ? '' : 'col' ">
                           <div>
                             <q-item-label class="text-weight-bold">
                               {{ data.description }}
@@ -155,6 +156,9 @@
                 </q-tab-panels>
               </div>
             </div>
+            
+</div>
+
           </div>
         </div>
       </div>
