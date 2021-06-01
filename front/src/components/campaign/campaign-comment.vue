@@ -9,7 +9,7 @@
       label="Comment"
     />
     <div class="row q-pt-sm justify-end">
-      <q-btn no-caps class="item-end" color="grey" outlined flat style="background: #f3f3f3" label="Submit Comment" />
+      <q-btn no-caps class="item-end" color="grey-3" text-color="grey-6" outline label="Submit Comment" />
     </div>
   </div>
 </template>

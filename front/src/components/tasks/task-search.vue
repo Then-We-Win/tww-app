@@ -4,7 +4,6 @@
     standout="bg-primary"
     v-model="search"
     placeholder="Search Tasks"
-    style="width:45%"
   >
     <template v-slot:prepend>
       <q-icon v-if="search === ''" name="search" />

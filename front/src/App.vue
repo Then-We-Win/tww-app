@@ -70,7 +70,7 @@ export default {
               {icon: 'home', text: 'Home', color: 'text-grey-8', action: 'app.route', payload: 'home'},
               {icon: 'campaign', text: 'Campaigns', color: 'text-grey-8', action: 'app.route', payload: 'campaigns'},
               {icon: 'message', text: 'Messages', color: 'text-grey-8', action: 'app.route', payload: 'conversations'},
-              {icon: 'library_add_check', text: 'Tasks', color: 'text-grey-8', action: 'app.route', payload: 'todo'},
+              {icon: 'library_add_check', text: 'Tasks', color: 'text-grey-8', action: 'app.route', payload: 'task'},
               {type: 'separator'},
               {icon: 'live_help', text: 'Help', color: 'text-grey-8', action: 'app.route', payload: 'invite'},
               {icon: 'book', text: 'Learn', color: 'text-grey-8', action: 'app.route', payload: 'learn'},

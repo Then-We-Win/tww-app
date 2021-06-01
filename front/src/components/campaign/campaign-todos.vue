@@ -4,7 +4,7 @@
 
           <div class="row">
             <div class="col-6 col-md-6">
-              <div class="q-pt-md sidebar_headings">To Do List</div>
+              <div class="q-pt-md sidebar_headings">Task List</div>
             </div>
             <div class="col-6 col-md-6 row justify-end">
               <div class="q-pt-md sidebar_headings">
@@ -24,7 +24,7 @@
             <div class="row">
               <div class="col-6 col-md-6">
                 <div class="">
-                  <q-checkbox dense size="lg" v-model="right" label="Create To Do List" />
+                  <q-checkbox dense size="lg" v-model="right" label="Create Task List" />
                 </div>
               </div>
               <div class="col-6 col-md-6 row justify-end">
@@ -115,7 +115,7 @@
 
 <script>
 export default {
-name: 'campaign_todos',
+name: 'campaign_tasks',
   data () {
     return {
       right: ''

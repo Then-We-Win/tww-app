@@ -1,7 +1,7 @@
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/simple.vue'),
+    component: () => import('layouts/Simple.vue'),
     props: true,
     meta: { requiresLogin:  true },
     children: [
@@ -16,25 +16,25 @@ const routes = [
       {path: '/learn', name: 'learn', component: () => import('pages/pagination.vue')},
       {path: '/tasks', name: 'tasks', component: () => import('pages/task-board.vue')},
       {path: '/invite', name: 'invite', component: () => import('pages/invite.vue')},
-      {path: '/campaign', name: 'campaign', component: () => import('pages/campaign.vue')},
+      {path: '/campaign', name: 'campaign', component: () => import('components/campaign/campaign.vue')},
       {path: '/campaigns', name: 'campaigns', component: () => import('pages/campaigns.vue')},
-      {path: '/tasks', name: 'todo', component: () => import('pages/task.vue')},
+      {path: '/tasks', name: 'task', component: () => import('pages/task.vue')},
       {path: '/dashboard', name: 'dashboard', component: () => import('pages/dashboard.vue')}
     ]
   },
   // Public routes...
   {
     path: '/',
-    component: () => import('layouts/nothing.vue'),
+    component: () => import('layouts/Nothing.vue'),
     children: [
-      { name: 'login', path: '/login', component: () => import('pages/login.vue') },
+      { name: 'login', path: '/login', component: () => import('pages/Login.vue') },
       { name: 'lock', path: '/lock', component: () => import('pages/lock-screen.vue') }
     ]
   },
   // Everything else...
   {
     path: '*',
-    component: () => import('layouts/simple.vue'),
+    component: () => import('layouts/Simple.vue'),
     children: [
       { name: 'notFound', path: '/not-found', component: () => import('pages/not-found.vue') }
     ]
@@ -44,9 +44,9 @@ const routes = [
 // if (process.env.MODE !== 'ssr') {
 //   routes.push({
 //     path: '*',
-//     component: () => import('layouts/simple.vue'),
+//     component: () => import('layouts/Simple.vue'),
 //     children: [
-//       {path: '', component: () => import('pages/not-found.vue')}
+//       {path: '', component: () => import('pages/NotFound.vue')}
 //     ]
 //   })
 // }

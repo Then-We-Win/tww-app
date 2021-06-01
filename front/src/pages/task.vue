@@ -1,9 +1,24 @@
 <template>
   <q-page class="q-pa-md">
     <page-header text="My assigned tasks"></page-header>
-    <task-list :editTodo='editTodo' :createTodo='createTodo' :todos='todos' v-if="!edit_todo && !new_todo" class="q-pa-sm q-mt-sm full-width"></task-list>
-    <task-new :saveTodo='saveTodo' :showTodoLandingPage='showTodoLandingPage' v-if="new_todo"></task-new>
-    <task-edit :saveEdit='saveEdit' :showTodoLandingPage='showTodoLandingPage' :todo='to_edit_todo' v-if="edit_todo"></task-edit>
+    <task-list
+      :editTask="editTask"
+      :createTask="createTask"
+      :tasks="tasks"
+      v-if="!edit_task && !new_task"
+      class="q-pa-sm q-mt-sm full-width"
+    ></task-list>
+    <task-new
+      :saveTask="saveTask"
+      :showTaskLandingPage="showTaskLandingPage"
+      v-if="new_task"
+    ></task-new>
+    <task-edit
+      :saveEdit="saveEdit"
+      :showTaskLandingPage="showTaskLandingPage"
+      :task="to_edit_task"
+      v-if="edit_task"
+    ></task-edit>
   </q-page>
 </template>
 
@@ -18,68 +33,76 @@ export default {
   name: "TreeTable",
   data(){
     return {
-      edit_todo: false,
-      new_todo: false,
-      to_edit_todo: null,
+      edit_task: false,
+      new_task: false,
+      to_edit_task: null,
       edit_index: null,
-      todos: [
-          {
-              completed: false,
-              title: 'Create a Todo List',
-              date: '4:12pm, 12th December to 12:00pm, 14th Decemeber',
-              task: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.'
-          },
-          {
-              completed: false,
-              title: 'Visit TV Anchor',
-              date: '4:12pm, 12th December to 12:00pm, 14th Decemeber',
-              task: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.'
-          },
-          {
-              completed: false,
-              title: 'Share campaigns to social media',
-              date: '4:12pm, 12th December to 12:00pm, 14th Decemeber',
-              task: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.'
-          },
-          {
-              completed: false,
-              title: 'Create a Todo List',
-              date: '4:12pm, 12th December to 12:00pm, 14th Decemeber',
-              task: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.'
-          },
-          {
-              completed: false,
-              title: 'Create a Todo List',
-              date: '4:12pm, 12th December to 12:00pm, 14th Decemeber',
-              task: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.'
-          },
-      ]
-    }
+      tasks: [
+        {
+          completed: false,
+          title: "Create a Task List",
+          date: "4:12pm, 12th December to 12:00pm, 14th Decemeber",
+          task:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.",
+        },
+        {
+          completed: false,
+          title: "Visit TV Anchor",
+          date: "4:12pm, 12th December to 12:00pm, 14th Decemeber",
+          task:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.",
+        },
+        {
+          completed: false,
+          title: "Share campaigns to social media",
+          date: "4:12pm, 12th December to 12:00pm, 14th Decemeber",
+          task:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.",
+        },
+        {
+          completed: false,
+          title: "Create a Task List",
+          date: "4:12pm, 12th December to 12:00pm, 14th Decemeber",
+          task:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.",
+        },
+        {
+          completed: false,
+          title: "Create a Task List",
+          date: "4:12pm, 12th December to 12:00pm, 14th Decemeber",
+          task:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et imperdiet augue, nec tincidunt dolor. Praesent ut faucibus magna. Pellentesque ultricies odio eu massa accumsan element quis dolor aliquam pellentesque. Mauris eget.",
+        },
+      ],
+    };
   },
   methods: {
-    createTodo(){
-      this.new_todo = true
+    createTask() {
+      this.new_task = true;
     },
-    showTodoLandingPage(){
-      this.new_todo = false
-      this.edit_todo = false
+    showTaskLandingPage() {
+      this.new_task = false;
+      this.edit_task = false;
     },
-    saveTodo(todo){
-      this.todos.unshift(task)
-      this.new_todo = false
+    saveTask(task) {
+      this.tasks.unshift(task);
+      this.new_task = false;
     },
-    editTodo(index){
-      this.edit_index = index
-      this.to_edit_todo = this.todos[index]
-      this.edit_todo = true
+    editTask(index) {
+      this.edit_index = index;
+      this.to_edit_task = this.tasks[index];
+      this.edit_task = true;
     },
-    saveEdit(todo){
-      this.todos[this.edit_index] = task
-      this.edit_todo = false
-    }
+    saveTask(task){
+      this.tasks.unshift(task)
+      this.new_task = false
+    },
+    saveEdit(task) {
+      this.tasks[this.edit_index] = task;
+      this.edit_task = false;
+    },
   },
-}
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
