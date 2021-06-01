@@ -5,6 +5,7 @@ An OpenSource, enterprise-grade Vue.js, Quasar, Strapi and Kubernetes based plat
 ## Getting started
 You will need:
 
+
 * A device to code on (even a potato PC will work)
 * Git
 * Node.js
