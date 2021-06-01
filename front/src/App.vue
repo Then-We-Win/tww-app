@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import innerLoading from 'components/InnerLoading.vue'
+import InnerLoading from 'components/inner-loading.vue'
 export default {
   name: 'App',
-  components: { innerLoading },
+  components: { InnerLoading },
   events: {
     // Handles all login attempts..
     'app.login' (credentials) {
@@ -30,7 +30,7 @@ export default {
           console.log('Login error', JSON.parse(JSON.stringify(result)))
           this.$q.notify({ type: 'negative', message: 'Cannot log in' })
         })
-      
+
     },
     // Handles all logout attempts...
     'app.logout' () {

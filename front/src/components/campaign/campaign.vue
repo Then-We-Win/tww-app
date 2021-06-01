@@ -153,7 +153,7 @@ import wall from "components/wall/Wall.vue";
 import CampaignQuestion from "components/campaign/campaign-question.vue";
 import CampaignSupporters from "components/campaign/campaign-supporters.vue";
 import CampaignLeaders from "components/campaign/campaign-leaders.vue";
-import todo from "pages/Todo.vue";
+import todo from "pages/task.vue";
 import CampaignComment from "components/campaign/campaign-comment.vue";
 import CampaignCommentItem from "components/campaign/campaign-comment-item.vue";
 import CampaignSubheader from "components/campaign/campaign-subheader.vue";
