@@ -9,13 +9,13 @@
 </template>
 
 <script>
-  export default {
-    name: "MessagesHeader"
-  }
+export default {
+  name: "MessagesHeader"
+};
 </script>
 
 <style scoped>
 #msgHeader .q-toolbar {
-    min-height: 0;
+  min-height: 0;
 }
 </style>

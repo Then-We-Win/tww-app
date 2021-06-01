@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import PostCreate from "./PostCreate";
-import PostList from "./PostList";
+import PostCreate from './post-create';
+import PostList from './post-list';
 
 export default {
   name: "Wall",
