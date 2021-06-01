@@ -208,9 +208,9 @@
 </template>
 
 <script>
-    import BasicCard from "../../layouts/BasicCard";
+    import BasicCard from "../layouts/BasicCard";
     export default {
-        name: "DashboardPublic",
+        name: "Cards",
         components: {BasicCard},
         data() {
             return {

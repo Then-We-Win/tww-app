@@ -1,7 +1,7 @@
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/simple.vue'),
+    component: () => import('layouts/Simple.vue'),
     props: true,
     meta: { requiresLogin:  true },
     children: [
@@ -25,18 +25,18 @@ const routes = [
   // Public routes...
   {
     path: '/',
-    component: () => import('layouts/nothing.vue'),
+    component: () => import('layouts/Nothing.vue'),
     children: [
-      { name: 'login', path: '/login', component: () => import('pages/login.vue') },
-      { name: 'lock', path: '/lock', component: () => import('pages/lock-screen.vue') }
+      { name: 'login', path: '/login', component: () => import('pages/Login.vue') },
+      { name: 'lock', path: '/lock', component: () => import('pages/LockScreen.vue') }
     ]
   },
   // Everything else...
   {
     path: '*',
-    component: () => import('layouts/simple.vue'),
+    component: () => import('layouts/Simple.vue'),
     children: [
-      { name: 'notFound', path: '/not-found', component: () => import('pages/not-found.vue') }
+      { name: 'notFound', path: '/not-found', component: () => import('pages/NotFound.vue') }
     ]
   }
 ]
@@ -44,9 +44,9 @@ const routes = [
 // if (process.env.MODE !== 'ssr') {
 //   routes.push({
 //     path: '*',
-//     component: () => import('layouts/simple.vue'),
+//     component: () => import('layouts/Simple.vue'),
 //     children: [
-//       {path: '', component: () => import('pages/not-found.vue')}
+//       {path: '', component: () => import('pages/NotFound.vue')}
 //     ]
 //   })
 // }

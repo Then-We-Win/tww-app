@@ -9,7 +9,7 @@
     </div>
 
     <!-- Register form -->
-    <q-authorizationRegisterForm
+    <QAuthorizationRegisterForm
       v-on="$_registrationEvents"
       v-bind="$_registrationProps"
       @onSubmitRegister="onSubmitRegister"

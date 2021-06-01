@@ -67,6 +67,6 @@ export default {
   // TODO: Step 2: Convert the above template to a v-for loop.
   // TODO: Step 3: Cut the data () fields and place them in user.data.status.
   // TODO: Step 4: Change the template to to take data from the settings prop above.
-  // TODO: Step 5: Pass the prop "settings" from user.data.status in the src/pages/dashboard.vue
+  // TODO: Step 5: Pass the prop "settings" from user.data.status in the src/pages/Dashboard.vue
 }
 </script>

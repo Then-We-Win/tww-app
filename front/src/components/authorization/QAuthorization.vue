@@ -6,7 +6,7 @@
       :style="{ width: (breakPoint || !showRightSide) ? '100%' : '50%'}"
     >
       <div class="full-width">
-        <q-authorization-switch-button
+        <QAuthorizationSwitchButton
           @switchPage="changePage"
           :switch-button-text="switchButtonText"
           :register-page="registerPage"
@@ -27,7 +27,7 @@
             </div>
             <!-- Register page -->
             <div v-if="registerPage">
-              <q-authorization-register-page
+              <QAuthorizationRegisterPage
                 :register-page-description="registerPageDescription"
                 :privacy-text="privacyText"
                 @onSubmitRegister="onSubmitRegister"
@@ -38,7 +38,7 @@
 
             <!-- Login Page -->
             <div v-else>
-              <q-authorization-login-form
+              <QAuthorizationLoginForm
                 v-on="$_loginEvents"
                 v-bind="$_loginProps"
                 @handleLogin="handleLogin"
@@ -66,7 +66,7 @@
         </div>
 
         <div class="row justify-end">
-          <q-authorization-slider
+          <QAuthorizationSlider
             :slide="slide"
             :reviews-slide="reviewsSlide"
           />

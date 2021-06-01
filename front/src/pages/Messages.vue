@@ -1,12 +1,12 @@
 <template>
   <q-page class="q-pa-md">
-    <page-header :text="$t('pages.messages.title')"></page-header>
-    <div class="row q-col-gutter-md q-mt-md">
-      <div class="q-pa-sm col-md-4 col-12">
+    <page-header text="Messages"></page-header>
+    <div class="row q-mt-md">
+      <div class="q-pa-sm" style="width:300px">
         <search-page v-on:doSearch="search4user"></search-page>
         <messages-user-list v-bind:messages="subUserList" v-on:selectUser="openMsgThread"></messages-user-list>
       </div>
-      <div class="q-pa-sm col-md-8 col-12">
+      <div class="q-pa-sm" style="max-width:700px">
         <messages-conversation v-bind:selUser="selectedUser"></messages-conversation>
       </div>
     </div>
@@ -14,21 +14,21 @@
 </template>
 
 <script>
-  import PageHeader from '../components/page-header';
-  import SearchPage from '../components/search-page';
-  import MessagesUserList from '../components/messages/user-list';
+  import pageHeader from '../components/pageHeader';
+  import searchPage from '../components/searchPage';
+  import MessagesUserList from '../components/messages/UserList';
   import MessagesConversation from '../components/messages/Conversation';
 
   // We're using sample data here. TODO: Model will provide the data from the DB
   import * as myData from '../model/messages.js';
 
-  import TimeSince from "../mixins/time-since";
+  import TimeSince from "../mixins/TimeSince";
 
   export default {
-    name: "conversations",
+    name: "Messages",
     components: {
-      PageHeader,
-      SearchPage,
+      pageHeader,
+      searchPage,
       MessagesUserList,
       MessagesConversation
     },
