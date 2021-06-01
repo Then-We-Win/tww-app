@@ -2,6 +2,7 @@
 An OpenSource, enterprise-grade Vue.js, Quasar, Strapi and Kubernetes based platform for social change.
 
 
+
 ## Getting started
 You will need:
 
