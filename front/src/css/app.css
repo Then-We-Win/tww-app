@@ -3,13 +3,14 @@
 .debug-red {
     border: 1px solid red
 }
-
 .debug-blue {
     border: 1px solid blue
 }
-
 .debug-green {
     border: 1px solid green
+}
+::-webkit-scrollbar {
+  display: none;
 }
 .text-sm {
   font-size: 0.875rem;
@@ -55,3 +56,7 @@
 .rounded-none{
   border-radius: 0px;
 }
+/* .q-carousel__control.q-carousel__arrow.q-carousel__next-arrow.q-carousel__next-arrow--horizontal.absolute.flex.flex-center,
+.q-carousel__control.q-carousel__arrow.q-carousel__prev-arrow.q-carousel__prev-arrow--horizontal.absolute.flex.flex-center{
+ display: none;
+} */
