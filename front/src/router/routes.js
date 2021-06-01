@@ -18,7 +18,7 @@ const routes = [
       {path: '/invite', name: 'invite', component: () => import('pages/invite.vue')},
       {path: '/campaign', name: 'campaign', component: () => import('components/campaign/campaign.vue')},
       {path: '/campaigns', name: 'campaigns', component: () => import('pages/campaigns.vue')},
-      {path: '/tasks', name: 'todo', component: () => import('pages/task.vue')},
+      {path: '/tasks', name: 'task', component: () => import('pages/task.vue')},
       {path: '/dashboard', name: 'dashboard', component: () => import('pages/dashboard.vue')}
     ]
   },

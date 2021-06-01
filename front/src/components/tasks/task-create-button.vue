@@ -6,15 +6,15 @@
     padding="8px 40px"
     unelevated
     no-caps
-    label="Create To Do"
+    label="Create Task"
   />
 </template>
 <script>
 export default {
-  props: ["createTodo"],
+  props: ["createTask"],
   methods: {
     create() {
-      this.createTodo();
+      this.createTask();
     },
   },
 };

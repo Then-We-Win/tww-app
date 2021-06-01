@@ -231,13 +231,13 @@
                   </q-item-section>
 
                   <q-item-section>
-                    <div class="text-h6">To do list</div>
-                    <div class="text-subtitle2">All Your to do list</div>
+                    <div class="text-h6">Task list</div>
+                    <div class="text-subtitle2">All Your task list</div>
                   </q-item-section>
                 </q-item>
               </q-card-section>
               <q-card-section class="">
-                <todo></todo>
+                <task></task>
               </q-card-section>
             </q-card>
           </div>
@@ -329,7 +329,7 @@
 <script>
     import IEcharts from 'vue-echarts-v3/src/full.js'
     import {exportFile} from 'quasar'
-    import Todo from "components/task";
+    import Task from "components/task";
 
     function wrapCsvValue(val, formatFn) {
         let formatted = formatFn !== void 0
@@ -354,7 +354,7 @@
     export default {
         name: 'PageIndex',
         components: {
-            Todo,
+            Task,
             IEcharts
         },
         data() {

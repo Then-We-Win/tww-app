@@ -28,7 +28,7 @@ The Map browser component currently supports Mapbox. Google Maps and Open
 
 # Gallery/Infinite scroll
 
-# Todo system
+# Task system
 
 # Chat system
 

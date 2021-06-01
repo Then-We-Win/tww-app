@@ -3,17 +3,17 @@
     <q-item class="q-pl-none q-mb-md">
       <q-item-section avatar top>
         <q-checkbox
-          :id="todo.id"
-          v-model="todo.completed"
+          :id="task.id"
+          v-model="task.completed"
           color="primary"
         />
       </q-item-section>
 
-      <q-item-section class="text-body1 text-wrap q-mt-sm" :class="todo.completed?'text-strike	':''">
-        <q-item-label class="text-h6">{{ todo.title}}</q-item-label>
-        <q-item-label caption class="text-grey-6 q-pt-xs">{{ todo.date}}</q-item-label>
+      <q-item-section class="text-body1 text-wrap q-mt-sm" :class="task.completed?'text-strike	':''">
+        <q-item-label class="text-h6">{{ task.title}}</q-item-label>
+        <q-item-label caption class="text-grey-6 q-pt-xs">{{ task.date}}</q-item-label>
         <p class="text-justify text-body2 q-my-md text-grey-8 text-weight-regular">
-          {{ todo.task }}
+          {{ task.task }}
         </p>
         <div class="flex q-mt-sm q-gutter-x-md items-center">
           <q-avatar size='sm'>
@@ -26,7 +26,7 @@
         </div>
       </q-item-section>
 
-      <q-item-section side top v-if="editTodo"> 
+      <q-item-section side top v-if="editTask"> 
         <q-btn @click="edit()" class="text-black text-body2" flat label='edit'/>
       </q-item-section>
 
@@ -35,7 +35,7 @@
 </template>
 <script>
 export default {
-  props: ['todo', 'index', 'editTodo'],
+  props: ['task', 'index', 'editTask'],
   data() {
     return {
 
@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     edit(){
-      this.editTodo(this.index)
+      this.editTask(this.index)
     }
   },
 }

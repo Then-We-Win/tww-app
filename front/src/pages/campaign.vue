@@ -119,7 +119,7 @@
 
            <campaign-supporters />
 
-            <campaign-todos></campaign-todos>
+            <campaign-tasks></campaign-tasks>
           </div>
         </div>
       </div>
@@ -132,7 +132,7 @@ import wall from "components/wall/Wall.vue";
 import campaignQuestion from "components/campaign/campaign-question.vue";
 import CampaignSupporters from "components/campaign/campaign-supporters.vue";
 import CampaignLeaders from "components/campaign/campaign-leaders.vue";
-import CampaignTodos from "components/campaign/campaign-todos.vue";
+import CampaignTasks from "components/campaign/campaign-tasks.vue";
 import CampaignComment from "components/campaign/campaign-comment.vue";
 import CampaignCommentItem from "components/campaign/campaign-comment-item.vue";
 import CampaignSubheader from "components/campaign/campaign-subheader.vue";
@@ -143,7 +143,7 @@ export default {
     campaignQuestion,
     CampaignSupporters,
     CampaignLeaders,
-    CampaignTodos,
+    CampaignTasks,
     CampaignComment,
     CampaignCommentItem,
     CampaignSubheader

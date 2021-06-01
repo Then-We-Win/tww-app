@@ -3,10 +3,10 @@
     <div class="flex column items-end">
       <div class="flex full-width q-pt-sm items-center justify-between">
         <search-page></search-page>
-        <task-create-button :createTodo='createTodo'></task-create-button>
+        <task-create-button :createTask='createTask'></task-create-button>
       </div>
       <q-list padding>
-        <task-task :editTodo='editTodo' :todo="todo" :index=index v-for="(todo, index) in todos" :key="index"></task-task>
+        <task-task :editTask='editTask' :task="task" :index=index v-for="(task, index) in tasks" :key="index"></task-task>
       </q-list>
     </div>
 
@@ -17,7 +17,7 @@ import TaskCreateButton from './task-create-button.vue'
 import SearchPage from '../search-page.vue'
 import TaskTask from './task-task.vue'
 export default {
-  props: ['todos', 'createTodo', 'editTodo'],
+  props: ['tasks', 'createTask', 'editTask'],
   data(){
     return {
 

@@ -16,7 +16,7 @@
             >
               <q-tab name="about_campaign" label="About" />
               <q-tab name="campaign_wall" label="Wall" class="q-px-md" />
-              <q-tab name="campaign_todos" label="Todos" />
+              <q-tab name="campaign_tasks" label="Tasks" />
             </q-tabs>
 
             <q-separator />
@@ -120,8 +120,8 @@
                   <campaign-comment-Item></campaign-comment-Item>
                 </div>
               </q-tab-panel>
-              <q-tab-panel name="campaign_todos">
-                <todo />
+              <q-tab-panel name="campaign_tasks">
+                <task />
               </q-tab-panel>
             </q-tab-panels>
           </div>
@@ -153,7 +153,7 @@ import wall from "components/wall/Wall.vue";
 import CampaignQuestion from "components/campaign/campaign-question.vue";
 import CampaignSupporters from "components/campaign/campaign-supporters.vue";
 import CampaignLeaders from "components/campaign/campaign-leaders.vue";
-import todo from "pages/task.vue";
+import task from "pages/task.vue";
 import CampaignComment from "components/campaign/campaign-comment.vue";
 import CampaignCommentItem from "components/campaign/campaign-comment-item.vue";
 import CampaignSubheader from "components/campaign/campaign-subheader.vue";
@@ -165,7 +165,7 @@ export default {
     CampaignQuestion,
     CampaignSupporters,
     CampaignLeaders,
-    todo,
+    task,
     CampaignComment,
     CampaignCommentItem,
     CampaignSubheader,
