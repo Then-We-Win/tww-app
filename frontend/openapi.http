@@ -1,0 +1,22 @@
+POST https://api.openai.com/v1/chat/completions HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer sk-proj-Db1zlswVmOG5WVmjBAhhT3BlbkFJt4FMAXDmgKP1uEtUC3FT
+
+{
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Can you give me a document example in JSON format?"
+    }
+  ],
+  "max_tokens": 1000,
+  "temperature": 0.7,
+  "top_p": 1,
+  "n": 1,
+  "stop": ["\n", "<|endoftext|>"]
+}
+
+###
+
+GET https://api.intellectoapp.com/items/projects

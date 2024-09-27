@@ -1,0 +1,292 @@
+<script setup lang="ts">
+import { toTypedSchema } from '@vee-validate/zod'
+import { Field, useForm } from 'vee-validate'
+import { z } from 'zod'
+import { inject } from 'vue'
+import { useAuthStore } from '~/store/auth'
+
+import { AddonInputPassword } from '#components'
+
+definePageMeta({
+  layout: 'empty',
+  title: 'Signup',
+  preview: {
+    title: 'Signup',
+    description: 'For authentication and sign up',
+    categories: ['layouts', 'authentication'],
+    src: '/img/screens/auth-signup-1.png',
+    srcDark: '/img/screens/auth-signup-1-dark.png',
+    order: 157,
+  },
+})
+const settings = inject('settings')
+const strings = inject('strings')
+const user = inject('user')
+
+const { registerUser } = useAuthStore()
+
+const passwordRef = ref<InstanceType<typeof AddonInputPassword>>()
+
+// This is the Zod schema for the form input
+// It's used to define the shape that the form data will have
+const zodSchema = z
+  .object({
+    email: z.string().email(strings.value.validation.emailRequired),
+    password: z.string().min(8, strings.value.validation.passwordLength),
+    confirmPassword: z.string(),
+  })
+  .superRefine((data, ctx) => {
+    // This is a custom validation function that will be called
+    // before the form is submitted
+    if (passwordRef.value?.validation?.feedback?.warning || passwordRef.value?.validation?.feedback?.suggestions?.length) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: passwordRef.value?.validation?.feedback?.warning || passwordRef.value.validation.feedback?.suggestions?.[0],
+        path: ['password'],
+      })
+    }
+    if (data.password !== data.confirmPassword) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: strings.value.validation.passwordMustMatch,
+        path: ['confirmPassword'],
+      })
+    }
+  })
+
+// Zod has a great infer method that will
+// infer the shape of the schema into a TypeScript type
+type FormInput = z.infer<typeof zodSchema>
+
+const validationSchema = toTypedSchema(zodSchema)
+const initialValues = {
+  email: '',
+  password: '',
+  confirmPassword: '',
+} satisfies FormInput
+
+const { values, handleSubmit, isSubmitting, setFieldError } = useForm({
+  validationSchema,
+  initialValues,
+})
+
+const router = useRouter()
+const toaster = useToaster()
+
+// This is where you would send the form data to the server
+const onSubmit = handleSubmit(async (values) => {
+  // here you have access to the validated form values
+
+  try {
+    // fake delay, this will make isSubmitting value to be true
+    // await new Promise((resolve, reject) => {
+    //   if (values.username === 'maya') {
+    //     // simulate a backend error
+    //     setTimeout(
+    //       () => reject(new Error('Fake backend validation error')),
+    //       2000,
+    //     )
+    //   }
+    //   setTimeout(resolve, 4000)
+    // })
+    console.log(values)
+    const request = await registerUser({ email: values.email, password: values.password})
+
+    if ( request ) {
+      toaster.clearAll()
+      toaster.show({
+      title: 'Success',
+      message: `Account created successfully, please log in`,
+      color: 'success',
+      icon: 'ph:user-circle-fill',
+      closable: true,
+    })
+    router.push('/login')
+    } else {
+      setFieldError('email', 'This email is already taken')
+    }
+
+  }
+  catch (error: any) {
+    // this will set the error on the form
+    if (error.message === 'Fake backend validation error') {
+      setFieldError('email', 'This email is already taken')
+    }
+  }
+})
+</script>
+
+<template>
+  <div class="h-screen md:flex">
+    <div
+      class="from-primary-900 to-primary-500 i group relative hidden w-1/2 items-center justify-around overflow-hidden bg-gradient-to-tr md:flex"
+    >
+      <div class="mx-auto max-w-xs text-center">
+        <BaseHeading
+          as="h2"
+          size="3xl"
+          weight="medium"
+          class="text-white"
+        >
+          {{ strings.signup.title }}
+        </BaseHeading>
+        <BaseParagraph size="sm" class="text-muted-200 mb-3">
+          {{ strings.signup.subtitle }}
+        </BaseParagraph>
+        <BaseButton
+          to="/login"
+          rounded="lg"
+          class="w-full"
+        >
+          {{ strings.signup.login }}
+        </BaseButton>
+      </div>
+      <div
+        class="bg-muted-200/20 absolute -start-6 -top-6 h-14 w-0 origin-top-left rotate-45 rounded-full transition-all delay-[25ms] duration-300 group-hover:w-72"
+      />
+      <div
+        class="bg-muted-200/20 absolute -top-12 start-20 h-14 w-0 origin-top-left rotate-45 rounded-full transition-all delay-75 duration-300 group-hover:w-48"
+      />
+      <div
+        class="bg-muted-200/20 absolute -start-7 top-24 h-14 w-0 origin-top-left rotate-45 rounded-full transition-all delay-150 duration-300 group-hover:w-40"
+      />
+
+      <div
+        class="bg-muted-200/20 absolute -bottom-6 -end-6 h-14 w-0 origin-bottom-right rotate-45 rounded-full transition-all delay-150 duration-300 group-hover:w-72"
+      />
+      <div
+        class="bg-muted-200/20 absolute -bottom-12 end-20 h-14 w-0 origin-bottom-right rotate-45 rounded-full transition-all delay-75 duration-300 group-hover:w-48"
+      />
+      <div
+        class="bg-muted-200/20 absolute -end-7 bottom-24 h-14 w-0 origin-bottom-right rotate-45 rounded-full transition-all delay-[25ms] duration-300 group-hover:w-40"
+      />
+    </div>
+    <div
+      class="dark:bg-muted-900 flex flex-col items-center justify-center bg-white py-10 md:w-1/2"
+    >
+      <div class="mx-auto my-4 flex w-full max-w-xs items-center justify-start">
+        <NuxtLink
+          to="/"
+          class="text-muted-400 hover:text-primary-500 dark:text-muted-700 dark:hover:text-primary-500 transition-colors duration-300"
+        >
+          <AppLogo />
+        </NuxtLink>
+        <div>
+        </div>
+      </div>
+      <form
+        method="POST"
+        action=""
+        class="mx-auto w-full max-w-xs"
+        novalidate
+        @submit.prevent="onSubmit"
+      >
+        <BaseHeading
+          as="h2"
+          size="2xl"
+          weight="medium"
+        >
+          {{ strings.signup.form.title }}
+        </BaseHeading>
+        <BaseParagraph size="sm" class="text-muted-400 mb-6">
+          {{ strings.signup.form.subtitle }}
+        </BaseParagraph>
+
+        <div class="mb-4 space-y-3">
+          <!-- <Field
+            v-slot="{ field, errorMessage, handleChange, handleBlur }"
+            name="username"
+          >
+            <BaseInput
+              :model-value="field.value"
+              :error="errorMessage"
+              :disabled="isSubmitting"
+              type="text"
+              rounded="lg"
+              :placeholder="strings.signup.form.username"
+              icon="ph:fingerprint-duotone"
+              @update:model-value="handleChange"
+              @blur="handleBlur"
+            />
+          </Field> -->
+          <Field
+            v-slot="{ field, errorMessage, handleChange, handleBlur }"
+            name="email"
+          >
+            <BaseInput
+              :model-value="field.value"
+              :error="errorMessage"
+              :disabled="isSubmitting"
+              type="email"
+              rounded="lg"
+              :placeholder="strings.signup.form.email"
+              icon="ph:at-duotone"
+              @update:model-value="handleChange"
+              @blur="handleBlur"
+            />
+          </Field>
+          <Field
+            v-slot="{ field, errorMessage, handleChange, handleBlur }"
+            name="password"
+          >
+            <AddonInputPassword
+              ref="passwordRef"
+              :model-value="field.value"
+              :error="errorMessage"
+              :disabled="isSubmitting"
+              :user-inputs="[values.email ?? '']"
+              rounded="lg"
+              :placeholder="strings.signup.form.password"
+              icon="ph:lock-duotone"
+              @update:model-value="handleChange"
+              @blur="handleBlur"
+            />
+          </Field>
+          <Field
+            v-slot="{ field, errorMessage, handleChange, handleBlur }"
+            name="confirmPassword"
+          >
+            <BaseInput
+              :model-value="field.value"
+              :error="errorMessage"
+              :disabled="isSubmitting"
+              type="password"
+              rounded="lg"
+              :placeholder="strings.signup.form.confirmPassword"
+              icon="ph:check"
+              @update:model-value="handleChange"
+              @blur="handleBlur"
+            />
+          </Field>
+        </div>
+        <BaseButton
+          :disabled="isSubmitting"
+          :loading="isSubmitting"
+          type="submit"
+          rounded="lg"
+          color="primary"
+          class="!h-11 w-full"
+        >
+          {{ strings.signup.form.submit }}
+        </BaseButton>
+        <!--No account link-->
+        <p
+          class="text-muted-400 mt-4 flex justify-between font-sans text-sm leading-5"
+        >
+          <span> {{ strings.signup.form.haveAnAccount }}</span>
+          <NuxtLink
+            to="/login"
+            class="text-primary-600 hover:text-primary-500 font-medium underline-offset-4 transition duration-150 ease-in-out hover:underline focus:underline focus:outline-none"
+          >
+            {{ strings.signup.form.loginText }}
+          </NuxtLink>
+        </p>
+      </form>
+      <div class="text-center">
+        <BaseText size="sm" class="text-muted-400">
+          © {{ new Date().getFullYear() }} {{ strings.app.copyright }}
+        </BaseText>
+      </div>
+    </div>
+  </div>
+</template>

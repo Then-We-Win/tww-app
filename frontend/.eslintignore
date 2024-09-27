@@ -1,0 +1,6 @@
+!.app/
+!.demo
+
+public
+*.md
+dist
