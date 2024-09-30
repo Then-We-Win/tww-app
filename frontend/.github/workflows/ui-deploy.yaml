@@ -1,0 +1,73 @@
+name: Intellecto UI Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+    paths:
+      - '.app/**'
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  BUCKET: ${{ secrets.INTELLECTO_FRONTEND_BUCKET }}
+
+
+jobs:
+
+  setup-build-push:
+    name: Setup, Build and Push
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+      packages: 'read'
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Setup GCP - GitHub federated authentication
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v2'
+      with:
+        workload_identity_provider: 'projects/924566451057/locations/global/workloadIdentityPools/ca-github-pool/providers/ca-provider'
+        service_account: 'github-actions@${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com'
+        project_id: "${{ secrets.GCP_PROJECT }}"
+    # Setup gcloud CLI
+    - uses: google-github-actions/setup-gcloud@v2
+      name: setup GCLOUD CLI
+      with:
+        project_id: ${{ secrets.GCP_PROJECT }}
+    - run: |-
+        echo "$ENV_VARS" > .app/.env
+      shell: bash
+      env:
+        ENV_VARS: ${{ secrets.ENV_VARS_FRONTEND }}
+      name: setup env.
+    - uses: actions/setup-node@v4
+      name: setup-Node20
+      with:
+        node-version: 20
+
+    - uses: pnpm/action-setup@v4
+      name: Install pnpm
+
+    - run: |-
+        pnpm install
+        pnpm generate
+
+    - id: 'upload-files'
+      name: Upload Build files to storage
+      uses: 'google-github-actions/upload-cloud-storage@v2'
+      with:
+        path: '.app/.output/public/'
+        destination: '${{ env.BUCKET }}'
+        parent: false
+        headers: |-
+          cache-control: no-cache
+          x-goog-meta-max-age: 0
+
+    - name: Invalidate Cache for CDN
+      run: |-
+        gcloud compute url-maps invalidate-cdn-cache intellecto-dev --path "/*" --async

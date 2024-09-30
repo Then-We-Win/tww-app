@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "@cssninja/tairo",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "clean": "rimraf .nuxt .output node_modules"
+  },
+  "peerDependencies": {
+    "@cssninja/nuxt-toaster": "^0.3.12",
+    "@shuriken-ui/nuxt": "^3.1.5"
+  },
+  "devDependencies": {
+    "nuxt": "^3.11.2",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
+  }
+}

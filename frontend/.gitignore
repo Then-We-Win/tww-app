@@ -1,0 +1,9 @@
+node_modules
+*.log
+*.zip
+.nuxt
+nuxt.d.ts
+.output
+dist
+.env
+*Zone.Identifier
