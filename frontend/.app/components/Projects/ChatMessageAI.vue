@@ -33,7 +33,7 @@ const ai = computed(() => {
       >
       <p v-if="ai.response" class="font-sans text-sm">
         {{ ai.response }}
-        <BaseButtonIcon size="sm" rounded="lg" data-nui-tooltip-position="right" data-nui-tooltip="Intellecto made a revision">
+        <BaseButtonIcon size="sm" rounded="lg" data-nui-tooltip-position="right" data-nui-tooltip="App made a revision">
             <Icon name="ph:pencil-duotone" class="size-5" />
         </BaseButtonIcon>
         </p>
