@@ -1,4 +1,4 @@
-name: Intellecto UI Deploy
+name:  UI Deploy
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
-  BUCKET: ${{ secrets.INTELLECTO_FRONTEND_BUCKET }}
+  BUCKET: ${{ secrets.FRONTEND_BUCKET }}
 
 
 jobs:
@@ -70,4 +70,4 @@ jobs:
 
     - name: Invalidate Cache for CDN
       run: |-
-        gcloud compute url-maps invalidate-cdn-cache intellecto-dev --path "/*" --async
+        gcloud compute url-maps invalidate-cdn-cache app-dev --path "/*" --async

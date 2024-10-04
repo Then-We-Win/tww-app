@@ -1,4 +1,4 @@
-# Intellecto App
+#  App
 
 ## Current issues:
 

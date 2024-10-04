@@ -1,6 +1,3 @@
-# intellecto-services
-The services for the Intellecto app
-
 ## Installation
 
 ```npm i```

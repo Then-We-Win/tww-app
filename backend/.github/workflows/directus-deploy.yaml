@@ -1,45 +1,39 @@
-name: Intellecto Directus Deploy
+name: TWW Directus Deploy
 
 on:
   push:
     branches:
       - main
-      
-    
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
-  
-
 
 jobs:
-
   setup-build-push:
     name: Setup, Build and Push
     runs-on: ubuntu-latest
     permissions:
-      contents: 'read'
-      id-token: 'write'
+      contents: "read"
+      id-token: "write"
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    
-    # Setup GCP - GitHub federated authentication
-    - id: 'auth'
-      name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v2'
-      with:
-        workload_identity_provider: 'projects/924566451057/locations/global/workloadIdentityPools/ca-github-pool/providers/ca-provider'
-        service_account: 'github-actions@${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com'
-        project_id: "${{ secrets.GCP_PROJECT }}"
+      # Setup GCP - GitHub federated authentication
+      - id: "auth"
+        name: "Authenticate to Google Cloud"
+        uses: "google-github-actions/auth@v2"
+        with:
+          workload_identity_provider: "projects/924566451057/locations/global/workloadIdentityPools/ca-github-pool/providers/ca-provider"
+          service_account: "github-actions@${{ secrets.GCP_PROJECT }}.iam.gserviceaccount.com"
+          project_id: "${{ secrets.GCP_PROJECT }}"
 
-    - id: 'compute-ssh'
-      uses: 'google-github-actions/ssh-compute@v1'
-      with:
-        instance_name: 'directus-dev'
-        zone: 'us-central1-f'
-        ssh_private_key: '${{ secrets.GCP_SSH_PRIVATE_KEY_DIRECTUS_DEV }}'
-        command: 'cd /home/tarun/intellecto-services && git pull && npm install && npx directus schema apply --yes ./snapshot.yaml && sudo systemctl restart directus && sudo systemctl restart nginx'
-        user: tarun
+      - id: "compute-ssh"
+        uses: "google-github-actions/ssh-compute@v1"
+        with:
+          instance_name: "directus-dev"
+          zone: "us-central1-f"
+          ssh_private_key: "${{ secrets.GCP_SSH_PRIVATE_KEY_DIRECTUS_DEV }}"
+          command: "cd /home/tarun/directus-services && git pull && npm install && npx directus schema apply --yes ./snapshot.yaml && sudo systemctl restart directus && sudo systemctl restart nginx"
+          user: tarun

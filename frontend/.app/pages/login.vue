@@ -232,7 +232,7 @@ console.log('here')
                 <a
                   type="button"
                   class="bg-muted-200 dark:bg-muted-700 dark:hover:bg-muted-600 text-muted-600 dark:text-muted-400 nui-focus relative inline-flex w-full items-center justify-center rounded px-0 py-3 text-center text-sm font-semibold shadow-sm transition-all duration-300 hover:bg-white"
-                  :href="`${config.public.PROTOCOL}${config.public.API}/auth/login/google?redirect=https://ai.intellectoapp.com/auth/callback`"
+                  :href="`${config.public.PROTOCOL}${config.public.API}/auth/login/google?redirect=https://ai.app.com/auth/callback`"
                 >
                   <Icon name="fa6-brands:google" class="size-5" />
                 </a>

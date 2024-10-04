@@ -8,10 +8,10 @@ const settings = inject('settings')
     class="ltablet:flex hidden items-center gap-2 lg:flex"
     aria-label="Go to Tairo homepage"
   >
-    <img
+    <!-- <img
       :src="settings.app.logo"
       :alt="settings.app.name"
       class="max-h-[50px] w-auto"
-    >
+    > -->
   </NuxtLink>
 </template>
