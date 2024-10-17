@@ -120,11 +120,12 @@ const handleBrandChange = (brand: any) => {
                 <div
                   class="relative inline-flex size-9 items-center justify-center rounded-full"
                 >
-                  <img
-                    :src="settings.app.api.assets + brand.logo.filename_disk"
-                    class="max-w-full rounded-full object-cover shadow-sm dark:border-transparent"
-                    alt=""
-                  >
+                <img
+                  v-if="brand && brand.logo && brand.logo.filename_disk"
+                  :src="settings.app.api.assets + brand.logo.filename_disk"
+                  class="max-w-full rounded-full object-cover shadow-sm dark:border-transparent"
+                  alt=""
+                />
                 </div>
                 <div class="ms-2">
                   <h6
