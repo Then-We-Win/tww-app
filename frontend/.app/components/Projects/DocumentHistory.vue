@@ -23,7 +23,7 @@ function reprocessDocument() {
         idx++
         let msg = {
           content: obj.data,
-          title:`Intellecto Revision ${idx}`
+          title:`App Revision ${idx}`
         }
         documentHistory.value.push(msg)
       }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   title: 'Writer',
+  // middleware: ['auth'],
   preview: {
     title: 'Writer dashboard',
     description: 'For writers and bloggers',

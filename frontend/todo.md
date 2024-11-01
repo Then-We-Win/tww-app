@@ -13,7 +13,7 @@
 11. Wire ChatGPT's instructions into document editor - 2hrs
 12. Settings page - 1hr
 13. Replace info with users info
-14. Add intellecto face to incomming messages in chats.
+<!-- 14. Add  face to incomming messages in chats. -->
 15. Add feedback loop icon bar under every chat message.
 16. Restore "scroll to bottom" functionality when a project is selected.
 17. Restore "currentlySelected.id" when a new project is created
